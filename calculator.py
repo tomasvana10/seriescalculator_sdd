@@ -53,10 +53,26 @@ class Entries(ttk.Frame):
         self.entryGen() 
         self.entryPlacer()
     
-    def entryGen(self): # Create entry widgets
+    def entryGen(self): # Create entry widgets and add temporary text
         self.firstTerm = ttk.Entry(self) # Make widgets members of the object and not stay in the local scope of the function
         self.commonDifference = ttk.Entry(self)
         self.numberOfTerms = ttk.Entry(self)
+
+        self.firstTerm.insert(0, "First term of the series") # Entering temporary text
+        self.commonDifference.insert(0, "Common difference")
+        self.numberOfTerms.insert(0, "Number of terms")
+
+        self.firstTerm.bind("<FocusIn>", lambda event: self.clearTemp(1))
+        self.commonDifference.bind("<FocusIn>", lambda event: self.clearTemp(2))
+        self.numberOfTerms.bind("<FocusIn>", lambda event: self.clearTemp(3))
+    
+    def clearTemp(self, entryNum): # Clear temporary text when entry is focused
+        if entryNum == 1:
+            self.firstTerm.delete(0, tk.END)
+        elif entryNum == 2:
+            self.commonDifference.delete(0, tk.END)
+        else:
+            self.numberOfTerms.delete(0, tk.END)
     
     def entryPlacer(self): # Place entry widgets
         self.firstTerm.pack()
@@ -110,6 +126,8 @@ class Buttons(ttk.Frame):
         self.entries = entries # Saving passed arguments of Entries and Output classes
         self.output = output
 
+        self.seqType = "" # Creating variable to assign the sequence type to later on
+
         self.buttonGen()
         self.buttonPlacer()
         
@@ -132,9 +150,9 @@ class Buttons(ttk.Frame):
     
     def seqChoice(self, seqType):
         if seqType == "arithmetic":
-            pass
+            self.seqType = "arithmetic"
         else:
-            pass
+            self.seqType = "geometric"
 
     def calculate(self):
         try:
