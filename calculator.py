@@ -8,11 +8,12 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         super().__init__()
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
-
+    
         # Program elements split into widget type
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
+        self.radiobuttons = Radiobuttons(self, self.buttons)
     
         # Run file menu function
         self.createFileMenu()
@@ -40,7 +41,6 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
 
         # Run program
         self.mainloop()
-    
 
 
 class Entries(ttk.Frame):
@@ -74,12 +74,32 @@ class Output(ttk.Frame):
         self.outputPlacer()
 
     def outputGen(self):
-        self.sum = tk.Text(self)
+        self.sumOutput = tk.Text(self, state = "disabled") # Doesn't allow input but allows copying of result
 
     def outputPlacer(self):
-        self.sum.pack()
+        self.sumOutput.pack()
     
 
+class Radiobuttons(ttk.Frame):
+
+    def __init__(self, parent, buttons):
+        super().__init__(parent)
+        self.place(x = 0, y = 0)
+
+        self.buttons = buttons # Saving passed argument of buttons class (so Radiobuttons can communicate with buttons)
+
+        self.radioButtonGen()
+        self.radioButtonPlacer()
+
+    def radioButtonGen(self):
+        self.var = tk.IntVar()
+        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.buttons.seqChoice("arithmetic"))
+        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.buttons.seqChoice("geometric"))
+
+    def radioButtonPlacer(self):
+        self.arithButton.pack()
+        self.geomButton.pack()
+    
 
 class Buttons(ttk.Frame):
 
@@ -102,15 +122,27 @@ class Buttons(ttk.Frame):
         self.calculate.pack()
     
     def clear(self):
-        pass
-        
+        self.entries.firstTerm.delete(0, tk.END) # Clearing entry fields
+        self.entries.commonDifference.delete(0, tk.END)
+        self.entries.numberOfTerms.delete(0, tk.END)
+
+        self.output.sumOutput.config(state = "normal") # Enabling text widget's state to modify text
+        self.output.sumOutput.delete(1.0, tk.END)
+        self.output.sumOutput.config(state = "disabled") # Disabling state
+    
+    def seqChoice(self, seqType):
+        if seqType == "arithmetic":
+            pass
+        else:
+            pass
+
     def calculate(self):
         try:
-            pass
+            pass # Calculation algorithm goes here
         
         except Exception as ex:
             print(ex)
 
 
 # Instantiating the Program() class
-Program("Calculator", (500, 500))
+Program("Calculator", (600, 600))
