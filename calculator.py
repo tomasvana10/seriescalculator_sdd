@@ -9,35 +9,13 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
     
-        # Program elements split into widget type
+        # Program elements split into widget type (different classes)
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.buttons)
     
-        # Run file menu function
-        self.createFileMenu()
-
-    def createFileMenu(self):
-        # Creating main menu
-        self.menu = tk.Menu(self)
-        self.config(menu=self.menu)
-
-        # Creating accessibility options menu
-        self.helpMenu = tk.Menu(self.menu)
-        self.menu.add_cascade(label="Accessibility Options", menu=self.helpMenu)
-
-        # Creating options within the accessibility menu
-        self.helpMenu.add_command(label="Toggle high contrast") # Add commands later
-        self.helpMenu.add_separator()
-
-        # Creating font size menu and adding 3 presets
-        self.sizeMenu = tk.Menu(self.helpMenu) 
-        self.helpMenu.add_cascade(label="Font Size", menu=self.sizeMenu)  # Adding cascade to sizeMenu
-
-        self.sizeMenu.add_command(label="Large") # Add commands later
-        self.sizeMenu.add_command(label="Medium")
-        self.sizeMenu.add_command(label="Small")
+        self.filemenu = FileMenu(self) # Initialising file menu
 
         # Run program
         self.mainloop()
@@ -62,11 +40,11 @@ class Entries(ttk.Frame):
         self.commonDifference.insert(0, "Common difference")
         self.numberOfTerms.insert(0, "Number of terms")
 
-        self.firstTerm.bind("<FocusIn>", lambda event: self.clearTemp(1))
+        self.firstTerm.bind("<FocusIn>", lambda event: self.clearTemp(1)) 
         self.commonDifference.bind("<FocusIn>", lambda event: self.clearTemp(2))
         self.numberOfTerms.bind("<FocusIn>", lambda event: self.clearTemp(3))
     
-    def clearTemp(self, entryNum): # Clear temporary text when entry is focused
+    def clearTemp(self, entryNum): # Clear temporary text when entry is focused (above bindings provide the functionality)
         if entryNum == 1:
             self.firstTerm.delete(0, tk.END)
         elif entryNum == 2:
@@ -160,6 +138,38 @@ class Buttons(ttk.Frame):
         
         except Exception as ex:
             print(ex)
+
+
+class FileMenu(tk.Menu):
+
+    def __init__(self, parent):
+        super().__init__(parent)
+    
+        self.parent = parent
+
+        self.createFileMenu()
+    
+    def createFileMenu(self):
+        # Creating main menu
+        self.menu = tk.Menu(self)
+
+        # Creating accessibility options menu
+        self.helpMenu = tk.Menu(self.menu)
+        self.menu.add_cascade(label="Accessibility Options", menu=self.helpMenu)
+
+        # Creating options within the accessibility menu
+        self.helpMenu.add_command(label="Toggle high contrast") # Add commands later
+        self.helpMenu.add_separator()
+
+        # Creating font size menu and adding 3 presets
+        self.sizeMenu = tk.Menu(self.helpMenu) 
+        self.helpMenu.add_cascade(label="Font Size", menu=self.sizeMenu)  # Adding cascade to sizeMenu
+
+        self.sizeMenu.add_command(label="Large") # Add commands later
+        self.sizeMenu.add_command(label="Medium")
+        self.sizeMenu.add_command(label="Small")
+
+        self.parent.config(menu = self.menu)
 
 
 # Instantiating the Program() class
