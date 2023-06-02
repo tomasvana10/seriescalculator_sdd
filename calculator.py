@@ -17,17 +17,15 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.buttons)
-    
-        self.filemenu = FileMenu(self) # Initialising file menu
+        self.buttons.set_radiobuttons(self.radiobuttons)
 
-        # Run program
-        self.mainloop()
+        self.filemenu = FileMenu(self) # Initialising file menu
 
 
 class Entries(ttk.Frame):
     
-    def __init__(self, parent): # Second argument allows the main instance (self) of Program() to be passed to Entries() for inheritance
-        super().__init__(parent) # Ensures proper inheritane of parent class (in this case, Program())
+    def __init__(self, master): # Second argument allows the main instance (self) of Program() to be passed to Entries() for inheritance
+        super().__init__(master) # Ensures proper inheritane of master class (in this case, Program())
         self.place(x = 210, y = 190, anchor = "center") # Placing window in which this class's widgets will be stored (like a subfolder)
 
         # Calling widget generator and placer functions
@@ -48,25 +46,24 @@ class Entries(ttk.Frame):
         self.entryTempText = ["First term of the series", "Common difference", "Number of terms"] 
         self.entryVars = [self.firstTerm, self.commonDifference, self.numberOfTerms] 
 
-        self.firstTerm.bind("<FocusIn>", lambda event: self.whenFocused(0)) 
-        self.commonDifference.bind("<FocusIn>", lambda event: self.whenFocused(1))
-        self.numberOfTerms.bind("<FocusIn>", lambda event: self.whenFocused(2))
+        for i, var in enumerate(self.entryVars): # Sending entry variables to be bound to events which control the 2 focus functions
+            self.bind_events(var, i)
 
-        self.firstTerm.bind("<FocusOut>", lambda event: self.whenUnfocused(0))
-        self.commonDifference.bind("<FocusOut>", lambda event: self.whenUnfocused(1))
-        self.numberOfTerms.bind("<FocusOut>", lambda event: self.whenUnfocused(2))
+    def bind_events(self, entry, entryPos): # Binds events to entries (controlled by above for loop)
+        entry.bind("<FocusIn>", lambda event: self.whenFocused(entry)) 
+        entry.bind("<FocusOut>", lambda event: self.whenUnfocused(entry, entryPos))
 
-    def whenFocused(self, entryPos): # Controls what happens when the user focuses on the entry (above bindings provide the functionality)
-        if self.entryVars[entryPos].get() in self.entryTempText:
-            self.entryVars[entryPos].delete(0, tk.END)
-            self.entryVars[entryPos].insert(0, "")
-            self.entryVars[entryPos].config(foreground = "white")
+    def whenFocused(self, entry): # Controls what happens when the user focuses on the entry (above bindings provide the functionality)
+        if entry.get() in self.entryTempText:
+            entry.delete(0, tk.END)
+            entry.insert(0, "")
+            entry.config(foreground = "white")
 
-    def whenUnfocused(self, entryPos): # Controls what happens when the user unfocuses from the entry
-        if self.entryVars[entryPos].get() == "":
-            self.entryVars[entryPos].insert(0, self.entryTempText[entryPos])
-            self.entryVars[entryPos].config(foreground = "gray")
-  
+    def whenUnfocused(self, entry, entryPos): # Controls what happens when the user unfocuses from the entry
+        if entry.get() == "":
+            entry.insert(0, self.entryTempText[entryPos])
+            entry.config(foreground = "gray")
+
     def entryPlacer(self): # Place entry widgets
         self.firstTerm.pack()
         self.commonDifference.pack()
@@ -75,8 +72,8 @@ class Entries(ttk.Frame):
 
 class Output(ttk.Frame):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, master):
+        super().__init__(master)
         self.place(x = 255, y = 325, anchor = "center")
         self.outputGen()
         self.outputPlacer()
@@ -90,8 +87,8 @@ class Output(ttk.Frame):
 
 class Radiobuttons(ttk.Frame):
 
-    def __init__(self, parent, buttons):
-        super().__init__(parent)
+    def __init__(self, master, buttons):
+        super().__init__(master)
         self.place(x = 400, y = 172, anchor = "center")
 
         self.buttons = buttons # Saving passed argument of buttons class (so Radiobuttons can communicate with buttons)
@@ -111,8 +108,8 @@ class Radiobuttons(ttk.Frame):
 
 class Buttons(ttk.Frame):
 
-    def __init__(self, parent, entries, output):
-        super().__init__(parent)
+    def __init__(self, master, entries, output):
+        super().__init__(master)
         self.place(x = 337, y = 200)
 
         self.entries = entries # Saving passed arguments of Entries and Output classes
@@ -122,6 +119,9 @@ class Buttons(ttk.Frame):
 
         self.buttonGen()
         self.buttonPlacer()
+    
+    def set_radiobuttons(self, radiobuttons):
+        self.radionbuttons = radiobuttons
         
     def buttonGen(self):
         self.clear = ttk.Button(self, text = "Clear", command = self.clear)
@@ -132,34 +132,24 @@ class Buttons(ttk.Frame):
         self.calculate.pack()
     
     def clear(self):
-        i = 0
-        self.entryText = []
-        for x in self.entries.entryVars:
-            self.entryText.append(self.entries.entryVars[i].get())
-            i += 1
+        # List comprehension that clears temporary text in entries only if the user has typed in them (and reinserts temporary text)
+        self.entryText = [entry.get() for entry in self.entries.entryVars]
 
-        i = 0
-        self.fieldModified = []
-        for x in self.entryText:
-            if self.entryText[i] == self.entries.entryTempText[i]:
-                self.fieldModified.append(False)
-            else:
-                self.fieldModified.append(True)
-            i += 1
-        
-        i = 0
-        for x in self.fieldModified:
-            if self.fieldModified[i] == True:
-                self.entries.entryVars[i].delete(0, tk.END)
-                self.entries.entryVars[i].insert(0, self.entries.entryTempText[i])
-                self.entries.entryVars[i].config(foreground = "gray")
-            else:
-                pass
-            i += 1
+        self.fieldModified = [False if entry == self.entries.entryTempText[i] else True for i, entry in enumerate(self.entryText)]
+
+        '''
+        # The following list comprehension utilises short circuit evaluation:
+        # "the concept of skipping the evaluation of the second part of a boolean expression in a 
+        # conditional statement when the entire statement has already been determined to be either true or false"
+        '''
+        [self.entries.entryVars[i].delete(0, tk.END) or self.entries.entryVars[i].insert(0, self.entries.entryTempText[i]) or self.entries.entryVars[i].config(foreground="gray") for i, modified in enumerate(self.fieldModified) if modified]
 
         self.output.sumOutput.config(state = "normal") # Enabling text widget's state to modify text
         self.output.sumOutput.delete(1.0, tk.END)
         self.output.sumOutput.config(state = "disabled") # Disabling state
+        
+        self.radiobuttons.arithButton.deselect()
+        self.radiobuttons.geomButton.deselect()
     
     def seqChoice(self, seqType):
         if seqType == "arithmetic":
@@ -177,10 +167,10 @@ class Buttons(ttk.Frame):
 
 class FileMenu(tk.Menu):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, master):
+        super().__init__(master)
     
-        self.parent = parent
+        self.master = master
 
         self.createFileMenu()
     
@@ -204,8 +194,12 @@ class FileMenu(tk.Menu):
         self.sizeMenu.add_command(label="Medium")
         self.sizeMenu.add_command(label="Small")
 
-        self.parent.config(menu = self.menu)
+        self.master.config(menu = self.menu)
 
 
-# Instantiating the Program() class
-Program("Calculator", (600, 600))
+def start_program(): # Start program function
+    program = Program("Calculator", (600, 600))
+    program.mainloop()
+
+if __name__ == "__main__": # Allows script to be standalone executable and a reusable module. Also allows for organisation and modularity
+    start_program()
