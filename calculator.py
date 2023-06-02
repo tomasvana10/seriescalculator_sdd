@@ -132,9 +132,30 @@ class Buttons(ttk.Frame):
         self.calculate.pack()
     
     def clear(self):
-        self.entries.firstTerm.delete(0, tk.END) # Clearing entry fields
-        self.entries.commonDifference.delete(0, tk.END)
-        self.entries.numberOfTerms.delete(0, tk.END)
+        i = 0
+        self.entryText = []
+        for x in self.entries.entryVars:
+            self.entryText.append(self.entries.entryVars[i].get())
+            i += 1
+
+        i = 0
+        self.fieldModified = []
+        for x in self.entryText:
+            if self.entryText[i] == self.entries.entryTempText[i]:
+                self.fieldModified.append(False)
+            else:
+                self.fieldModified.append(True)
+            i += 1
+        
+        i = 0
+        for x in self.fieldModified:
+            if self.fieldModified[i] == True:
+                self.entries.entryVars[i].delete(0, tk.END)
+                self.entries.entryVars[i].insert(0, self.entries.entryTempText[i])
+                self.entries.entryVars[i].config(foreground = "gray")
+            else:
+                pass
+            i += 1
 
         self.output.sumOutput.config(state = "normal") # Enabling text widget's state to modify text
         self.output.sumOutput.delete(1.0, tk.END)
