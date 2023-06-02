@@ -8,7 +8,10 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         super().__init__()
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
-    
+        
+        self.frame = tk.Frame(self, background = "#D3D3D3") # Main frame/background
+        self.frame.pack(expand = 1, fill = tk.BOTH)
+
         # Program elements split into widget type (different classes)
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
@@ -25,33 +28,45 @@ class Entries(ttk.Frame):
     
     def __init__(self, parent): # Second argument allows the main instance (self) of Program() to be passed to Entries() for inheritance
         super().__init__(parent) # Ensures proper inheritane of parent class (in this case, Program())
-        self.place(x = 0, y = 0) # Placing window in which this class's widgets will be stored (like a subfolder)
+        self.place(x = 210, y = 190, anchor = "center") # Placing window in which this class's widgets will be stored (like a subfolder)
 
         # Calling widget generator and placer functions
         self.entryGen() 
         self.entryPlacer()
     
     def entryGen(self): # Create entry widgets and add temporary text
-        self.firstTerm = ttk.Entry(self) # Make widgets members of the object and not stay in the local scope of the function
-        self.commonDifference = ttk.Entry(self)
-        self.numberOfTerms = ttk.Entry(self)
+
+        self.firstTerm = ttk.Entry(self, foreground = "gray") # Make widgets members of the object and not stay in the local scope of the function
+        self.commonDifference = ttk.Entry(self, foreground = "gray")
+        self.numberOfTerms = ttk.Entry(self, foreground = "gray")
 
         self.firstTerm.insert(0, "First term of the series") # Entering temporary text
         self.commonDifference.insert(0, "Common difference")
         self.numberOfTerms.insert(0, "Number of terms")
 
-        self.firstTerm.bind("<FocusIn>", lambda event: self.clearTemp(1)) 
-        self.commonDifference.bind("<FocusIn>", lambda event: self.clearTemp(2))
-        self.numberOfTerms.bind("<FocusIn>", lambda event: self.clearTemp(3))
-    
-    def clearTemp(self, entryNum): # Clear temporary text when entry is focused (above bindings provide the functionality)
-        if entryNum == 1:
-            self.firstTerm.delete(0, tk.END)
-        elif entryNum == 2:
-            self.commonDifference.delete(0, tk.END)
-        else:
-            self.numberOfTerms.delete(0, tk.END)
-    
+        # Storing data of temporary text and entry variable names in lists so they can be accessed by only 2 functions instead of more (focus in and focus out)
+        self.entryTempText = ["First term of the series", "Common difference", "Number of terms"] 
+        self.entryVars = [self.firstTerm, self.commonDifference, self.numberOfTerms] 
+
+        self.firstTerm.bind("<FocusIn>", lambda event: self.whenFocused(0)) 
+        self.commonDifference.bind("<FocusIn>", lambda event: self.whenFocused(1))
+        self.numberOfTerms.bind("<FocusIn>", lambda event: self.whenFocused(2))
+
+        self.firstTerm.bind("<FocusOut>", lambda event: self.whenUnfocused(0))
+        self.commonDifference.bind("<FocusOut>", lambda event: self.whenUnfocused(1))
+        self.numberOfTerms.bind("<FocusOut>", lambda event: self.whenUnfocused(2))
+
+    def whenFocused(self, entryPos): # Controls what happens when the user focuses on the entry (above bindings provide the functionality)
+        if self.entryVars[entryPos].get() in self.entryTempText:
+            self.entryVars[entryPos].delete(0, tk.END)
+            self.entryVars[entryPos].insert(0, "")
+            self.entryVars[entryPos].config(foreground = "white")
+
+    def whenUnfocused(self, entryPos): # Controls what happens when the user unfocuses from the entry
+        if self.entryVars[entryPos].get() == "":
+            self.entryVars[entryPos].insert(0, self.entryTempText[entryPos])
+            self.entryVars[entryPos].config(foreground = "gray")
+  
     def entryPlacer(self): # Place entry widgets
         self.firstTerm.pack()
         self.commonDifference.pack()
@@ -62,13 +77,12 @@ class Output(ttk.Frame):
 
     def __init__(self, parent):
         super().__init__(parent)
-        self.place(x = 0, y = 70) # Must place accurately later !!!
-
+        self.place(x = 255, y = 325, anchor = "center")
         self.outputGen()
         self.outputPlacer()
 
     def outputGen(self):
-        self.sumOutput = tk.Text(self, state = "disabled") # Doesn't allow input but allows copying of result
+        self.sumOutput = tk.Text(self, state = "disabled", height = 10, width = 40) # Doesn't allow input but allows copying of result
 
     def outputPlacer(self):
         self.sumOutput.pack()
@@ -78,7 +92,7 @@ class Radiobuttons(ttk.Frame):
 
     def __init__(self, parent, buttons):
         super().__init__(parent)
-        self.place(x = 0, y = 0)
+        self.place(x = 400, y = 172, anchor = "center")
 
         self.buttons = buttons # Saving passed argument of buttons class (so Radiobuttons can communicate with buttons)
 
@@ -99,7 +113,7 @@ class Buttons(ttk.Frame):
 
     def __init__(self, parent, entries, output):
         super().__init__(parent)
-        self.place(x = 0, y = 0)
+        self.place(x = 337, y = 200)
 
         self.entries = entries # Saving passed arguments of Entries and Output classes
         self.output = output
