@@ -6,6 +6,7 @@
  ## Dependencies
  - Googletrans module<br>
  Install it in your terminal after downloading the calculator program : `pip install -r requirements.txt`
+ Pip is likely already installed on your computer. If it isn't, <a id="raw-url" href="https://pip.pypa.io/en/stable/installation/">click here</a>
  
  ## Inclusivity features (accessibile via file menu)
 **Adjustable font size**
