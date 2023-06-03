@@ -20,9 +20,13 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.buttons)
-        self.buttons.set_radiobuttons(self.radiobuttons)
+        
+        # Circular dependency fix: Call function in buttons that passes an instance of radiobuttons to it
+        self.buttons.set_radiobuttons(self.radiobuttons) 
 
         self.filemenu = FileMenu(self, self.translator) # Initialising file menu
+
+        self.translator.set_filemenu(self.filemenu) # Circular dependency fix as well 
 
 
 class Entries(ttk.Frame):
@@ -123,8 +127,8 @@ class Buttons(ttk.Frame):
         self.buttonGen()
         self.buttonPlacer()
     
-    def set_radiobuttons(self, radiobuttons):
-        self.radiobuttons = radiobuttons
+    def set_radiobuttons(self, radiobuttons): # Function that was discussed in the Program class to eliminate the circular dependency error
+        self.radiobuttons = radiobuttons # Saving instance to be used in the clear() function later on
         
     def buttonGen(self):
         self.clear = ttk.Button(self, text = "Clear", command = self.clear)
@@ -202,19 +206,9 @@ class FileMenu(tk.Menu):
         # Creating languages menu and adding 5 languages
         self.langMenu = tk.Menu(self.helpMenu)
         self.helpMenu.add_cascade(label = "Languages", menu = self.langMenu)
+        # Commands added in Translator class for better organisation
 
-        self.language_db = { # Making database for languages
-            "English (US)" : "en",
-            "Chinese (PRC)" : "zh-CN",
-            "Hindi" : "hi",
-            "Spanish" : "es",
-            "French" : "fr",
-            "Arabic" : "ar"
-        }
-        for key, value in self.language_db.items():
-            # Capture current value of value and assigns it to the lang parameter of the translator function 
-            self.langMenu.add_command(label = key, command = lambda lang = value: self.translator.translatorFunc(lang))
-
+        # Setting main menu
         self.master.config(menu = self.menu)
 
 class Translator(ttk.Frame): 
@@ -225,7 +219,42 @@ class Translator(ttk.Frame):
         self.master = master
 
         self.translatorFunc = self.translatorFunc
+        
+    def set_filemenu(self, filemenu): # Circular dependency fix once again
+        self.filemenu = filemenu
 
+        self.language_db = { # Making database for languages
+            "English (US)" : "en",
+            "Chinese Simplified" : "zh-cn",
+            "Chinese Traditional" : "zh-tw",
+            "Hindi" : "hi",
+            "Spanish" : "es",
+            "French" : "fr",
+            "Arabic" : "ar",
+            "Danish" : "da",
+            "Czech" : "cs",
+            "Slovak" : "sk",
+            "Bulgarian" : "bg",
+            "Dutch" : "nl",
+            "Filipino" : "tl",
+            "German" : "de",
+            "Japanese" : "ja",
+            "Malay" : "ms",
+            "Polish" : "pl",
+            "Samoan" : "sm",
+            "Thai" : "th",
+            "Tamil" : "ta",
+            "Vietnamese" : "vi",
+            "Finnish" : "fi",
+            "Indonesian" : "id",
+            "Swedish" : "sv",
+            "Norwegian" : "no"
+        }
+        self.sorted_language_db = {key: value for key, value in sorted(self.language_db.items())} # Sorting languages alphabetically
+        for name, acronym in self.sorted_language_db.items():
+            # Capture current value of value and assigns it to the lang parameter of the translator function 
+            self.filemenu.langMenu.add_command(label = name, command = lambda lang = acronym: self.translatorFunc(lang))
+        
     def translatorFunc(self, lang):
         print(lang) # Placeholder
 
