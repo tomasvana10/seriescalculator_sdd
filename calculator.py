@@ -12,6 +12,9 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.frame = tk.Frame(self, background = "#D3D3D3") # Main frame/background
         self.frame.pack(expand = 1, fill = tk.BOTH)
 
+        # Accessibility option classes
+        self.translator = Translator(self)
+
         # Program elements split into widget type (different classes)
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
@@ -19,7 +22,7 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.radiobuttons = Radiobuttons(self, self.buttons)
         self.buttons.set_radiobuttons(self.radiobuttons)
 
-        self.filemenu = FileMenu(self) # Initialising file menu
+        self.filemenu = FileMenu(self, self.translator) # Initialising file menu
 
 
 class Entries(ttk.Frame):
@@ -115,13 +118,13 @@ class Buttons(ttk.Frame):
         self.entries = entries # Saving passed arguments of Entries and Output classes
         self.output = output
 
-        self.seqType = "" # Creating variable to assign the sequence type to later on
+        self.seqType = "" # Making sequence type variable that will be assigned a value to by the Radiobuttons class later on
 
         self.buttonGen()
         self.buttonPlacer()
     
     def set_radiobuttons(self, radiobuttons):
-        self.radionbuttons = radiobuttons
+        self.radiobuttons = radiobuttons
         
     def buttonGen(self):
         self.clear = ttk.Button(self, text = "Clear", command = self.clear)
@@ -147,10 +150,10 @@ class Buttons(ttk.Frame):
         self.output.sumOutput.config(state = "normal") # Enabling text widget's state to modify text
         self.output.sumOutput.delete(1.0, tk.END)
         self.output.sumOutput.config(state = "disabled") # Disabling state
-        
-        self.radiobuttons.arithButton.deselect()
-        self.radiobuttons.geomButton.deselect()
-    
+
+        self.radiobuttons.var.set(0) # Deselecting radiobuttons 
+        self.seqType = ""
+      
     def seqChoice(self, seqType):
         if seqType == "arithmetic":
             self.seqType = "arithmetic"
@@ -167,10 +170,12 @@ class Buttons(ttk.Frame):
 
 class FileMenu(tk.Menu):
 
-    def __init__(self, master):
+    def __init__(self, master, translator):
         super().__init__(master)
     
         self.master = master
+
+        self.translator = translator
 
         self.createFileMenu()
     
@@ -180,21 +185,49 @@ class FileMenu(tk.Menu):
 
         # Creating accessibility options menu
         self.helpMenu = tk.Menu(self.menu)
-        self.menu.add_cascade(label="Accessibility Options", menu=self.helpMenu)
+        self.menu.add_cascade(label = "Accessibility Options", menu = self.helpMenu)
 
         # Creating options within the accessibility menu
-        self.helpMenu.add_command(label="Toggle high contrast") # Add commands later
+        self.helpMenu.add_command(label = "Toggle high contrast") # Add commands later
         self.helpMenu.add_separator()
 
         # Creating font size menu and adding 3 presets
         self.sizeMenu = tk.Menu(self.helpMenu) 
-        self.helpMenu.add_cascade(label="Font Size", menu=self.sizeMenu)  # Adding cascade to sizeMenu
+        self.helpMenu.add_cascade(label = "Font Size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
 
-        self.sizeMenu.add_command(label="Large") # Add commands later
-        self.sizeMenu.add_command(label="Medium")
-        self.sizeMenu.add_command(label="Small")
+        self.sizeMenu.add_command(label = "Large") # Add commands later
+        self.sizeMenu.add_command(label = "Medium")
+        self.sizeMenu.add_command(label = "Small")
+
+        # Creating languages menu and adding 5 languages
+        self.langMenu = tk.Menu(self.helpMenu)
+        self.helpMenu.add_cascade(label = "Languages", menu = self.langMenu)
+
+        self.language_db = { # Making database for languages
+            "English (US)" : "en",
+            "Chinese (PRC)" : "zh-CN",
+            "Hindi" : "hi",
+            "Spanish" : "es",
+            "French" : "fr",
+            "Arabic" : "ar"
+        }
+        for key, value in self.language_db.items():
+            # Capture current value of value and assigns it to the lang parameter of the translator function 
+            self.langMenu.add_command(label = key, command = lambda lang = value: self.translator.translatorFunc(lang))
 
         self.master.config(menu = self.menu)
+
+class Translator(ttk.Frame): 
+
+    def __init__(self, master):
+        super().__init__(master)
+
+        self.master = master
+
+        self.translatorFunc = self.translatorFunc
+
+    def translatorFunc(self, lang):
+        print(lang) # Placeholder
 
 
 def start_program(): # Start program function
