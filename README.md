@@ -5,8 +5,13 @@
  
  ## Inclusivity features (accessibile via file menu)
 **Adjustable font size**
- - Large
- - Medium
  - Small
+ - Medium
+ - Large
+
+**Language selection**
+- 25 languages
 
 **Toggle high contrast**
+
+
