@@ -1,5 +1,6 @@
 import tkinter as tk # Alias is used as it is more concise
 from tkinter import ttk # Improved tkinter module 
+from googletrans import Translator
 
 
 class Program(tk.Tk): # Main program window that instantiates all the child classes and runs the mainloop() of its tk.Tk instance
