@@ -13,23 +13,26 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.frame = tk.Frame(self, background = "#D3D3D3") # Main frame/background
         self.frame.pack(expand = 1, fill = tk.BOTH)
 
-        # Accessibility option classes
-        self.translator = Translator(self)
+        # ~~~~~ Different classes for different program elements - classes are instantiated and necessary instances are passed ~~~~~ 
 
-        # Program elements split into widget type (different classes)
+        # File menu class
+        self.filemenu = FileMenu(self) 
+
+        # Widget classes
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.buttons)
         
-        # Circular dependency fix: Call function in buttons that passes an instance of radiobuttons to it
+        # ! Circular dependency fix: Call function in buttons that passes an instance of radiobuttons to it
         self.buttons.set_radiobuttons(self.radiobuttons) 
 
-        self.filemenu = FileMenu(self, self.translator) # Initialising file menu
+        # Accessibility option classes
+        self.fontsize = FontSize(self, self.entries, self.buttons, self.radiobuttons)
+        self.highcontrast = HighContrast(self, self.entries, self.output, self.buttons, self.radiobuttons)
+        self.translator = Translator(self, self.entries, self.buttons, self.radiobuttons, self.filemenu)
 
-        self.translator.set_filemenu(self.filemenu) # Circular dependency fix as well 
-
-
+        
 class Entries(ttk.Frame):
     
     def __init__(self, master): # Second argument allows the main instance (self) of Program() to be passed to Entries() for inheritance
@@ -157,7 +160,7 @@ class Buttons(ttk.Frame):
         self.output.sumOutput.config(state = "disabled") # Disabling state
 
         self.radiobuttons.var.set(0) # Deselecting radiobuttons 
-        self.seqType = ""
+        self.seqType = "" # Clearing sequence type so calculate button does not function until radiobuttons are pressed again
       
     def seqChoice(self, seqType):
         if seqType == "arithmetic":
@@ -173,17 +176,15 @@ class Buttons(ttk.Frame):
             print(ex)
 
 
-class FileMenu(tk.Menu):
+class FileMenu(tk.Menu): 
 
-    def __init__(self, master, translator):
+    def __init__(self, master):
         super().__init__(master)
     
         self.master = master
 
-        self.translator = translator
-
         self.createFileMenu()
-    
+
     def createFileMenu(self):
         # Creating main menu
         self.menu = tk.Menu(self)
@@ -212,19 +213,48 @@ class FileMenu(tk.Menu):
         # Setting main menu
         self.master.config(menu = self.menu)
 
-class Translator(ttk.Frame): 
 
-    def __init__(self, master):
+class FontSize(ttk.Frame):
+    
+    def __init__(self, master, entries, buttons, radiobuttons):
+        super().__init__(master)
+    
+        self.master = master
+
+        self.entries = entries
+        self.buttons = buttons
+        self.radiobuttons = radiobuttons
+
+
+class HighContrast(ttk.Frame):
+    
+    def __init__(self, master, entries, output, buttons, radiobuttons):
         super().__init__(master)
 
         self.master = master
 
-        self.translatorFunc = self.translatorFunc
-        
-    def set_filemenu(self, filemenu): # Circular dependency fix once again
+        self.entries = entries
+        self.output = output
+        self.buttons = buttons
+        self.radiobuttons = radiobuttons
+
+
+class Translator(ttk.Frame): 
+
+    def __init__(self, master, entries, buttons, radiobuttons, filemenu):
+        super().__init__(master)
+
+        self.master = master
+
+        self.entries = entries
+        self.buttons = buttons
+        self.radiobuttons = radiobuttons
         self.filemenu = filemenu
 
-        self.language_db = { # Making database for languages
+        self.languageDbMaker()
+    
+    def languageDbMaker(self):
+        self.languageDb = { # Making database for languages
             "English (US)" : "en",
             "Chinese Simplified" : "zh-cn",
             "Chinese Traditional" : "zh-tw",
@@ -251,18 +281,18 @@ class Translator(ttk.Frame):
             "Swedish" : "sv",
             "Norwegian" : "no"
         }
-        self.sorted_language_db = {key: value for key, value in sorted(self.language_db.items())} # Sorting languages alphabetically
-        for name, acronym in self.sorted_language_db.items():
+        self.sortedLanguageDb = {key: value for key, value in sorted(self.languageDb.items())} # Sorting languages alphabetically
+        for name, acronym in self.sortedLanguageDb.items():
             # Capture current value of value and assigns it to the lang parameter of the translator function 
             self.filemenu.langMenu.add_command(label = name, command = lambda lang = acronym: self.translatorFunc(lang))
         
     def translatorFunc(self, lang):
-        print(lang) # Placeholder
+        print(lang) # Placeholder 
 
 
-def start_program(): # Start program function
+def startProgram(): # Start program function
     program = Program("Calculator", (600, 600))
     program.mainloop()
 
 if __name__ == "__main__": # Allows script to be standalone executable and a reusable module. Also allows for organisation and modularity
-    start_program()
+    startProgram()
