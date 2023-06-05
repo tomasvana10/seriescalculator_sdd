@@ -1,6 +1,6 @@
 import tkinter as tk # Alias is used as it is more concise
 from tkinter import ttk # Improved tkinter module 
-import googletrans
+import googletrans # Required for translation function
 
 
 class Program(tk.Tk): # Main program window that instantiates all the child classes and runs the mainloop() of its tk.Tk instance
@@ -24,7 +24,7 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.buttons)
         
-        # ! Circular dependency fix: Call function in buttons that passes an instance of radiobuttons to it
+        # ! Circular dependency fix: Call function in one class that passes an instance of the dependency to it
         self.buttons.set_radiobuttons(self.radiobuttons) 
 
         # Accessibility option classes
@@ -42,7 +42,7 @@ class Entries(ttk.Frame):
         # Calling widget generator and placer functions
         self.entryGen() 
         self.entryPlacer()
-    
+
     def entryGen(self): # Create entry widgets and add temporary text
 
         self.firstTerm = ttk.Entry(self, foreground = "gray") # Make widgets members of the object and not stay in the local scope of the function
@@ -79,6 +79,17 @@ class Entries(ttk.Frame):
         self.firstTerm.pack()
         self.commonDifference.pack()
         self.numberOfTerms.pack()
+
+    def seriesEntryConfig(self, seqType): # Changes text in second entry depending on 
+        if seqType == "geometric":
+            self.commonDifference.delete(0, tk.END)
+            self.entryTempText[1] = "Common ratio"
+            self.commonDifference.insert(0, "Common ratio")
+        
+        else:
+            self.commonDifference.delete(0, tk.END)
+            self.entryTempText[1] = "Common difference"
+            self.commonDifference.insert(0, "Common difference")
 
 
 class Output(ttk.Frame):
@@ -163,6 +174,7 @@ class Buttons(ttk.Frame):
         self.seqType = "" # Clearing sequence type so calculate button does not function until radiobuttons are pressed again
       
     def seqChoice(self, seqType):
+        self.entries.seriesEntryConfig(seqType)
         if seqType == "arithmetic":
             self.seqType = "arithmetic"
         else:
@@ -265,8 +277,8 @@ class Translator(ttk.Frame):
 
 
 def startProgram(): # Start program function
-    program = Program("Calculator", (600, 600))
-    program.mainloop()
+    program = Program("Calculator", (600, 600)) # Passing title and dimensions in tuple 
+    program.mainloop() # Executing .mainloop() in the program object 
 
-if __name__ == "__main__": # Allows script to be standalone executable and a reusable module. Also allows for organisation and modularity
+if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
     startProgram()
