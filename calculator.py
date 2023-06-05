@@ -22,7 +22,7 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
-        self.radiobuttons = Radiobuttons(self, self.buttons)
+        self.radiobuttons = Radiobuttons(self, self.entries)
         
         # ! Circular dependency fix: Call function in one class that passes an instance of the dependency to it
         self.buttons.set_radiobuttons(self.radiobuttons) 
@@ -80,16 +80,18 @@ class Entries(ttk.Frame):
         self.commonDifference.pack()
         self.numberOfTerms.pack()
 
-    def seriesEntryConfig(self, seqType): # Changes text in second entry depending on 
-        if seqType == "geometric":
+    def seriesEntryConfig(self, seqType): # Switches between temporary text in the second entry field
+        if seqType == 1:
             self.commonDifference.delete(0, tk.END)
-            self.entryTempText[1] = "Common ratio"
-            self.commonDifference.insert(0, "Common ratio")
+            self.entryTempText[1] = "Common difference"
+            self.commonDifference.config(foreground = "gray")
+            self.commonDifference.insert(0, "Common difference")
         
         else:
             self.commonDifference.delete(0, tk.END)
-            self.entryTempText[1] = "Common difference"
-            self.commonDifference.insert(0, "Common difference")
+            self.commonDifference.config(foreground = "gray")
+            self.entryTempText[1] = "Common ratio"
+            self.commonDifference.insert(0, "Common ratio")
 
 
 class Output(ttk.Frame):
@@ -109,20 +111,20 @@ class Output(ttk.Frame):
 
 class Radiobuttons(ttk.Frame):
 
-    def __init__(self, master, buttons):
+    def __init__(self, master, entries):
         super().__init__(master)
         self.place(x = 400, y = 172, anchor = "center")
 
-        self.buttons = buttons # Saving passed argument of buttons class (so Radiobuttons can communicate with buttons)
-
+        self.entries = entries
+    
         self.radioButtonGen()
         self.radioButtonPlacer()
 
     def radioButtonGen(self):
         self.var = tk.IntVar()
-        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.buttons.seqChoice("arithmetic"))
-        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.buttons.seqChoice("geometric"))
-
+        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.seriesEntryConfig(1))
+        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.seriesEntryConfig(2))
+        
     def radioButtonPlacer(self):
         self.arithButton.pack()
         self.geomButton.pack()
@@ -136,8 +138,6 @@ class Buttons(ttk.Frame):
 
         self.entries = entries # Saving passed arguments of Entries and Output classes
         self.output = output
-
-        self.seqType = "" # Making sequence type variable that will be assigned a value to by the Radiobuttons class later on
 
         self.buttonGen()
         self.buttonPlacer()
@@ -171,18 +171,11 @@ class Buttons(ttk.Frame):
         self.output.sumOutput.config(state = "disabled") # Disabling state
 
         self.radiobuttons.var.set(0) # Deselecting radiobuttons 
-        self.seqType = "" # Clearing sequence type so calculate button does not function until radiobuttons are pressed again
-      
-    def seqChoice(self, seqType):
-        self.entries.seriesEntryConfig(seqType)
-        if seqType == "arithmetic":
-            self.seqType = "arithmetic"
-        else:
-            self.seqType = "geometric"
 
     def calculate(self):
+        self.seqType = self.radiobuttons.var.get()
         try:
-            pass # Calculation algorithm goes here
+            pass # 1 is arithmetic, 2 is geometric
         
         except Exception as ex:
             print(ex)
