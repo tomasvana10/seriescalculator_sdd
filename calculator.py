@@ -1,6 +1,6 @@
 import tkinter as tk # Alias is used as it is more concise
 from tkinter import ttk # Improved tkinter module 
-from googletrans import Translator
+import googletrans
 
 
 class Program(tk.Tk): # Main program window that instantiates all the child classes and runs the mainloop() of its tk.Tk instance
@@ -254,37 +254,11 @@ class Translator(ttk.Frame):
         self.languageDbMaker()
     
     def languageDbMaker(self):
-        self.languageDb = { # Making database for languages
-            "English (US)" : "en",
-            "Chinese Simplified" : "zh-cn",
-            "Chinese Traditional" : "zh-tw",
-            "Hindi" : "hi",
-            "Spanish" : "es",
-            "French" : "fr",
-            "Arabic" : "ar",
-            "Danish" : "da",
-            "Czech" : "cs",
-            "Slovak" : "sk",
-            "Bulgarian" : "bg",
-            "Dutch" : "nl",
-            "Filipino" : "tl",
-            "German" : "de",
-            "Japanese" : "ja",
-            "Malay" : "ms",
-            "Polish" : "pl",
-            "Samoan" : "sm",
-            "Thai" : "th",
-            "Tamil" : "ta",
-            "Vietnamese" : "vi",
-            "Finnish" : "fi",
-            "Indonesian" : "id",
-            "Swedish" : "sv",
-            "Norwegian" : "no"
-        }
+        self.languageDb = googletrans.LANGUAGES
         self.sortedLanguageDb = {key: value for key, value in sorted(self.languageDb.items())} # Sorting languages alphabetically
         for name, acronym in self.sortedLanguageDb.items():
             # Capture current value of value and assigns it to the lang parameter of the translator function 
-            self.filemenu.langMenu.add_command(label = name, command = lambda lang = acronym: self.translatorFunc(lang))
+            self.filemenu.langMenu.add_command(label = acronym, command = lambda lang = name: self.translatorFunc(lang))
         
     def translatorFunc(self, lang):
         print(lang) # Placeholder 
