@@ -4,9 +4,17 @@
  - Download: <a id="raw-url" href="https://github.com/tomasvana10/calculator_sdd/archive/refs/heads/main.zip">click here</a>
 
  ## Dependencies
- - Googletrans module<br>
- Install it in your terminal after downloading the calculator program : `pip install -r requirements.txt`
+ - Googletrans module (installed with pip)<br>
  Pip is likely already installed on your computer. If it isn't, <a id="raw-url" href="https://pip.pypa.io/en/stable/installation/">click here</a>
+ 
+ ## Steps to running the program
+ Once pip is installed on your computer, follow these steps:
+ - Unzip `calculator_sdd-main` , then double click on the unzipped folder to navigate to the inner folder
+ - Copy the path of the inner folder
+ - Open the inner folder in your terminal
+ - Install the dependencies by typing `pip install -r requirements.txt`
+ - Run the program by typing `python3 calculator.py`
+ 
  
  ## Inclusivity features (accessibile via file menu)
 **Adjustable font size**
@@ -15,6 +23,6 @@
  - Large
 
 **Language selection**
-- 25 languages
+- Google translate languages (133)
 
 **Toggle high contrast**
