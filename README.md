@@ -9,7 +9,7 @@
  
  ## Steps to running the program
  Once pip is installed on your computer, follow these steps:
- - Unzip `calculator_sdd-main` , then double click on the unzipped folder to navigate to the inner folder
+ - Unzip `calculator_sdd-main` , then double click on the unzipped folder to navigate to the inner folder (if there is one)
  - Copy the path of the inner folder
  - Open the inner folder in your terminal
  - Install the dependencies by typing `pip install -r requirements.txt`
