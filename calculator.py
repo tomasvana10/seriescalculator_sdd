@@ -1,6 +1,7 @@
 import tkinter as tk # Alias is used as it is more concise
 from tkinter import ttk # Improved tkinter module 
-import googletrans # Required for translation function
+import googletrans # Required for translation database
+from googletrans import Translator # Required for translator instance
 
 
 class Program(tk.Tk): # Main program window that instantiates all the child classes and runs the mainloop() of its tk.Tk instance
@@ -23,7 +24,7 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.output = Output(self)
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.entries)
-        
+
         # ! Circular dependency fix: Call function in one class that passes an instance of the dependency to it
         self.buttons.set_radiobuttons(self.radiobuttons) 
 
@@ -49,12 +50,12 @@ class Entries(ttk.Frame):
         self.commonDifference = ttk.Entry(self, foreground = "gray")
         self.numberOfTerms = ttk.Entry(self, foreground = "gray")
 
-        self.firstTerm.insert(0, "First term of the series") # Entering temporary text
+        self.firstTerm.insert(0, "First term") # Entering temporary text
         self.commonDifference.insert(0, "Common difference")
         self.numberOfTerms.insert(0, "Number of terms")
 
         # Storing data of temporary text and entry variable names in lists so they can be accessed by only 2 functions instead of more (focus in and focus out)
-        self.entryTempText = ["First term of the series", "Common difference", "Number of terms"] 
+        self.entryTempText = ["First term", "Common difference", "Number of terms"] 
         self.entryVars = [self.firstTerm, self.commonDifference, self.numberOfTerms] 
 
         for i, var in enumerate(self.entryVars): # Sending entry variables to be bound to events which control the 2 focus functions
@@ -80,7 +81,7 @@ class Entries(ttk.Frame):
         self.commonDifference.pack()
         self.numberOfTerms.pack()
 
-    def seriesEntryConfig(self, seqType): # Switches between temporary text in the second entry field
+    def seriesEntrySwitcher(self, seqType): # Switches between temporary text in the second entry field
         if seqType == 1:
             self.commonDifference.delete(0, tk.END)
             self.entryTempText[1] = "Common difference"
@@ -89,8 +90,8 @@ class Entries(ttk.Frame):
         
         else:
             self.commonDifference.delete(0, tk.END)
-            self.commonDifference.config(foreground = "gray")
             self.entryTempText[1] = "Common ratio"
+            self.commonDifference.config(foreground = "gray")
             self.commonDifference.insert(0, "Common ratio")
 
 
@@ -122,8 +123,8 @@ class Radiobuttons(ttk.Frame):
 
     def radioButtonGen(self):
         self.var = tk.IntVar()
-        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.seriesEntryConfig(1))
-        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.seriesEntryConfig(2))
+        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.seriesEntrySwitcher(1))
+        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.seriesEntrySwitcher(2))
         
     def radioButtonPlacer(self):
         self.arithButton.pack()
@@ -200,11 +201,10 @@ class FileMenu(tk.Menu):
 
         # Creating options within the accessibility menu
         self.helpMenu.add_command(label = "Toggle high contrast") # Add commands later
-        self.helpMenu.add_separator()
 
         # Creating font size menu and adding 3 presets
         self.sizeMenu = tk.Menu(self.helpMenu) 
-        self.helpMenu.add_cascade(label = "Font Size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
+        self.helpMenu.add_cascade(label = "Font size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
 
         self.sizeMenu.add_command(label = "Large") # Add commands later
         self.sizeMenu.add_command(label = "Medium")
@@ -255,18 +255,87 @@ class Translator(ttk.Frame):
         self.buttons = buttons
         self.radiobuttons = radiobuttons
         self.filemenu = filemenu
+        
+        self.textConfigDb = {
+            "entries" : {
+                self.entries.firstTerm : "First term",
+                self.entries.commonDifference : "Common difference",
+                self.entries.numberOfTerms : "Number of terms"
+            },
+
+            "buttons" : {
+                self.buttons.clear : "Clear",
+                self.buttons.calculate : "Calculate"
+            },
+
+            "radiobuttons" : {
+                self.radiobuttons.arithButton : "Arithmetic Series",
+                self.radiobuttons.geomButton : "Geometric Series"
+            },
+
+            "filemenu" : {
+                self.filemenu.menu : ["Accessibility Options"],
+                self.filemenu.helpMenu : ["Toggle high contrast", "Font size", "Languages"],
+                self.filemenu.sizeMenu : ["Large", "Medium", "Small"]
+
+            }
+        }
+
+        self.fullEnglishDb = self.textConfigDb.copy() # fullEnglishDb does not include modified file menu names (file menu commands must be directly modified by name)
 
         self.languageDbMaker()
-    
+
     def languageDbMaker(self):
         self.languageDb = googletrans.LANGUAGES
-        self.sortedLanguageDb = {key: value for key, value in sorted(self.languageDb.items())} # Sorting languages alphabetically
-        for name, acronym in self.sortedLanguageDb.items():
+        for name, acronym in self.languageDb.items():
             # Capture current value of value and assigns it to the lang parameter of the translator function 
-            self.filemenu.langMenu.add_command(label = acronym, command = lambda lang = name: self.translatorFunc(lang))
+            self.filemenu.langMenu.add_command(label = acronym.title(), command = lambda lang = name: self.translatorFunc(lang))
         
     def translatorFunc(self, lang):
-        print(lang) # Placeholder 
+        self.trans = googletrans.Translator()
+
+        for mainKey in self.textConfigDb: # mainKey is widget name 
+
+            if mainKey != "filemenu": # Filemenu is not configured by .config
+
+                for i, subKey in enumerate(self.textConfigDb[mainKey]): # subKey is the value of mainKey (the value being a key:value)
+
+                    self.text = self.textConfigDb[mainKey][subKey] # Accesses the current value of the subKey  
+
+                    if lang != "en": 
+                        transtext = self.trans.translate(self.text, dest = lang) # Dest = lang is a more definitive form of translation
+
+                        if mainKey != "entries":
+                            subKey.config(text = str(transtext.text))
+
+                        else:
+                            self.entries.entryTempText[i] = str(transtext.text)
+
+                    else: # Setting language back to english
+
+                        if mainKey != "entries":
+                            subKey.config(text = self.text)
+                        
+                        else:
+                            self.entries.entryTempText[i] = self.text
+
+            
+            else:
+                
+                for subKey in self.textConfigDb[mainKey]:
+
+                    for i, item in enumerate(self.textConfigDb[mainKey][subKey]):
+
+                        self.text = self.fullEnglishDb[mainKey][subKey][i] # Uses fullEnglishDb so translation goes from English to lang
+
+                        if lang != "en":
+                            transtext = self.trans.translate(self.text, dest = lang)
+                            subKey.entryconfig(item, label = str(transtext.text)) # Filemenu is configures by [level of hierarchy].entryconfig("name", label = "newname")
+                            self.textConfigDb[mainKey][subKey][i] = str(transtext.text) # Assigns new names to textConfigDb to reconfigure subsequent File menus
+
+                        else:
+                            subKey.entryconfig(item, label = str(self.text))
+                            self.textConfigDb[mainKey][subKey][i] = str(self.text)
 
 
 def startProgram(): # Start program function
