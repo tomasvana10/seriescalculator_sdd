@@ -25,8 +25,9 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.entries)
 
-        # ! Circular dependency fix: Call function in one class that passes an instance of the dependency to it
-        self.buttons.set_radiobuttons(self.radiobuttons) 
+        # ! Circular dependency fixes: Call function in one class that passes an instance of the dependency to it
+        self.buttons.setRadiobuttons(self.radiobuttons) 
+        self.entries.setRadiobuttons(self.radiobuttons)
 
         # Accessibility option classes
         self.fontsize = FontSize(self, self.entries, self.buttons, self.radiobuttons)
@@ -44,55 +45,70 @@ class Entries(ttk.Frame):
         self.entryGen() 
         self.entryPlacer()
 
-    def entryGen(self): # Create entry widgets and add temporary text
+        self.seqElement = 0 # Allows element 0 of commonDifference temp text to be accessed (default)
 
-        self.firstTerm = ttk.Entry(self, foreground = "gray") # Make widgets members of the object and not stay in the local scope of the function
+    def setRadiobuttons(self, radiobuttons): # Function that was discussed in the Program class to eliminate the circular dependency error
+        self.radiobuttons = radiobuttons # Saving instance to be used in the clear() function later on
+
+    def entryGen(self): 
+        self.firstTerm = ttk.Entry(self, foreground = "gray") 
         self.commonDifference = ttk.Entry(self, foreground = "gray")
         self.numberOfTerms = ttk.Entry(self, foreground = "gray")
+        
+        self.tempTextDb = { # Storing relation between entry variables and their text
+            self.firstTerm : ["First term"],
+            self.commonDifference : ["Common difference", "Common ratio"],
+            self.numberOfTerms : ["Number of terms"]
+        }
 
-        self.firstTerm.insert(0, "First term") # Entering temporary text
-        self.commonDifference.insert(0, "Common difference")
-        self.numberOfTerms.insert(0, "Number of terms")
+        for entry in self.tempTextDb: 
+            entry.insert(0, self.tempTextDb[entry][0]) 
+            self.bindEvents(entry) # 
 
-        # Storing data of temporary text and entry variable names in lists so they can be accessed by only 2 functions instead of more (focus in and focus out)
-        self.entryTempText = ["First term", "Common difference", "Number of terms"] 
-        self.entryVars = [self.firstTerm, self.commonDifference, self.numberOfTerms] 
-
-        for i, var in enumerate(self.entryVars): # Sending entry variables to be bound to events which control the 2 focus functions
-            self.bind_events(var, i)
-
-    def bind_events(self, entry, entryPos): # Binds events to entries (controlled by above for loop)
-        entry.bind("<FocusIn>", lambda event: self.whenFocused(entry)) 
-        entry.bind("<FocusOut>", lambda event: self.whenUnfocused(entry, entryPos))
-
-    def whenFocused(self, entry): # Controls what happens when the user focuses on the entry (above bindings provide the functionality)
-        if entry.get() in self.entryTempText:
+    def bindEvents(self, entry): # Binds focus in and focus out events to their respective functions
+        entry.bind("<FocusIn>", lambda event: self.whenFocused(entry))
+        entry.bind("<FocusOut>", lambda event: self.whenUnfocused(entry))
+    
+    def whenFocused(self, entry):
+        if entry.get() in self.tempTextDb[entry]:
             entry.delete(0, tk.END)
             entry.insert(0, "")
             entry.config(foreground = "white")
 
-    def whenUnfocused(self, entry, entryPos): # Controls what happens when the user unfocuses from the entry
+    def whenUnfocused(self, entry):
         if entry.get() == "":
-            entry.insert(0, self.entryTempText[entryPos])
+            if entry == self.commonDifference:
+                entry.insert(0, "".join(self.tempTextDb[entry][self.seqElement])) # Access seqElement (int) of value of self.commonDifference
+            else:
+                entry.insert(0, "".join(self.tempTextDb[entry][0])) 
             entry.config(foreground = "gray")
 
+    def updateTempText(self, radioButtonVar, fullReset = False): # Using keyword arguments
+        if radioButtonVar == "arith": 
+            self.seqElement = 0 
+        elif radioButtonVar == "geom":
+            self.seqElement = 1 # If radioButtonVar is "geom", seqElement becomes one which refers to the second element in the temp text values list for the commonDifference entry
+        else:
+            pass # For reset via Translator class
+
+        if fullReset: # Useful with clear button
+            for key in self.tempTextDb:
+                key.delete(0, tk.END)
+                if key == self.commonDifference:
+                    key.insert(0, "".join(self.tempTextDb[key][self.seqElement]))
+                else:
+                    key.insert(0, "".join(self.tempTextDb[key]))
+                key.config(foreground = "gray")
+        
+        else: # This reset only updates the commonDifference
+            self.commonDifference.delete(0, tk.END)
+            self.commonDifference.insert(0, self.tempTextDb[self.commonDifference][self.seqElement])
+            self.commonDifference.config(foreground = "gray")
+        
     def entryPlacer(self): # Place entry widgets
         self.firstTerm.pack()
         self.commonDifference.pack()
         self.numberOfTerms.pack()
-
-    def seriesEntrySwitcher(self, seqType): # Switches between temporary text in the second entry field
-        if seqType == 1:
-            self.commonDifference.delete(0, tk.END)
-            self.entryTempText[1] = "Common difference"
-            self.commonDifference.config(foreground = "gray")
-            self.commonDifference.insert(0, "Common difference")
-        
-        else:
-            self.commonDifference.delete(0, tk.END)
-            self.entryTempText[1] = "Common ratio"
-            self.commonDifference.config(foreground = "gray")
-            self.commonDifference.insert(0, "Common ratio")
 
 
 class Output(ttk.Frame):
@@ -117,14 +133,14 @@ class Radiobuttons(ttk.Frame):
         self.place(x = 400, y = 172, anchor = "center")
 
         self.entries = entries
-    
+
         self.radioButtonGen()
         self.radioButtonPlacer()
 
     def radioButtonGen(self):
         self.var = tk.IntVar()
-        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.seriesEntrySwitcher(1))
-        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.seriesEntrySwitcher(2))
+        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.updateTempText("arith"))
+        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.updateTempText("geom"))
         
     def radioButtonPlacer(self):
         self.arithButton.pack()
@@ -143,7 +159,7 @@ class Buttons(ttk.Frame):
         self.buttonGen()
         self.buttonPlacer()
     
-    def set_radiobuttons(self, radiobuttons): # Function that was discussed in the Program class to eliminate the circular dependency error
+    def setRadiobuttons(self, radiobuttons): # Function that was discussed in the Program class to eliminate the circular dependency error
         self.radiobuttons = radiobuttons # Saving instance to be used in the clear() function later on
         
     def buttonGen(self):
@@ -155,23 +171,7 @@ class Buttons(ttk.Frame):
         self.calculate.pack()
     
     def clear(self):
-        # List comprehension that clears temporary text in entries only if the user has typed in them (and reinserts temporary text)
-        self.entryText = [entry.get() for entry in self.entries.entryVars]
-
-        self.fieldModified = [False if entry == self.entries.entryTempText[i] else True for i, entry in enumerate(self.entryText)]
-
-        '''
-        # The following list comprehension utilises short circuit evaluation:
-        # "the concept of skipping the evaluation of the second part of a boolean expression in a 
-        # conditional statement when the entire statement has already been determined to be either true or false"
-        '''
-        [self.entries.entryVars[i].delete(0, tk.END) or self.entries.entryVars[i].insert(0, self.entries.entryTempText[i]) or self.entries.entryVars[i].config(foreground="gray") for i, modified in enumerate(self.fieldModified) if modified]
-
-        self.output.sumOutput.config(state = "normal") # Enabling text widget's state to modify text
-        self.output.sumOutput.delete(1.0, tk.END)
-        self.output.sumOutput.config(state = "disabled") # Disabling state
-
-        self.radiobuttons.var.set(0) # Deselecting radiobuttons 
+        pass # Must be reworked
 
     def calculate(self):
         self.seqType = self.radiobuttons.var.get()
@@ -258,9 +258,9 @@ class Translator(ttk.Frame):
         
         self.textConfigDb = {
             "entries" : {
-                self.entries.firstTerm : "First term",
-                self.entries.commonDifference : "Common difference",
-                self.entries.numberOfTerms : "Number of terms"
+                self.entries.firstTerm : ["First term"],
+                self.entries.commonDifference : ["Common difference", "Common ratio"],
+                self.entries.numberOfTerms : ["Number of terms"]
             },
 
             "buttons" : {
@@ -298,26 +298,21 @@ class Translator(ttk.Frame):
 
             if mainKey != "filemenu": # Filemenu is not configured by .config
 
-                for i, subKey in enumerate(self.textConfigDb[mainKey]): # subKey is the value of mainKey (the value being a key:value)
+                if mainKey == "entries":
 
-                    self.text = self.textConfigDb[mainKey][subKey] # Accesses the current value of the subKey  
+                    for subKey in self.textConfigDb[mainKey]:
 
-                    if lang != "en": 
-                        transtext = self.trans.translate(self.text, dest = lang) # Dest = lang is a more definitive form of translation
+                        for i, item in enumerate(self.textConfigDb[mainKey][subKey]): # Enumerating each list (using enumerate to update tempTextDb)
 
-                        if mainKey != "entries":
-                            subKey.config(text = str(transtext.text))
+                            self.text = item
+                            self.transtext = self.trans.translate(self.text, dest = lang)
+                            self.entries.tempTextDb[subKey][i] = str(self.transtext.text)
 
-                        else:
-                            self.entries.entryTempText[i] = str(transtext.text)
-
-                    else: # Setting language back to english
-
-                        if mainKey != "entries":
-                            subKey.config(text = self.text)
-                        
-                        else:
-                            self.entries.entryTempText[i] = self.text
+                    self.entries.updateTempText(radioButtonVar = "", fullReset = True) # Reloads temporary text
+                
+                else:
+                    
+                    pass # Adding translation here makes googletrans instance time out (too much requests for translation??)
 
             
             else:
@@ -330,12 +325,12 @@ class Translator(ttk.Frame):
 
                         if lang != "en":
                             transtext = self.trans.translate(self.text, dest = lang)
-                            subKey.entryconfig(item, label = str(transtext.text)) # Filemenu is configures by [level of hierarchy].entryconfig("name", label = "newname")
+                            subKey.entryconfig(item, label = str(transtext.text)) # Filemenu is configured by [level of hierarchy].entryconfig("name", label = "newname")
                             self.textConfigDb[mainKey][subKey][i] = str(transtext.text) # Assigns new names to textConfigDb to reconfigure subsequent File menus
 
                         else:
-                            subKey.entryconfig(item, label = str(self.text))
-                            self.textConfigDb[mainKey][subKey][i] = str(self.text)
+                            subKey.entryconfig(item, label = str(self.text)) # Does not change file menu text to English??
+                            self.textConfigDb[mainKey][subKey][i] = str(self.text) 
 
 
 def startProgram(): # Start program function
@@ -344,3 +339,5 @@ def startProgram(): # Start program function
 
 if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
     startProgram()
+
+
