@@ -61,6 +61,8 @@ class Entries(ttk.Frame):
             self.numberOfTerms : ["Number of terms"]
         }
 
+        self.engTempTextDb = self.tempTextDb.copy() # Used when setting language back to English (faster)
+
         for entry in self.tempTextDb: 
             entry.insert(0, self.tempTextDb[entry][0]) 
             self.bindEvents(entry) # 
@@ -83,7 +85,7 @@ class Entries(ttk.Frame):
                 entry.insert(0, "".join(self.tempTextDb[entry][0])) 
             entry.config(foreground = "gray")
 
-    def updateTempText(self, radioButtonVar, fullReset = False): # Using keyword arguments
+    def updateTempText(self, radioButtonVar = "arith", fullReload = False): # Using keyword arguments
         if radioButtonVar == "arith": 
             self.seqElement = 0 
         elif radioButtonVar == "geom":
@@ -91,7 +93,7 @@ class Entries(ttk.Frame):
         else:
             pass # For reset via Translator class
 
-        if fullReset: # Useful with clear button
+        if fullReload: # Useful with clear button
             for key in self.tempTextDb:
                 key.delete(0, tk.END)
                 if key == self.commonDifference:
@@ -100,7 +102,7 @@ class Entries(ttk.Frame):
                     key.insert(0, "".join(self.tempTextDb[key]))
                 key.config(foreground = "gray")
         
-        else: # This reset only updates the commonDifference
+        else: # This only updates the commonDifference entry
             self.commonDifference.delete(0, tk.END)
             self.commonDifference.insert(0, self.tempTextDb[self.commonDifference][self.seqElement])
             self.commonDifference.config(foreground = "gray")
@@ -139,8 +141,8 @@ class Radiobuttons(ttk.Frame):
 
     def radioButtonGen(self):
         self.var = tk.IntVar()
-        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.updateTempText("arith"))
-        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.updateTempText("geom"))
+        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.updateTempText(radioButtonVar = "arith"))
+        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.updateTempText(radioButtonVar = "geom"))
         
     def radioButtonPlacer(self):
         self.arithButton.pack()
@@ -171,7 +173,8 @@ class Buttons(ttk.Frame):
         self.calculate.pack()
     
     def clear(self):
-        pass # Must be reworked
+        self.entries.updateTempText(fullReload = True)
+        self.radiobuttons.var.set(0)
 
     def calculate(self):
         self.seqType = self.radiobuttons.var.get()
@@ -290,7 +293,7 @@ class Translator(ttk.Frame):
         for name, acronym in self.languageDb.items():
             # Capture current value of value and assigns it to the lang parameter of the translator function 
             self.filemenu.langMenu.add_command(label = acronym.title(), command = lambda lang = name: self.translatorFunc(lang))
-        
+    
     def translatorFunc(self, lang):
         self.trans = googletrans.Translator()
 
@@ -305,10 +308,15 @@ class Translator(ttk.Frame):
                         for i, item in enumerate(self.textConfigDb[mainKey][subKey]): # Enumerating each list (using enumerate to update tempTextDb)
 
                             self.text = item
-                            self.transtext = self.trans.translate(self.text, dest = lang)
-                            self.entries.tempTextDb[subKey][i] = str(self.transtext.text)
 
-                    self.entries.updateTempText(radioButtonVar = "", fullReset = True) # Reloads temporary text
+                            if lang != "en":
+                                self.transtext = self.trans.translate(self.text, dest = lang)
+                                self.entries.tempTextDb[subKey][i] = str(self.transtext.text)
+                            
+                            else:
+                                self.entries.tempTextDb[subKey][i] = self.text
+                        
+                    self.entries.updateTempText(fullReload = True) # Reloads temporary text
                 
                 else:
                     
