@@ -65,7 +65,7 @@ class Entries(ttk.Frame):
 
         for entry in self.tempTextDb: 
             entry.insert(0, self.tempTextDb[entry][0]) 
-            self.bindEvents(entry) # 
+            self.bindEvents(entry)  
 
     def bindEvents(self, entry): # Binds focus in and focus out events to their respective functions
         entry.bind("<FocusIn>", lambda event: self.whenFocused(entry))
@@ -143,6 +143,7 @@ class Radiobuttons(ttk.Frame):
         self.var = tk.IntVar()
         self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.updateTempText(radioButtonVar = "arith"))
         self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.updateTempText(radioButtonVar = "geom"))
+        self.var.set(1)
         
     def radioButtonPlacer(self):
         self.arithButton.pack()
@@ -174,7 +175,7 @@ class Buttons(ttk.Frame):
     
     def clear(self):
         self.entries.updateTempText(fullReload = True)
-        self.radiobuttons.var.set(0)
+        self.radiobuttons.var.set(1)
 
     def calculate(self):
         self.seqType = self.radiobuttons.var.get()
@@ -297,48 +298,50 @@ class Translator(ttk.Frame):
     def translatorFunc(self, lang):
         self.trans = googletrans.Translator()
 
+        if lang != "en": # Changing title of the program
+            self.title = "Calculator"
+            self.transtitle = self.trans.translate(self.title, dest = lang)
+            self.master.title(str(self.transtitle.text))
+        else:
+            self.master.title("Calculator")
+            
         for mainKey in self.textConfigDb: # mainKey is widget name 
-
-            if mainKey != "filemenu": # Filemenu is not configured by .config
+            if mainKey != "filemenu": # Filemenu is not configured by .config (grouping with if statement is done by configuration methods)
 
                 if mainKey == "entries":
 
                     for subKey in self.textConfigDb[mainKey]:
-
                         for i, item in enumerate(self.textConfigDb[mainKey][subKey]): # Enumerating each list (using enumerate to update tempTextDb)
-
                             self.text = item
-
                             if lang != "en":
                                 self.transtext = self.trans.translate(self.text, dest = lang)
                                 self.entries.tempTextDb[subKey][i] = str(self.transtext.text)
-                            
                             else:
-                                self.entries.tempTextDb[subKey][i] = self.text
-                        
+                                self.entries.tempTextDb[subKey][i] = self.text 
                     self.entries.updateTempText(fullReload = True) # Reloads temporary text
                 
-                else:
+                else: # Translating buttons and radiobuttons
                     
-                    pass # Adding translation here makes googletrans instance time out (too much requests for translation??)
-
+                    for subKey in self.textConfigDb[mainKey]:
+                        self.text = self.textConfigDb[mainKey][subKey]
+                        self.transtext = self.trans.translate(self.text, dest = lang)
+                        subKey.config(text = str(self.transtext.text))
             
-            else:
+            else: 
                 
                 for subKey in self.textConfigDb[mainKey]:
-
                     for i, item in enumerate(self.textConfigDb[mainKey][subKey]):
-
                         self.text = self.fullEnglishDb[mainKey][subKey][i] # Uses fullEnglishDb so translation goes from English to lang
-
                         if lang != "en":
-                            transtext = self.trans.translate(self.text, dest = lang)
-                            subKey.entryconfig(item, label = str(transtext.text)) # Filemenu is configured by [level of hierarchy].entryconfig("name", label = "newname")
-                            self.textConfigDb[mainKey][subKey][i] = str(transtext.text) # Assigns new names to textConfigDb to reconfigure subsequent File menus
-
+                            self.transtext = self.trans.translate(self.text, dest = lang)
+                            subKey.entryconfig(item, label = str(self.transtext.text)) # Filemenu is configured by [level of hierarchy].entryconfig("name", label = "newname")
+                            self.textConfigDb[mainKey][subKey][i] = str(self.transtext.text) # Assigns new names to textConfigDb to reconfigure subsequent File menus
                         else:
-                            subKey.entryconfig(item, label = str(self.text)) # Does not change file menu text to English??
-                            self.textConfigDb[mainKey][subKey][i] = str(self.text) 
+                            subKey.entryconfig(item, label = self.text) # Does not change file menu text to English??
+                            self.textConfigDb[mainKey][subKey][i] = self.text 
+
+        self.radiobuttons.var.set(1) # Selects arithmetic series by default
+        self.buttons.clear.focus_set() # Redirect focus from entry widget to prevent user being able to edit temporary text
 
 
 def startProgram(): # Start program function
@@ -347,5 +350,3 @@ def startProgram(): # Start program function
 
 if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
     startProgram()
-
-
