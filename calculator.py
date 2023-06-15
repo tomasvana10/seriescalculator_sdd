@@ -186,7 +186,7 @@ class Buttons(ttk.Frame):
             print(ex)
 
 
-class FileMenu(tk.Menu): 
+class FileMenu(tk.Menu):
 
     def __init__(self, master):
         super().__init__(master)
@@ -195,22 +195,34 @@ class FileMenu(tk.Menu):
 
         self.createFileMenu()
 
+    def restartProgram(self):
+        self.master.destroy()
+        self.program = Program("Calculator", (600, 600))
+        self.program.mainloop()
+
     def createFileMenu(self):
         # Creating main menu
         self.menu = tk.Menu(self)
 
+        # Creating file menu
+        self.fileMenu = tk.Menu(self.menu)
+        self.menu.add_cascade(label = "File", menu = self.fileMenu)
+        # Creating options within the accessibility menu
+        self.fileMenu.add_command(label = "Restart", command = lambda: self.restartProgram())
+        self.fileMenu.add_separator()
+        self.fileMenu.add_command(label = "Exit", command = lambda: self.master.quit())
+
         # Creating accessibility options menu
         self.helpMenu = tk.Menu(self.menu)
         self.menu.add_cascade(label = "Accessibility Options", menu = self.helpMenu)
-
         # Creating options within the accessibility menu
         self.helpMenu.add_command(label = "Toggle high contrast") # Add commands later
 
         # Creating font size menu and adding 3 presets
         self.sizeMenu = tk.Menu(self.helpMenu) 
         self.helpMenu.add_cascade(label = "Font size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
-
-        self.sizeMenu.add_command(label = "Large") # Add commands later
+        # Creating commands within the font size menu
+        self.sizeMenu.add_command(label = "Large")
         self.sizeMenu.add_command(label = "Medium")
         self.sizeMenu.add_command(label = "Small")
 
@@ -248,7 +260,7 @@ class HighContrast(ttk.Frame):
         self.radiobuttons = radiobuttons
 
 
-class Translator(ttk.Frame): 
+class Translator(ttk.Frame):
 
     def __init__(self, master, entries, buttons, radiobuttons, filemenu):
         super().__init__(master)
@@ -278,7 +290,8 @@ class Translator(ttk.Frame):
             },
 
             "filemenu" : {
-                self.filemenu.menu : ["Accessibility Options"],
+                self.filemenu.menu : ["File", "Accessibility Options"],
+                self.filemenu.fileMenu : ["Restart", "Exit"],
                 self.filemenu.helpMenu : ["Toggle high contrast", "Font size", "Languages"],
                 self.filemenu.sizeMenu : ["Large", "Medium", "Small"]
 
@@ -349,4 +362,4 @@ def startProgram(): # Start program function
     program.mainloop() # Executing .mainloop() in the program object 
 
 if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
-    startProgram()
+    startProgram() 
