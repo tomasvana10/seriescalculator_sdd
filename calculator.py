@@ -70,12 +70,12 @@ class Entries(ttk.Frame):
     def bindEvents(self, entry): # Binds focus in and focus out events to their respective functions
         entry.bind("<FocusIn>", lambda event: self.whenFocused(entry))
         entry.bind("<FocusOut>", lambda event: self.whenUnfocused(entry))
+        entry.bind("<Key>", lambda event: self.whenKeyPressed(entry))
     
     def whenFocused(self, entry):
         if entry.get() in self.tempTextDb[entry]:
-            entry.delete(0, tk.END)
-            entry.insert(0, "")
             entry.config(foreground = "white")
+            entry.icursor(tk.END)
 
     def whenUnfocused(self, entry):
         if entry.get() == "":
@@ -84,6 +84,13 @@ class Entries(ttk.Frame):
             else:
                 entry.insert(0, "".join(self.tempTextDb[entry][0])) 
             entry.config(foreground = "gray")
+        else:
+            if entry.get() in self.tempTextDb[entry]:
+                entry.config(foreground = "gray")
+
+    def whenKeyPressed(self, entry):
+        if entry.get() in self.tempTextDb[entry]:
+            entry.delete(0, tk.END)
 
     def updateTempText(self, radioButtonVar = "arith", fullReload = False): # Using keyword arguments
         if radioButtonVar == "arith": 
@@ -127,6 +134,12 @@ class Output(ttk.Frame):
     def outputPlacer(self):
         self.sumOutput.pack()
     
+    def insertText(self, sum):
+        self.sumOutput.config(state = "normal")
+        self.sumOutput.delete(1.0, tk.END)
+        self.sumOutput.insert(1.0, sum)
+        self.sumOutput.config(state = "disabled")
+    
 
 class Radiobuttons(ttk.Frame):
 
@@ -159,11 +172,16 @@ class Buttons(ttk.Frame):
         self.entries = entries # Saving passed arguments of Entries and Output classes
         self.output = output
 
+        self.errorDb = {
+            "ValueError" : "Description",
+            "AttributeError" : "Description"
+        }
+    
         self.buttonGen()
         self.buttonPlacer()
     
-    def setRadiobuttons(self, radiobuttons): # Function that was discussed in the Program class to eliminate the circular dependency error
-        self.radiobuttons = radiobuttons # Saving instance to be used in the clear() function later on
+    def setRadiobuttons(self, radiobuttons): 
+        self.radiobuttons = radiobuttons 
         
     def buttonGen(self):
         self.clear = ttk.Button(self, text = "Clear", command = self.clear)
@@ -180,10 +198,32 @@ class Buttons(ttk.Frame):
     def calculate(self):
         self.seqType = self.radiobuttons.var.get()
         try:
-            pass # 1 is arithmetic, 2 is geometric
+            self.firstTerm = float(self.entries.firstTerm.get())
+            self.commonDiffOrRatio = float(self.entries.commonDifference.get())
+            self.numberOfTerms = int(self.entries.numberOfTerms.get())
+
+            if self.seqType == 1: # Arithmetic series
+                if self.numberOfTerms <= 0: # Common difference must be greater than 0
+                    self.output.insertText("The length of the series cannot be a negative number or 0, please choose an appropriate length.")
+
+                else:
+                    self.sum = (self.numberOfTerms / 2) * (2 * self.firstTerm + (self.numberOfTerms - 1) * self.commonDiffOrRatio)
+                    self.output.insertText(self.sum)
+                
+            elif self.seqType == 2: # Geometric Series
+                if self.commonDiffOrRatio == 1:
+                    self.sum = self.firstTerm * self.numberOfTerms
+                
+                else:
+                    self.sum = self.firstTerm * (1 - self.commonDiffOrRatio ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
+
+                self.output.insertText(self.sum)
         
         except Exception as ex:
-            print(ex)
+            if type(ex).__name__ == "ValueError":
+                self.output.insertText(f"An exception occured: {type(ex).__name__} - {ex}. Ensure all fields have an integer")
+            else:
+                self.output.insertText(f"An exception occured: {type(ex).__name__} - {ex}")
 
 
 class FileMenu(tk.Menu):
@@ -214,7 +254,7 @@ class FileMenu(tk.Menu):
 
         # Creating accessibility options menu
         self.helpMenu = tk.Menu(self.menu)
-        self.menu.add_cascade(label = "Accessibility Options", menu = self.helpMenu)
+        self.menu.add_cascade(label = "Accessibility", menu = self.helpMenu)
         # Creating options within the accessibility menu
         self.helpMenu.add_command(label = "Toggle high contrast") # Add commands later
 
@@ -222,9 +262,9 @@ class FileMenu(tk.Menu):
         self.sizeMenu = tk.Menu(self.helpMenu) 
         self.helpMenu.add_cascade(label = "Font size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
         # Creating commands within the font size menu
-        self.sizeMenu.add_command(label = "Large")
-        self.sizeMenu.add_command(label = "Medium")
         self.sizeMenu.add_command(label = "Small")
+        self.sizeMenu.add_command(label = "Medium")
+        self.sizeMenu.add_command(label = "Large")
 
         # Creating languages menu and adding 5 languages
         self.langMenu = tk.Menu(self.helpMenu)
@@ -290,19 +330,19 @@ class Translator(ttk.Frame):
             },
 
             "filemenu" : {
-                self.filemenu.menu : ["File", "Accessibility Options"],
+                self.filemenu.menu : ["File", "Accessibility"],
                 self.filemenu.fileMenu : ["Restart", "Exit"],
                 self.filemenu.helpMenu : ["Toggle high contrast", "Font size", "Languages"],
-                self.filemenu.sizeMenu : ["Large", "Medium", "Small"]
+                self.filemenu.sizeMenu : ["Small", "Medium", "Large"]
 
             }
         }
 
         self.fullEnglishDb = self.textConfigDb.copy() # fullEnglishDb does not include modified file menu names (file menu commands must be directly modified by name)
 
-        self.languageDbMaker()
+        self.langFilemenuCommands()
 
-    def languageDbMaker(self):
+    def langFilemenuCommands(self):
         self.languageDb = googletrans.LANGUAGES
         for name, acronym in self.languageDb.items():
             # Capture current value of value and assigns it to the lang parameter of the translator function 
@@ -358,8 +398,8 @@ class Translator(ttk.Frame):
 
 
 def startProgram(): # Start program function
-    program = Program("Calculator", (600, 600)) # Passing title and dimensions in tuple 
-    program.mainloop() # Executing .mainloop() in the program object 
+    program = Program("Summing Series", (500, 600)) 
+    program.mainloop() 
 
 if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
     startProgram() 
