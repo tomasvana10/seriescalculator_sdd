@@ -211,6 +211,9 @@ class Buttons(ttk.Frame):
                     self.output.insertText(self.sum)
                 
             elif self.seqType == 2: # Geometric Series
+
+                if self.numberOfTerms <= 0: # Common difference must be greater than 0
+                    self.output.insertText("The length of the series cannot be a negative number or 0, please choose an appropriate length.")
                 if self.commonDiffOrRatio == 1:
                     self.sum = self.firstTerm * self.numberOfTerms
                 
@@ -218,7 +221,7 @@ class Buttons(ttk.Frame):
                     self.sum = self.firstTerm * (1 - self.commonDiffOrRatio ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
 
                 self.output.insertText(self.sum)
-        
+
         except Exception as ex:
             if type(ex).__name__ == "ValueError":
                 self.output.insertText(f"An exception occured: {type(ex).__name__} - {ex}. Ensure all fields have an integer")
