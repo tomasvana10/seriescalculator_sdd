@@ -11,10 +11,8 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
         
-        self.frame = tk.Frame(self, background = "#D3D3D3") # Main frame/background
+        self.frame = tk.Frame(self) # Main frame/background
         self.frame.pack(expand = 1, fill = tk.BOTH)
-
-        # ~~~~~ Different classes for different program elements - classes are instantiated and necessary instances are passed ~~~~~ 
 
         # File menu class
         self.filemenu = FileMenu(self) 
@@ -22,12 +20,8 @@ class Program(tk.Tk): # Main program window that instantiates all the child clas
         # Widget classes
         self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
         self.output = Output(self)
-        self.buttons = Buttons(self, self.entries, self.output)
         self.radiobuttons = Radiobuttons(self, self.entries)
-
-        # ! Circular dependency fixes: Call function in one class that passes an instance of the dependency to it
-        self.buttons.setRadiobuttons(self.radiobuttons) 
-        self.entries.setRadiobuttons(self.radiobuttons)
+        self.buttons = Buttons(self, self.entries, self.radiobuttons, self.output)
 
         # Accessibility option classes
         self.fontsize = FontSize(self, self.entries, self.buttons, self.radiobuttons)
@@ -46,9 +40,6 @@ class Entries(ttk.Frame):
         self.entryPlacer()
 
         self.seqElement = 0 # Allows element 0 of commonDifference temp text to be accessed (default)
-
-    def setRadiobuttons(self, radiobuttons): # Function that was discussed in the Program class to eliminate the circular dependency error
-        self.radiobuttons = radiobuttons # Saving instance to be used in the clear() function later on
 
     def entryGen(self): 
         self.firstTerm = ttk.Entry(self, foreground = "gray") 
@@ -74,12 +65,12 @@ class Entries(ttk.Frame):
     
     def whenFocused(self, entry):
         if entry.get() in self.tempTextDb[entry]:
-            entry.config(foreground = "white")
+            entry.config(foreground = "black")
             entry.icursor(tk.END)
 
     def whenUnfocused(self, entry):
         if entry.get() == "":
-            if entry == self.commonDifference:
+            if entry == self.commonDifference:                              
                 entry.insert(0, "".join(self.tempTextDb[entry][self.seqElement])) # Access seqElement (int) of value of self.commonDifference
             else:
                 entry.insert(0, "".join(self.tempTextDb[entry][0])) 
@@ -134,10 +125,10 @@ class Output(ttk.Frame):
     def outputPlacer(self):
         self.sumOutput.pack()
     
-    def insertText(self, sum):
+    def insertText(self, text):
         self.sumOutput.config(state = "normal")
         self.sumOutput.delete(1.0, tk.END)
-        self.sumOutput.insert(1.0, sum)
+        self.sumOutput.insert(1.0, text)
         self.sumOutput.config(state = "disabled")
     
 
@@ -165,23 +156,21 @@ class Radiobuttons(ttk.Frame):
 
 class Buttons(ttk.Frame):
 
-    def __init__(self, master, entries, output):
+    def __init__(self, master, entries, radiobuttons, output):
         super().__init__(master)
         self.place(x = 337, y = 200)
 
         self.entries = entries # Saving passed arguments of Entries and Output classes
+        self.radiobuttons = radiobuttons
         self.output = output
 
-        self.errorDb = {
-            "ValueError" : "Description",
-            "AttributeError" : "Description"
-        }
+        self.errors = [
+            "An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
+            "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative number or 0, please choose an appropriate length"
+        ]
     
         self.buttonGen()
         self.buttonPlacer()
-    
-    def setRadiobuttons(self, radiobuttons): 
-        self.radiobuttons = radiobuttons 
         
     def buttonGen(self):
         self.clear = ttk.Button(self, text = "Clear", command = self.clear)
@@ -194,6 +183,7 @@ class Buttons(ttk.Frame):
     def clear(self):
         self.entries.updateTempText(fullReload = True)
         self.radiobuttons.var.set(1)
+        self.output.insertText("")
 
     def calculate(self):
         self.seqType = self.radiobuttons.var.get()
@@ -204,26 +194,27 @@ class Buttons(ttk.Frame):
 
             if self.seqType == 1: # Arithmetic series
                 if self.numberOfTerms <= 0: # Common difference must be greater than 0
-                    self.output.insertText("The length of the series cannot be a negative number or 0, please choose an appropriate length.")
+                    self.output.insertText(self.errors[0])
 
                 else:
                     self.sum = (self.numberOfTerms / 2) * (2 * self.firstTerm + (self.numberOfTerms - 1) * self.commonDiffOrRatio)
                     self.output.insertText(self.sum)
                 
             elif self.seqType == 2: # Geometric Series
-                if self.commonDiffOrRatio == 1:
-                    self.sum = self.firstTerm * self.numberOfTerms
-                
-                else:
-                    self.sum = self.firstTerm * (1 - self.commonDiffOrRatio ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
+                if self.numberOfTerms <= 0:
+                    self.output.insertText(self.errors[0])
 
-                self.output.insertText(self.sum)
+                else:
+                    if self.commonDiffOrRatio == 1:
+                        self.sum = self.firstTerm * self.numberOfTerms
+
+                    else:
+                        self.sum = self.firstTerm * (1 - self.commonDiffOrRatio ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
+
+                    self.output.insertText(self.sum)
         
-        except Exception as ex:
-            if type(ex).__name__ == "ValueError":
-                self.output.insertText(f"An exception occured: {type(ex).__name__} - {ex}. Ensure all fields have an integer")
-            else:
-                self.output.insertText(f"An exception occured: {type(ex).__name__} - {ex}")
+        except Exception:
+            self.output.insertText(self.errors[0])
 
 
 class FileMenu(tk.Menu):
@@ -397,9 +388,6 @@ class Translator(ttk.Frame):
         self.buttons.clear.focus_set() # Redirect focus from entry widget to prevent user being able to edit temporary text
 
 
-def startProgram(): # Start program function
+if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
     program = Program("Summing Series", (500, 600)) 
     program.mainloop() 
-
-if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
-    startProgram() 
