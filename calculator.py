@@ -1,139 +1,93 @@
-import tkinter as tk # Alias is used as it is more concise
-from tkinter import ttk # Improved tkinter module 
-import googletrans # Required for translation database
-from googletrans import Translator # Required for translator instance
+import tkinter as tk 
+import customtkinter as ctk
 
-
-class Program(tk.Tk): # Main program window that instantiates all the child classes and runs the mainloop() of its tk.Tk instance
-
-    def __init__(self, title, size): # Core initialisation parameters
+class Program(ctk.CTk):
+    '''Main Program Window'''
+    def __init__(self, title, size, appearance, theme, scale): 
         super().__init__()
+
+        '''Default program specifications'''
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
-        
-        self.frame = tk.Frame(self) # Main frame/background
+        ctk.set_appearance_mode(appearance)
+        ctk.set_default_color_theme(theme)
+        ctk.set_widget_scaling(scale)
+
+        self.frame = ctk.CTkFrame(self) # Main frame/background
         self.frame.pack(expand = 1, fill = tk.BOTH)
 
-        # File menu class
-        self.filemenu = FileMenu(self) 
+        '''File Menu Classes'''
+        self.filemenu = FileMenu(self)
 
-        # Widget classes
-        self.entries = Entries(self) # Deferred initialisation is used to keep the main class's __init__ constructure cleaner
+        '''Widget Classes'''
+        self.entries = Entries(self) 
         self.output = Output(self)
         self.radiobuttons = Radiobuttons(self, self.entries)
         self.buttons = Buttons(self, self.entries, self.radiobuttons, self.output)
 
-        # Accessibility option classes
-        self.fontsize = FontSize(self, self.entries, self.buttons, self.radiobuttons)
-        self.highcontrast = HighContrast(self, self.entries, self.output, self.buttons, self.radiobuttons)
-        self.translator = Translator(self, self.entries, self.buttons, self.radiobuttons, self.filemenu)
+        '''Accessibility Classes'''
+        self.fontsize = FontSize(self)
+        self.appearance = Appearance(self)
+        self.translator = Translator(self, self.entries, self.buttons, self.radiobuttons, 
+                                    self.filemenu)
 
-        
-class Entries(ttk.Frame):
-    
-    def __init__(self, master): # Second argument allows the main instance (self) of Program() to be passed to Entries() for inheritance
-        super().__init__(master) # Ensures proper inheritane of master class (in this case, Program())
-        self.place(x = 210, y = 190, anchor = "center") # Placing window in which this class's widgets will be stored (like a subfolder)
+class Entries(ctk.CTkFrame):
+    '''Entry creation and related functions'''
+    def __init__(self, master): 
+        super().__init__(master) # Ensures proper inheritance
+        self.place(x = 210, y = 190, anchor = "center")
 
-        # Calling widget generator and placer functions
         self.entryGen() 
         self.entryPlacer()
 
-        self.seqElement = 0 # Allows element 0 of commonDifference temp text to be accessed (default)
-
-    def entryGen(self): 
-        self.firstTerm = ttk.Entry(self, foreground = "gray") 
-        self.commonDifference = ttk.Entry(self, foreground = "gray")
-        self.numberOfTerms = ttk.Entry(self, foreground = "gray")
+    def entryGen(self): # Widget creation
+        self.firstTerm = ctk.CTkEntry(self,placeholder_text = "First term") 
+        self.commonDifference = ctk.CTkEntry(self, placeholder_text = "Common difference")
+        self.numberOfTerms = ctk.CTkEntry(self, placeholder_text = "Number of terms")
         
-        self.tempTextDb = { # Storing relation between entry variables and their text
-            self.firstTerm : ["First term"],
-            self.commonDifference : ["Common difference", "Common ratio"],
-            self.numberOfTerms : ["Number of terms"]
-        }
-
-        self.engTempTextDb = self.tempTextDb.copy() # Used when setting language back to English (faster)
-
-        for entry in self.tempTextDb: 
-            entry.insert(0, self.tempTextDb[entry][0]) 
-            self.bindEvents(entry)  
-
-    def bindEvents(self, entry): # Binds focus in and focus out events to their respective functions
-        entry.bind("<FocusIn>", lambda event: self.whenFocused(entry))
-        entry.bind("<FocusOut>", lambda event: self.whenUnfocused(entry))
-        entry.bind("<Key>", lambda event: self.whenKeyPressed(entry))
-    
-    def whenFocused(self, entry):
-        if entry.get() in self.tempTextDb[entry]:
-            entry.config(foreground = "black")
-            entry.icursor(tk.END)
-
-    def whenUnfocused(self, entry):
-        if entry.get() == "":
-            if entry == self.commonDifference:                              
-                entry.insert(0, "".join(self.tempTextDb[entry][self.seqElement])) # Access seqElement (int) of value of self.commonDifference
-            else:
-                entry.insert(0, "".join(self.tempTextDb[entry][0])) 
-            entry.config(foreground = "gray")
-        else:
-            if entry.get() in self.tempTextDb[entry]:
-                entry.config(foreground = "gray")
-
-    def whenKeyPressed(self, entry):
-        if entry.get() in self.tempTextDb[entry]:
-            entry.delete(0, tk.END)
-
-    def updateTempText(self, radioButtonVar = "arith", fullReload = False): # Using keyword arguments
-        if radioButtonVar == "arith": 
-            self.seqElement = 0 
-        elif radioButtonVar == "geom":
-            self.seqElement = 1 # If radioButtonVar is "geom", seqElement becomes one which refers to the second element in the temp text values list for the commonDifference entry
-        else:
-            pass # For reset via Translator class
-
-        if fullReload: # Useful with clear button
-            for key in self.tempTextDb:
-                key.delete(0, tk.END)
-                if key == self.commonDifference:
-                    key.insert(0, "".join(self.tempTextDb[key][self.seqElement]))
-                else:
-                    key.insert(0, "".join(self.tempTextDb[key]))
-                key.config(foreground = "gray")
-        
-        else: # This only updates the commonDifference entry
-            self.commonDifference.delete(0, tk.END)
-            self.commonDifference.insert(0, self.tempTextDb[self.commonDifference][self.seqElement])
-            self.commonDifference.config(foreground = "gray")
-        
-    def entryPlacer(self): # Place entry widgets
+    def entryPlacer(self): # Placing widgets
         self.firstTerm.pack()
         self.commonDifference.pack()
         self.numberOfTerms.pack()
 
+    def placeholderSwitcher(self, entry):
+        if entry == 1:
+            self.commonDifference.configure(placeholder_text = "Common difference")
+        else:
+            self.commonDifference.configure(placeholder_text = "Common ratio")
+        self.master.focus() # Remove focus from widget to prevent placeholder text 
+                            # becoming editable (focusing on main CTk() instance)
 
-class Output(ttk.Frame):
+    def clearEntries(self): 
+        self.firstTerm.delete(0, ctk.END)
+        self.commonDifference.delete(0, ctk.END)
+        self.numberOfTerms.delete(0, ctk.END)
+        self.master.focus()
 
+class Output(ctk.CTkFrame):
+    '''Text box creation and insertion of result'''
     def __init__(self, master):
         super().__init__(master)
         self.place(x = 255, y = 325, anchor = "center")
+
         self.outputGen()
         self.outputPlacer()
 
     def outputGen(self):
-        self.sumOutput = tk.Text(self, state = "disabled", height = 10, width = 40) # Doesn't allow input but allows copying of result
+        self.sumOutput = ctk.CTkTextbox(self, state = "disabled", width = 200, 
+                                        height = 120) # Only allows copying of text, not entry or deletion
 
     def outputPlacer(self):
         self.sumOutput.pack()
     
-    def insertText(self, text):
-        self.sumOutput.config(state = "normal")
-        self.sumOutput.delete(1.0, tk.END)
-        self.sumOutput.insert(1.0, text)
-        self.sumOutput.config(state = "disabled")
-    
+    def insertText(self, result):
+        self.sumOutput.configure(state = "normal") # Enable text entry
+        self.sumOutput.delete(1.0, tk.END) 
+        self.sumOutput.insert(1.0, result) # Enter text
+        self.sumOutput.configure(state = "disabled")
 
-class Radiobuttons(ttk.Frame):
-
+class Radiobuttons(ctk.CTkFrame):
+    '''Radiobutton creation'''
     def __init__(self, master, entries):
         super().__init__(master)
         self.place(x = 400, y = 172, anchor = "center")
@@ -144,49 +98,51 @@ class Radiobuttons(ttk.Frame):
         self.radioButtonPlacer()
 
     def radioButtonGen(self):
-        self.var = tk.IntVar()
-        self.arithButton = ttk.Radiobutton(self, text = "Arithmetic Series", variable = self.var, value = 1, command = lambda: self.entries.updateTempText(radioButtonVar = "arith"))
-        self.geomButton = ttk.Radiobutton(self, text = "Geometric Series", variable = self.var, value = 2, command = lambda: self.entries.updateTempText(radioButtonVar = "geom"))
-        self.var.set(1)
+        self.selection = tk.IntVar(value = 1) # Set radiobutton selection to Arithmetic Series
+        self.arithButton = ctk.CTkRadioButton(self, text = "Arithmetic Series", variable = self.selection, 
+                                              value = 1, command = lambda: self.entries.placeholderSwitcher(1))
+        self.geomButton = ctk.CTkRadioButton(self, text = "Geometric Series", variable = self.selection, 
+                                             value = 2, command = lambda: self.entries.placeholderSwitcher(2))
         
     def radioButtonPlacer(self):
         self.arithButton.pack()
         self.geomButton.pack()
-    
 
-class Buttons(ttk.Frame):
-
+class Buttons(ctk.CTkFrame):
+    '''Button creation, clear and calculate functions and error handling'''
     def __init__(self, master, entries, radiobuttons, output):
         super().__init__(master)
         self.place(x = 337, y = 200)
 
-        self.entries = entries # Saving passed arguments of Entries and Output classes
+        self.entries = entries 
         self.radiobuttons = radiobuttons
         self.output = output
 
         self.errors = [
             "An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
-            "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative number or 0, please choose an appropriate length"
+            "An exception occured: InvalidNumberOfTerms - The length of the \
+            series cannot be a negative number or 0, please choose an appropriate length",
         ]
     
         self.buttonGen()
         self.buttonPlacer()
         
     def buttonGen(self):
-        self.clear = ttk.Button(self, text = "Clear", command = self.clear)
-        self.calculate = ttk.Button(self, text = "Calculate", command = self.calculate)
+        self.clear = ctk.CTkButton(self, text = "Clear", command = self.clear)
+        self.calculate = ctk.CTkButton(self, text = "Calculate", command = self.calculate)
     
     def buttonPlacer(self):
         self.clear.pack()
         self.calculate.pack()
     
     def clear(self):
-        self.entries.updateTempText(fullReload = True)
-        self.radiobuttons.var.set(1)
+        self.entries.clearEntries()
+        self.radiobuttons.selection.set(1)
         self.output.insertText("")
 
     def calculate(self):
-        self.seqType = self.radiobuttons.var.get()
+        self.seqType = self.radiobuttons.selection.get()
+
         try:
             self.firstTerm = float(self.entries.firstTerm.get())
             self.commonDiffOrRatio = float(self.entries.commonDifference.get())
@@ -194,31 +150,32 @@ class Buttons(ttk.Frame):
 
             if self.seqType == 1: # Arithmetic series
                 if self.numberOfTerms <= 0: # Common difference must be greater than 0
-                    self.output.insertText(self.errors[0])
+                    self.output.insertText(self.errors[1])
 
                 else:
-                    self.sum = (self.numberOfTerms / 2) * (2 * self.firstTerm + (self.numberOfTerms - 1) * self.commonDiffOrRatio)
+                    self.sum = (self.numberOfTerms / 2) * (2 * self.firstTerm + \
+                                                           (self.numberOfTerms - 1) * self.commonDiffOrRatio)
                     self.output.insertText(self.sum)
                 
             elif self.seqType == 2: # Geometric Series
                 if self.numberOfTerms <= 0:
-                    self.output.insertText(self.errors[0])
+                    self.output.insertText(self.errors[1])
 
                 else:
                     if self.commonDiffOrRatio == 1:
                         self.sum = self.firstTerm * self.numberOfTerms
 
                     else:
-                        self.sum = self.firstTerm * (1 - self.commonDiffOrRatio ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
+                        self.sum = self.firstTerm * (1 - self.commonDiffOrRatio \
+                                                     ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
 
                     self.output.insertText(self.sum)
-        
+    
         except Exception:
             self.output.insertText(self.errors[0])
 
-
 class FileMenu(tk.Menu):
-
+    '''Filemenu structure creation with commands'''
     def __init__(self, master):
         super().__init__(master)
     
@@ -247,11 +204,12 @@ class FileMenu(tk.Menu):
         self.helpMenu = tk.Menu(self.menu)
         self.menu.add_cascade(label = "Accessibility", menu = self.helpMenu)
         # Creating options within the accessibility menu
-        self.helpMenu.add_command(label = "Toggle high contrast") # Add commands later
+        self.helpMenu.add_cascade(label = "Appearance") # Add commands later
+        self.helpMenu.add_cascade(label = "Theme")
 
         # Creating font size menu and adding 3 presets
         self.sizeMenu = tk.Menu(self.helpMenu) 
-        self.helpMenu.add_cascade(label = "Font size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
+        self.helpMenu.add_cascade(label = "Size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
         # Creating commands within the font size menu
         self.sizeMenu.add_command(label = "Small")
         self.sizeMenu.add_command(label = "Medium")
@@ -265,129 +223,91 @@ class FileMenu(tk.Menu):
         # Setting main menu
         self.master.config(menu = self.menu)
 
-
-class FontSize(ttk.Frame):
-    
-    def __init__(self, master, entries, buttons, radiobuttons):
+class FontSize(ctk.CTkFrame):
+    '''Font size option menu creation'''
+    def __init__(self, master):
         super().__init__(master)
+        self.place(x=150, y = 500)
+
+        self.fontOptionsMaker()
+        self.fontOptionsPlacer()
     
+    def fontOptionsMaker(self):
+        self.fontOptions = ctk.CTkOptionMenu(self, values = ["Small", "Medium", "Large"], 
+                                             command = self.changeScale)
+        self.fontOptions.set("Medium")
+        self.fontOptionsLabel = ctk.CTkLabel(self, text = "Size")
+    
+    def fontOptionsPlacer(self):
+        self.fontOptions.pack()
+        self.fontOptionsLabel.pack()
+    
+    def changeScale(self, size):
+        self.scale = 0
+        match size:
+            case "Small":
+                self.scale = 0.7
+            case "Medium":
+                self.scale = 1.0
+            case "Large":
+                self.scale = 1.3
+        ctk.set_widget_scaling(self.scale)
+
+class Appearance(ctk.CTkFrame):
+    '''Options to change appearance and colour themes'''
+    def __init__(self, master):
+        super().__init__(master)
+        self.place(x = 370, y = 400)
+
         self.master = master
 
-        self.entries = entries
-        self.buttons = buttons
-        self.radiobuttons = radiobuttons
+        self.appearanceOptionsMaker()
+        self.appearanceOptionsPlacer()
 
+    def appearanceOptionsMaker(self):
+        self.appearanceOptions = ctk.CTkOptionMenu(self, values = ["Light", "Dark", "System"], 
+                                                   command = self.changeAppearance)
+        self.appearanceOptions.set("Dark")
+        self.themeOptions = ctk.CTkOptionMenu(self, values = ["Blue", "Green", "Dark blue"], 
+                                              command = self.changeColour)
+        self.appearanceOptionsLabel = ctk.CTkLabel(self, text = "Appearance")
+        self.themeOptionsLabel = ctk.CTkLabel(self, text = "Themes")
+        
+    def appearanceOptionsPlacer(self):
+        self.appearanceOptions.grid(row = 2, column = 1)
+        self.themeOptions.grid(row = 4, column = 1)
+        self.appearanceOptionsLabel.grid(row = 1, column = 1)
+        self.themeOptionsLabel.grid(row = 3, column = 1)
 
-class HighContrast(ttk.Frame):
-    
-    def __init__(self, master, entries, output, buttons, radiobuttons):
-        super().__init__(master)
+    def changeAppearance(self, appearance):
+        ctk.set_appearance_mode(appearance)
 
-        self.master = master
+    def changeColour(self, colour: str):
+        colour = colour.casefold()
+        colour = colour.replace(" ", "-")
+        ctk.set_default_color_theme(colour) # currently not working
 
-        self.entries = entries
-        self.output = output
-        self.buttons = buttons
-        self.radiobuttons = radiobuttons
-
-
-class Translator(ttk.Frame):
+class Translator(ctk.CTkFrame):
 
     def __init__(self, master, entries, buttons, radiobuttons, filemenu):
         super().__init__(master)
-
-        self.master = master
 
         self.entries = entries
         self.buttons = buttons
         self.radiobuttons = radiobuttons
         self.filemenu = filemenu
-        
-        self.textConfigDb = {
-            "entries" : {
-                self.entries.firstTerm : ["First term"],
-                self.entries.commonDifference : ["Common difference", "Common ratio"],
-                self.entries.numberOfTerms : ["Number of terms"]
-            },
 
-            "buttons" : {
-                self.buttons.clear : "Clear",
-                self.buttons.calculate : "Calculate"
-            },
+    def langOptionsMaker(func):
+        def wrapper():
+            pass
 
-            "radiobuttons" : {
-                self.radiobuttons.arithButton : "Arithmetic Series",
-                self.radiobuttons.geomButton : "Geometric Series"
-            },
+        return wrapper
 
-            "filemenu" : {
-                self.filemenu.menu : ["File", "Accessibility"],
-                self.filemenu.fileMenu : ["Restart", "Exit"],
-                self.filemenu.helpMenu : ["Toggle high contrast", "Font size", "Languages"],
-                self.filemenu.sizeMenu : ["Small", "Medium", "Large"]
+    @langOptionsMaker
+    def langDbLoader():
+        pass
 
-            }
-        }
-
-        self.fullEnglishDb = self.textConfigDb.copy() # fullEnglishDb does not include modified file menu names (file menu commands must be directly modified by name)
-
-        self.langFilemenuCommands()
-
-    def langFilemenuCommands(self):
-        self.languageDb = googletrans.LANGUAGES
-        for name, acronym in self.languageDb.items():
-            # Capture current value of value and assigns it to the lang parameter of the translator function 
-            self.filemenu.langMenu.add_command(label = acronym.title(), command = lambda lang = name: self.translatorFunc(lang))
-    
-    def translatorFunc(self, lang):
-        self.trans = googletrans.Translator()
-
-        if lang != "en": # Changing title of the program
-            self.title = "Calculator"
-            self.transtitle = self.trans.translate(self.title, dest = lang)
-            self.master.title(str(self.transtitle.text))
-        else:
-            self.master.title("Calculator")
-            
-        for mainKey in self.textConfigDb: # mainKey is widget name 
-            if mainKey != "filemenu": # Filemenu is not configured by .config (grouping with if statement is done by configuration methods)
-
-                if mainKey == "entries":
-
-                    for subKey in self.textConfigDb[mainKey]:
-                        for i, item in enumerate(self.textConfigDb[mainKey][subKey]): # Enumerating each list (using enumerate to update tempTextDb)
-                            self.text = item
-                            if lang != "en":
-                                self.transtext = self.trans.translate(self.text, dest = lang)
-                                self.entries.tempTextDb[subKey][i] = str(self.transtext.text)
-                            else:
-                                self.entries.tempTextDb[subKey][i] = self.text 
-                    self.entries.updateTempText(fullReload = True) # Reloads temporary text
-                
-                else: # Translating buttons and radiobuttons
-                    
-                    for subKey in self.textConfigDb[mainKey]:
-                        self.text = self.textConfigDb[mainKey][subKey]
-                        self.transtext = self.trans.translate(self.text, dest = lang)
-                        subKey.config(text = str(self.transtext.text))
-            
-            else: 
-                
-                for subKey in self.textConfigDb[mainKey]:
-                    for i, item in enumerate(self.textConfigDb[mainKey][subKey]):
-                        self.text = self.fullEnglishDb[mainKey][subKey][i] # Uses fullEnglishDb so translation goes from English to lang
-                        if lang != "en":
-                            self.transtext = self.trans.translate(self.text, dest = lang)
-                            subKey.entryconfig(item, label = str(self.transtext.text)) # Filemenu is configured by [level of hierarchy].entryconfig("name", label = "newname")
-                            self.textConfigDb[mainKey][subKey][i] = str(self.transtext.text) # Assigns new names to textConfigDb to reconfigure subsequent File menus
-                        else:
-                            subKey.entryconfig(item, label = self.text) # Does not change file menu text to English??
-                            self.textConfigDb[mainKey][subKey][i] = self.text 
-
-        self.radiobuttons.var.set(1) # Selects arithmetic series by default
-        self.buttons.clear.focus_set() # Redirect focus from entry widget to prevent user being able to edit temporary text
-
-
-if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
-    program = Program("Summing Series", (600, 700)) 
+if __name__ == "__main__": # Allows program to only run when the file is 
+                           # executed as a script, allowing for modularity and reusability
+    program = Program("Summing Series", (550, 650), "Dark", "blue", 1.0) 
     program.mainloop() 
