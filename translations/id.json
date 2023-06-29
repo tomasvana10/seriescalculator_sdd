@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "Istilah pertama",
+        "Perbedaan umum",
+        "Rasio umum",
+        "Jumlah istilah"
+    ],
+    "buttons": [
+        "Jernih",
+        "Menghitung"
+    ],
+    "radiobuttons": [
+        "Seri aritmatika",
+        "Seri geometris"
+    ],
+    "fontsize": [
+        "Ukuran",
+        "Kecil",
+        "Sedang",
+        "Besar"
+    ],
+    "appearance": [
+        "Penampilan",
+        "Tema",
+        "Lampu",
+        "Gelap",
+        "Sistem",
+        "Biru",
+        "Hijau",
+        "Biru tua"
+    ],
+    "languages": [
+        "Bahasa"
+    ],
+    "errors": [
+        "Pengecualian terjadi: ValueError - Pastikan semua bidang diisi dan memiliki entri numerik",
+        "Pengecualian terjadi: jumlah istilah yang tidak valid - panjang seri tidak bisa menjadi angka negatif atau 0, silakan pilih panjang yang sesuai"
+    ],
+    "filemenu": [
+        "Mengajukan",
+        "Mengulang kembali",
+        "KELUAR"
+    ],
+    "title": [
+        "Seri Simpul"
+    ]
+}

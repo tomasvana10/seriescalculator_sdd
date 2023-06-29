@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "Terma pertama",
+        "Perbezaan umum",
+        "Nisbah biasa",
+        "Bilangan istilah"
+    ],
+    "buttons": [
+        "Jelas",
+        "Hitung"
+    ],
+    "radiobuttons": [
+        "Siri aritmetik",
+        "Siri geometri"
+    ],
+    "fontsize": [
+        "Saiz",
+        "Kecil",
+        "Medium",
+        "Besar"
+    ],
+    "appearance": [
+        "Penampilan",
+        "Tema",
+        "Cahaya",
+        "Gelap",
+        "Sistem",
+        "Biru",
+        "Hijau",
+        "Biru gelap"
+    ],
+    "languages": [
+        "Bahasa"
+    ],
+    "errors": [
+        "Pengecualian yang berlaku: ValueError - Pastikan semua bidang diisi dan mempunyai entri angka",
+        "Pengecualian berlaku: bilangan terma yang tidak sah - panjang siri tidak boleh menjadi nombor negatif atau 0, sila pilih panjang yang sesuai"
+    ],
+    "filemenu": [
+        "Fail",
+        "Mula semula",
+        "Keluar"
+    ],
+    "title": [
+        "Siri penjumlahan"
+    ]
+}

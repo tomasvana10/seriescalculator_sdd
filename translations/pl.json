@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "Pierwszy warunek",
+        "Wsp\u00f3lna r\u00f3\u017cnica",
+        "Wsp\u00f3lny stosunek",
+        "Liczba termin\u00f3w"
+    ],
+    "buttons": [
+        "Jasne",
+        "Oblicz"
+    ],
+    "radiobuttons": [
+        "Seria arytmetyczna",
+        "Seria geometryczna"
+    ],
+    "fontsize": [
+        "Rozmiar",
+        "Ma\u0142y",
+        "\u015aredni",
+        "Du\u017cy"
+    ],
+    "appearance": [
+        "Wygl\u0105d",
+        "Tematy",
+        "\u015awiat\u0142o",
+        "Ciemny",
+        "System",
+        "Niebieski",
+        "Zielony",
+        "Ciemny niebieski"
+    ],
+    "languages": [
+        "J\u0119zyki"
+    ],
+    "errors": [
+        "Wyj\u0105\u0142 wyj\u0105tek: ValueRorror - Upewnij si\u0119, \u017ce wszystkie pola s\u0105 wype\u0142nione i maj\u0105 wpisy numeryczne",
+        "Wyst\u0105pi\u0142 wyj\u0105tek: Niepoprawna liczba termin\u00f3w - d\u0142ugo\u015b\u0107 serii nie mo\u017ce by\u0107 liczb\u0105 ujemn\u0105 lub 0, wybierz odpowiedni\u0105 d\u0142ugo\u015b\u0107"
+    ],
+    "filemenu": [
+        "Plik",
+        "Uruchom ponownie",
+        "Wyj\u015bcie"
+    ],
+    "title": [
+        "Seria sumpingowa"
+    ]
+}

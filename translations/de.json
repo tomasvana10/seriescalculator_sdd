@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "Erster Begriff",
+        "Gemeinsamer Unterschied",
+        "Gemeinsames Verh\u00e4ltnis",
+        "Anzahl der Begriffe"
+    ],
+    "buttons": [
+        "Klar",
+        "Berechnung"
+    ],
+    "radiobuttons": [
+        "Arithmetische Serie",
+        "Geometrische Reihe"
+    ],
+    "fontsize": [
+        "Gr\u00f6\u00dfe",
+        "Klein",
+        "Mittel",
+        "Gro\u00df"
+    ],
+    "appearance": [
+        "Aussehen",
+        "Themen",
+        "Licht",
+        "Dunkel",
+        "System",
+        "Blau",
+        "Gr\u00fcn",
+        "Dunkelblau"
+    ],
+    "languages": [
+        "Sprachen"
+    ],
+    "errors": [
+        "Eine Ausnahme aufgetreten: ValueError - Stellen Sie sicher, dass alle Felder gef\u00fcllt sind und numerische Eintr\u00e4ge haben",
+        "Eine Ausnahme trat auf: Ung\u00fcltige Anzahl von Begriffen - Die L\u00e4nge der Serie kann keine negative Zahl oder 0 sein. Bitte w\u00e4hlen Sie eine entsprechende L\u00e4nge aus"
+    ],
+    "filemenu": [
+        "Datei",
+        "Neu starten",
+        "Ausfahrt"
+    ],
+    "title": [
+        "Summierserie"
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "Lokacin farko",
+        "Bambanci na kowa",
+        "Gama gari rabo",
+        "Yawan sharu\u0257\u0257a"
+    ],
+    "buttons": [
+        "Share",
+        "Lissafta"
+    ],
+    "radiobuttons": [
+        "Jerin Arithmetic",
+        "Jerin geometric"
+    ],
+    "fontsize": [
+        "Gimra",
+        "\u0198an\u0199ane",
+        "Matsakaici",
+        "M"
+    ],
+    "appearance": [
+        "Bayyanawa",
+        "Jigogi",
+        "Haske",
+        "M",
+        "Hanya",
+        "Shu\u0257e",
+        "Kore",
+        "Duhu shudi"
+    ],
+    "languages": [
+        "Yare"
+    ],
+    "errors": [
+        "Wani banbanci: \u0199imar \u0199imar - Tabbatar duk filayen suna cike kuma suna da shigarwar lambobi",
+        "Bangaren ya faru: Lambar da ba ta dace ba - tsawon jerin ba zai iya zama lambar mara kyau ko 0 ba, don Allah za\u0253i tsawon da ya dace"
+    ],
+    "filemenu": [
+        "Fayil",
+        "Sake kunnawa",
+        "Fita"
+    ],
+    "title": [
+        "SANARWA"
+    ]
+}

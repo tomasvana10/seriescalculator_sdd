@@ -389,5 +389,5 @@ class Translator(ttk.Frame):
 
 
 if __name__ == "__main__": # Allows program to only run when the file is executed as a script, allowing for modularity and reusability
-    program = Program("Summing Series", (500, 600)) 
+    program = Program("Summing Series", (600, 700)) 
     program.mainloop() 

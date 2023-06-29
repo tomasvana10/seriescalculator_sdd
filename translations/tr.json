@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "\u0130lk d\u00f6nem",
+        "Ortak fark",
+        "Ortak oran",
+        "Terim say\u0131s\u0131"
+    ],
+    "buttons": [
+        "Temizlemek",
+        "Hesaplamak"
+    ],
+    "radiobuttons": [
+        "Aritmetik serisi",
+        "Geometrik seriler"
+    ],
+    "fontsize": [
+        "Boyut",
+        "K\u00fc\u00e7\u00fck",
+        "Orta",
+        "B\u00fcy\u00fck"
+    ],
+    "appearance": [
+        "D\u0131\u015f g\u00f6r\u00fcn\u00fc\u015f",
+        "Temalar",
+        "I\u015f\u0131k",
+        "Karanl\u0131k",
+        "Sistem",
+        "Mavi",
+        "Ye\u015fil",
+        "Koyu mavi"
+    ],
+    "languages": [
+        "Diller"
+    ],
+    "errors": [
+        "Bir istisna olu\u015ftu: ValueError - t\u00fcm alanlar\u0131n dolduruldu\u011fundan ve say\u0131sal giri\u015flere sahip oldu\u011fundan emin olun",
+        "Bir istisna meydana geldi: Ge\u00e7ersiz terim say\u0131s\u0131 - Serinin uzunlu\u011fu negatif bir say\u0131 veya 0 olamaz, l\u00fctfen uygun bir uzunluk se\u00e7in"
+    ],
+    "filemenu": [
+        "Dosya",
+        "Tekrar ba\u015flat",
+        "\u00e7\u0131k\u0131\u015f"
+    ],
+    "title": [
+        "Summing serisi"
+    ]
+}

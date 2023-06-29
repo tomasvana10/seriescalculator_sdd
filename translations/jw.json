@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "Istilah pisanan",
+        "Bentenane umum",
+        "Rasio Umum",
+        "Jumlah istilah"
+    ],
+    "buttons": [
+        "Cetha",
+        "Ngetung"
+    ],
+    "radiobuttons": [
+        "Seri aritmetika",
+        "Seri Geometri"
+    ],
+    "fontsize": [
+        "Ukuran",
+        "Cilik",
+        "Medium",
+        "Gedhe"
+    ],
+    "appearance": [
+        "Penampilan",
+        "Tema",
+        "Cahya",
+        "Peteng",
+        "Sistem",
+        "Biru",
+        "Ijo",
+        "Biru peteng"
+    ],
+    "languages": [
+        "Basa"
+    ],
+    "errors": [
+        "Pangecualian dumadi: Nilai - Mesthekake kabeh lapangan diisi lan duwe entri angka",
+        "Pangecualian dumadi: Jumlah istilah sing ora bener - dawane seri ora bisa dadi nomer negatif utawa 0, pilih dawa sing cocog"
+    ],
+    "filemenu": [
+        "File",
+        "Baleni meneh",
+        "Metu"
+    ],
+    "title": [
+        "Seri Siri"
+    ]
+}

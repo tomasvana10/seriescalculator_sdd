@@ -1,0 +1,47 @@
+{
+    "entries": [
+        "\u7b2c\u4e00\u5b66\u671f",
+        "\u516c\u5dee",
+        "\u516c\u6bd4",
+        "\u6761\u6b3e\u6570"
+    ],
+    "buttons": [
+        "\u6e05\u9664",
+        "\u8ba1\u7b97"
+    ],
+    "radiobuttons": [
+        "\u7b97\u672f\u7cfb\u5217",
+        "\u51e0\u4f55\u7cfb\u5217"
+    ],
+    "fontsize": [
+        "\u5c3a\u5bf8",
+        "\u5c0f\u7684",
+        "\u4e2d\u7b49\u7684",
+        "\u5927\u7684"
+    ],
+    "appearance": [
+        "\u5916\u8c8c",
+        "\u4e3b\u9898",
+        "\u5149",
+        "\u9ed1\u6697\u7684",
+        "\u7cfb\u7edf",
+        "\u84dd\u8272\u7684",
+        "\u7eff\u8272\u7684",
+        "\u6df1\u84dd"
+    ],
+    "languages": [
+        "\u8bed\u8a00"
+    ],
+    "errors": [
+        "\u53d1\u751f\u4e86\u4e00\u4e2a\u4f8b\u5916\uff1aValueError-\u786e\u4fdd\u6240\u6709\u5b57\u6bb5\u586b\u5145\u5e76\u5177\u6709\u6570\u5b57\u6761\u76ee",
+        "\u53d1\u751f\u4f8b\u5916\uff1a\u6761\u6b3e\u6570\u65e0\u6548 - \u7cfb\u5217\u7684\u957f\u5ea6\u4e0d\u80fd\u4e3a\u8d1f\u6570\u62160\uff0c\u8bf7\u9009\u62e9\u9002\u5f53\u7684\u957f\u5ea6"
+    ],
+    "filemenu": [
+        "\u6587\u4ef6",
+        "\u91cd\u65b0\u5f00\u59cb",
+        "\u51fa\u53e3"
+    ],
+    "title": [
+        "\u6c42\u548c\u7cfb\u5217"
+    ]
+}
