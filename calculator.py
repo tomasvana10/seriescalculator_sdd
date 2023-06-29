@@ -1,12 +1,14 @@
 import tkinter as tk 
 import customtkinter as ctk
+import json
+import os
 
 class Program(ctk.CTk):
     '''Main Program Window'''
     def __init__(self, title, size, appearance, theme, scale): 
         super().__init__()
 
-        '''Default program specifications'''
+        '''Default program configuration'''
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
         ctk.set_appearance_mode(appearance)
@@ -16,8 +18,8 @@ class Program(ctk.CTk):
         self.frame = ctk.CTkFrame(self) # Main frame/background
         self.frame.pack(expand = 1, fill = tk.BOTH)
 
-        '''File Menu Classes'''
-        self.filemenu = FileMenu(self)
+        self.currentDir = os.path.dirname(os.path.abspath(__file__)) # Providing program directory for assistance
+                                                                     # to parent classes
 
         '''Widget Classes'''
         self.entries = Entries(self) 
@@ -28,17 +30,24 @@ class Program(ctk.CTk):
         '''Accessibility Classes'''
         self.fontsize = FontSize(self)
         self.appearance = Appearance(self)
-        self.translator = Translator(self, self.entries, self.buttons, self.radiobuttons, 
-                                    self.filemenu)
+        self.languages = Languages(self, self.entries, self.buttons, self.radiobuttons)
+        
+        '''File Menu Classe'''
+        self.filemenu = FileMenu(self, self.languages)
+
+        '''Circular Dependency Fixes'''
+        self.languages.addFileMenu(self.filemenu)
 
 class Entries(ctk.CTkFrame):
     '''Entry creation and related functions'''
     def __init__(self, master): 
         super().__init__(master) # Ensures proper inheritance
-        self.place(x = 210, y = 190, anchor = "center")
+        self.place(x = 75, y = 200, anchor = "center")
 
         self.entryGen() 
         self.entryPlacer()
+
+        self.placeholderText = ["Common difference", "Common ratio"] # Just for second entry as it is regularly reconfigured
 
     def entryGen(self): # Widget creation
         self.firstTerm = ctk.CTkEntry(self,placeholder_text = "First term") 
@@ -46,15 +55,15 @@ class Entries(ctk.CTkFrame):
         self.numberOfTerms = ctk.CTkEntry(self, placeholder_text = "Number of terms")
         
     def entryPlacer(self): # Placing widgets
-        self.firstTerm.pack()
-        self.commonDifference.pack()
-        self.numberOfTerms.pack()
+        self.firstTerm.grid(row = 1, column = 1)
+        self.commonDifference.grid(row = 2, column = 1, pady = 10)
+        self.numberOfTerms.grid(row = 3, column = 1)
 
     def placeholderSwitcher(self, entry):
         if entry == 1:
-            self.commonDifference.configure(placeholder_text = "Common difference")
+            self.commonDifference.configure(placeholder_text = self.placeholderText[0])
         else:
-            self.commonDifference.configure(placeholder_text = "Common ratio")
+            self.commonDifference.configure(placeholder_text = self.placeholderText[1])
         self.master.focus() # Remove focus from widget to prevent placeholder text 
                             # becoming editable (focusing on main CTk() instance)
 
@@ -68,7 +77,7 @@ class Output(ctk.CTkFrame):
     '''Text box creation and insertion of result'''
     def __init__(self, master):
         super().__init__(master)
-        self.place(x = 255, y = 325, anchor = "center")
+        self.place(x = 0, y = 275)
 
         self.outputGen()
         self.outputPlacer()
@@ -78,7 +87,7 @@ class Output(ctk.CTkFrame):
                                         height = 120) # Only allows copying of text, not entry or deletion
 
     def outputPlacer(self):
-        self.sumOutput.pack()
+        self.sumOutput.grid(row = 1, column = 1)
     
     def insertText(self, result):
         self.sumOutput.configure(state = "normal") # Enable text entry
@@ -90,7 +99,7 @@ class Radiobuttons(ctk.CTkFrame):
     '''Radiobutton creation'''
     def __init__(self, master, entries):
         super().__init__(master)
-        self.place(x = 400, y = 172, anchor = "center")
+        self.place(x = 150, y = 150)
 
         self.entries = entries
 
@@ -105,14 +114,14 @@ class Radiobuttons(ctk.CTkFrame):
                                              value = 2, command = lambda: self.entries.placeholderSwitcher(2))
         
     def radioButtonPlacer(self):
-        self.arithButton.pack()
-        self.geomButton.pack()
+        self.arithButton.grid(row = 1, column = 1, padx = (0, 10))
+        self.geomButton.grid(row = 1, column = 2)
 
 class Buttons(ctk.CTkFrame):
     '''Button creation, clear and calculate functions and error handling'''
     def __init__(self, master, entries, radiobuttons, output):
         super().__init__(master)
-        self.place(x = 337, y = 200)
+        self.place(x = 150, y = 186)
 
         self.entries = entries 
         self.radiobuttons = radiobuttons
@@ -132,8 +141,8 @@ class Buttons(ctk.CTkFrame):
         self.calculate = ctk.CTkButton(self, text = "Calculate", command = self.calculate)
     
     def buttonPlacer(self):
-        self.clear.pack()
-        self.calculate.pack()
+        self.clear.grid(row = 1, column = 1, pady = (0, 10))
+        self.calculate.grid(row = 2, column = 1)
     
     def clear(self):
         self.entries.clearEntries()
@@ -171,63 +180,15 @@ class Buttons(ctk.CTkFrame):
 
                     self.output.insertText(self.sum)
     
-        except Exception:
+        except Exception as ex:
+            print(f"{ex} - {type(ex).__name__}")
             self.output.insertText(self.errors[0])
-
-class FileMenu(tk.Menu):
-    '''Filemenu structure creation with commands'''
-    def __init__(self, master):
-        super().__init__(master)
-    
-        self.master = master
-
-        self.createFileMenu()
-
-    def restartProgram(self):
-        self.master.destroy()
-        self.program = Program("Calculator", (600, 600))
-        self.program.mainloop()
-
-    def createFileMenu(self):
-        # Creating main menu
-        self.menu = tk.Menu(self)
-
-        # Creating file menu
-        self.fileMenu = tk.Menu(self.menu)
-        self.menu.add_cascade(label = "File", menu = self.fileMenu)
-        # Creating options within the accessibility menu
-        self.fileMenu.add_command(label = "Restart", command = lambda: self.restartProgram())
-        self.fileMenu.add_separator()
-        self.fileMenu.add_command(label = "Exit", command = lambda: self.master.quit())
-
-        # Creating accessibility options menu
-        self.helpMenu = tk.Menu(self.menu)
-        self.menu.add_cascade(label = "Accessibility", menu = self.helpMenu)
-        # Creating options within the accessibility menu
-        self.helpMenu.add_cascade(label = "Appearance") # Add commands later
-        self.helpMenu.add_cascade(label = "Theme")
-
-        # Creating font size menu and adding 3 presets
-        self.sizeMenu = tk.Menu(self.helpMenu) 
-        self.helpMenu.add_cascade(label = "Size", menu = self.sizeMenu)  # Adding cascade to sizeMenu
-        # Creating commands within the font size menu
-        self.sizeMenu.add_command(label = "Small")
-        self.sizeMenu.add_command(label = "Medium")
-        self.sizeMenu.add_command(label = "Large")
-
-        # Creating languages menu and adding 5 languages
-        self.langMenu = tk.Menu(self.helpMenu)
-        self.helpMenu.add_cascade(label = "Languages", menu = self.langMenu)
-        # Commands added in Translator class for better organisation
-
-        # Setting main menu
-        self.master.config(menu = self.menu)
 
 class FontSize(ctk.CTkFrame):
     '''Font size option menu creation'''
     def __init__(self, master):
         super().__init__(master)
-        self.place(x=150, y = 500)
+        self.place(x = 150, y = 0)
 
         self.fontOptionsMaker()
         self.fontOptionsPlacer()
@@ -239,8 +200,8 @@ class FontSize(ctk.CTkFrame):
         self.fontOptionsLabel = ctk.CTkLabel(self, text = "Size")
     
     def fontOptionsPlacer(self):
-        self.fontOptions.pack()
-        self.fontOptionsLabel.pack()
+        self.fontOptions.grid(row = 2, column = 1)
+        self.fontOptionsLabel.grid(row = 1, column = 1)
     
     def changeScale(self, size):
         self.scale = 0
@@ -257,7 +218,7 @@ class Appearance(ctk.CTkFrame):
     '''Options to change appearance and colour themes'''
     def __init__(self, master):
         super().__init__(master)
-        self.place(x = 370, y = 400)
+        self.place(x = 300, y = 0)
 
         self.master = master
 
@@ -282,30 +243,108 @@ class Appearance(ctk.CTkFrame):
     def changeAppearance(self, appearance):
         ctk.set_appearance_mode(appearance)
 
-    def changeColour(self, colour: str):
+    def changeColour(self, colour):
         colour = colour.casefold()
         colour = colour.replace(" ", "-")
         ctk.set_default_color_theme(colour) # currently not working
 
-class Translator(ctk.CTkFrame):
+class Languages(ctk.CTkFrame):
 
-    def __init__(self, master, entries, buttons, radiobuttons, filemenu):
+    def __init__(self, master, entries, buttons, radiobuttons):
         super().__init__(master)
+        self.place(x = 0, y = 0)
 
         self.entries = entries
         self.buttons = buttons
         self.radiobuttons = radiobuttons
+
+        self.availableLanguages = os.listdir(f"{self.master.currentDir}/translations") # Reads json file and lists
+                                                                                       # returns available languages
+        self.availableLanguages = [item.replace(".json", "") for item in self.availableLanguages] # Removes .json
+
+        self.langCodesPath = os.path.join(self.master.currentDir, "langCodes.json")
+        with open (self.langCodesPath, "r") as langCodesFile:
+            self.langCodes = json.load(langCodesFile) # Finds language codes and returns dictionary
+
+        self.translationsPath = os.path.join(self.master.currentDir, "translations") # Path to access 
+                                                                                     # .json translations from
+
+        self.currentLangDb = {}
+        with open (f"{self.translationsPath}/English.json", "r") as baseLang: 
+            self.currentLangDb = json.loads(baseLang.read())
+
+        self.langOptionsMaker()
+        self.langOptionsPlacer()
+
+    def addFileMenu(self, filemenu):
         self.filemenu = filemenu
 
-    def langOptionsMaker(func):
-        def wrapper():
-            pass
+    def langOptionsMaker(self):
+        self.langOptions = ctk.CTkOptionMenu(self, values = self.availableLanguages, 
+                                              command = self.switchLang)
+        self.langOptions.set("English")
+        self.langOptionsLabel = ctk.CTkLabel(self, text = "Languages")
 
-        return wrapper
+    def langOptionsPlacer(self):
+        self.langOptions.grid(row = 2, column = 1)
+        self.langOptionsLabel.grid(row = 1, column = 1)
 
-    @langOptionsMaker
-    def langDbLoader():
-        pass
+    def switchLang(self, lang):
+        print(lang)
+
+class FileMenu(tk.Menu):
+    '''Filemenu structure creation with commands'''
+    def __init__(self, master, languages):
+        super().__init__(master)
+    
+        self.master = master
+        self.languages = languages
+
+        self.createFileMenu()
+
+    def restartProgram(self):
+        self.master.destroy()
+        self.program = Program("Calculator", (550, 650), "Dark", "blue", 1.0)
+        self.program.mainloop()
+
+    def createFileMenu(self):
+        # Creating main progrm menu
+        self.menu = tk.Menu(self)
+
+        # Creating file menu cascade
+        self.fileMenu = tk.Menu(self.menu)
+        self.menu.add_cascade(label = "File", menu = self.fileMenu)
+        # Creating commands within the file cascade
+        self.fileMenu.add_command(label = "Restart", command = lambda: self.restartProgram())
+        self.fileMenu.add_separator()
+        self.fileMenu.add_command(label = "Exit", command = lambda: self.master.quit())
+
+        # Creating accessibility options cascade
+        self.helpMenu = tk.Menu(self.menu)
+        self.menu.add_cascade(label = "Accessibility", menu = self.helpMenu)
+        # Creating commands within the accessibility cascade
+        self.helpMenu.add_cascade(label = "Appearance") 
+        self.helpMenu.add_cascade(label = "Theme")
+
+        # Creating font size cascade
+        self.sizeMenu = tk.Menu(self.helpMenu) 
+        self.helpMenu.add_cascade(label = "Size", menu = self.sizeMenu)  
+        # Creating commands within the font size cascade
+        self.sizeMenu.add_command(label = "Small")
+        self.sizeMenu.add_command(label = "Medium")
+        self.sizeMenu.add_command(label = "Large")
+
+        # Creating languages cascade
+        self.langMenu = tk.Menu(self.helpMenu)
+        self.helpMenu.add_cascade(label = "Languages", menu = self.langMenu)
+        # Creating commands within the languages cascade                         
+        for code, lang in self.languages.langCodes.items():
+            self.langMenu.add_command(label = lang, command = lambda code = code: 
+                                      self.languages.switchLang(code)) if lang in \
+                                      self.languages.availableLanguages else None
+
+        # Setting main menu
+        self.master.config(menu = self.menu)
 
 if __name__ == "__main__": # Allows program to only run when the file is 
                            # executed as a script, allowing for modularity and reusability
