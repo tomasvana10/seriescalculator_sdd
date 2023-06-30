@@ -34,7 +34,8 @@
     ],
     "errors": [
         "Bir istisna olu\u015ftu: ValueError - t\u00fcm alanlar\u0131n dolduruldu\u011fundan ve say\u0131sal giri\u015flere sahip oldu\u011fundan emin olun",
-        "Bir istisna meydana geldi: Ge\u00e7ersiz terim say\u0131s\u0131 - Serinin uzunlu\u011fu negatif bir say\u0131 veya 0 olamaz, l\u00fctfen uygun bir uzunluk se\u00e7in"
+        "Bir istisna meydana geldi: Ge\u00e7ersiz terim say\u0131s\u0131 - Serinin uzunlu\u011fu negatif bir say\u0131 veya 0 olamaz, l\u00fctfen uygun bir uzunluk se\u00e7in",
+        "Bir istisna meydana geldi: OverflowerRor - L\u00fctfen girilen tamsay\u0131lar\u0131n de\u011ferini azalt\u0131n"
     ],
     "filemenu": [
         "Dosya",

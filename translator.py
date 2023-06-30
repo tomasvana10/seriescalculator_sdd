@@ -19,11 +19,10 @@ translationsDb = { # Text within the program
     "appearance" : ["Appearance", "Themes", "Light", "Dark", "System", "Blue", "Green", "Dark blue"],
     "languages" : ["Languages"],
     "errors" : ["An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
-                "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative \
-                number or 0, please choose an appropriate length"],
+                "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative number or 0, please choose an appropriate length",
+                "An exception occured: OverflowError - Please reduce the value of the entered integers"],
     "filemenu" : ["File", "Restart", "Exit"], 
     "title" : ["Summing Series"]
-
 }
 
 transDict = translationsDb.copy() 
@@ -32,16 +31,19 @@ languages = googletrans.LANGUAGES
 currentDir = os.path.dirname(os.path.abspath(__file__))
 path = os.path.join(currentDir, "translations")
 
-langAcronym = "en" 
+langAcronym = "fr" 
 
 for key in translationsDb:
     for i, text in enumerate(translationsDb[key]):
         if langAcronym != "en":
-            transtext = translator.translate(translationsDb[key][i], dest = langAcronym, scr = "en")
+            transtext = translator.translate(translationsDb[key][i], dest = langAcronym, src = "en")
             transDict[key][i] = transtext.text
         else:
             transDict[key][i] = text
 
 jsonDict = json.dumps(transDict, indent = 4)
-with open(f"{path}/{langAcronym}.json", "w") as transfile: 
+lang = languages[langAcronym].title()
+lang = lang.replace(".json", "")
+
+with open(f"{path}/{lang}.json", "w") as transfile: 
     transfile.write(jsonDict)

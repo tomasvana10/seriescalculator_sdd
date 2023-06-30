@@ -33,8 +33,9 @@
         "Sprachen"
     ],
     "errors": [
-        "Eine Ausnahme aufgetreten: ValueError - Stellen Sie sicher, dass alle Felder gef\u00fcllt sind und numerische Eintr\u00e4ge haben",
-        "Eine Ausnahme trat auf: Ung\u00fcltige Anzahl von Begriffen - Die L\u00e4nge der Serie kann keine negative Zahl oder 0 sein. Bitte w\u00e4hlen Sie eine entsprechende L\u00e4nge aus"
+        "Eine Ausnahme aufgetreten: Wertfehler - Stellen Sie sicher, dass alle Felder gef\u00fcllt sind und numerische Eintr\u00e4ge haben",
+        "Eine Ausnahme trat auf: \u00dcberlauffehler - Die L\u00e4nge der Serie kann keine negative Zahl oder 0 sein. Bitte w\u00e4hlen Sie eine entsprechende L\u00e4nge aus",
+        "Eine Ausnahme auftrat: \u00dcberblowerror - Bitte reduzieren Sie den Wert der eingegebenen Ganzzahlen"
     ],
     "filemenu": [
         "Datei",

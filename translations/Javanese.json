@@ -34,7 +34,8 @@
     ],
     "errors": [
         "Pangecualian dumadi: Nilai - Mesthekake kabeh lapangan diisi lan duwe entri angka",
-        "Pangecualian dumadi: Jumlah istilah sing ora bener - dawane seri ora bisa dadi nomer negatif utawa 0, pilih dawa sing cocog"
+        "Pangecualian dumadi: Jumlah istilah sing ora bener - dawane seri ora bisa dadi nomer negatif utawa 0, pilih dawa sing cocog",
+        "Pangecualian dumadi: OverflowError - Mangga nyuda nilai integer sing mlebu"
     ],
     "filemenu": [
         "File",

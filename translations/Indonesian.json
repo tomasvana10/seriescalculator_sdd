@@ -34,7 +34,8 @@
     ],
     "errors": [
         "Pengecualian terjadi: ValueError - Pastikan semua bidang diisi dan memiliki entri numerik",
-        "Pengecualian terjadi: jumlah istilah yang tidak valid - panjang seri tidak bisa menjadi angka negatif atau 0, silakan pilih panjang yang sesuai"
+        "Pengecualian terjadi: jumlah istilah yang tidak valid - panjang seri tidak bisa menjadi angka negatif atau 0, silakan pilih panjang yang sesuai",
+        "Pengecualian terjadi: Overflowerror - Harap kurangi nilai bilangan bulat yang dimasukkan"
     ],
     "filemenu": [
         "Mengajukan",

@@ -34,7 +34,8 @@
     ],
     "errors": [
         "Pengecualian yang berlaku: ValueError - Pastikan semua bidang diisi dan mempunyai entri angka",
-        "Pengecualian berlaku: bilangan terma yang tidak sah - panjang siri tidak boleh menjadi nombor negatif atau 0, sila pilih panjang yang sesuai"
+        "Pengecualian berlaku: bilangan terma yang tidak sah - panjang siri tidak boleh menjadi nombor negatif atau 0, sila pilih panjang yang sesuai",
+        "Pengecualian yang berlaku: limpahan - sila kurangkan nilai bilangan bulat yang dimasukkan"
     ],
     "filemenu": [
         "Fail",

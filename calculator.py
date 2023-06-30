@@ -131,6 +131,7 @@ class Buttons(ctk.CTkFrame):
             "An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
             "An exception occured: InvalidNumberOfTerms - The length of the \
             series cannot be a negative number or 0, please choose an appropriate length",
+            "An exception occured: OverflowError - Please reduce the value of the entered integers",
         ]
     
         self.buttonGen()
@@ -181,8 +182,10 @@ class Buttons(ctk.CTkFrame):
                     self.output.insertText(self.sum)
     
         except Exception as ex:
-            print(f"{ex} - {type(ex).__name__}")
-            self.output.insertText(self.errors[0])
+            if type(ex).__name__ == "ValueError":
+                self.output.insertText(self.errors[0])
+            elif type(ex).__name__ == "OverflowError":
+                self.output.insertText(self.errors[2])
 
 class FontSize(ctk.CTkFrame):
     '''Font size option menu creation'''
@@ -338,9 +341,9 @@ class FileMenu(tk.Menu):
         self.langMenu = tk.Menu(self.helpMenu)
         self.helpMenu.add_cascade(label = "Languages", menu = self.langMenu)
         # Creating commands within the languages cascade                         
-        for code, lang in self.languages.langCodes.items():
-            self.langMenu.add_command(label = lang, command = lambda code = code: 
-                                      self.languages.switchLang(code)) if lang in \
+        for lang in self.languages.langCodes.values():
+            self.langMenu.add_command(label = lang, command = lambda lang = lang: 
+                                      self.languages.switchLang(lang)) if lang in \
                                       self.languages.availableLanguages else None
 
         # Setting main menu
