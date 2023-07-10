@@ -12,17 +12,17 @@ import os
 translator = Translator() # Translator instance
 
 translationsDb = { # Text within the program
-    "entries" : ["First term", "Common difference", "Common ratio", "Number of terms"],
-    "buttons" : ["Clear", "Calculate"],
+    "entries" :      ["First term", "Common difference", "Common ratio", "Number of terms"],
+    "buttons" :      ["Clear", "Calculate"],
     "radiobuttons" : ["Arithmetic Series", "Geometric Series"],
-    "fontsize" : ["Size", "Small", "Medium", "Large"],
-    "appearance" : ["Appearance", "Themes", "Light", "Dark", "System", "Blue", "Green", "Dark blue"],
-    "languages" : ["Languages"],
-    "errors" : ["An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
-                "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative number or 0, please choose an appropriate length",
-                "An exception occured: OverflowError - Please reduce the value of the entered integers"],
-    "filemenu" : ["File", "Restart", "Exit"], 
-    "title" : ["Summing Series"]
+    "fontsize" :     ["Size", "Small", "Medium", "Large"],
+    "appearance" :   ["Appearance", "Themes", "Light", "Dark", "System", "Blue", "Green", "Dark blue"],
+    "languages" :    ["Languages"],
+    "errors" :       ["An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
+                      "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative number or 0, please choose an appropriate length",
+                      "An exception occured: OverflowError - Please reduce the value of the entered integers"],
+    "filemenu" :     ["File", "Restart", "Exit"], 
+    "title" :        ["Summing Series"]
 }
 
 transDict = translationsDb.copy() 
