@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Muda wa kwanza",
+        "Tofauti ya kawaida",
+        "Uwiano wa kawaida",
+        "Idadi ya maneno"
+    ],
+    "buttons": [
+        "Wazi",
+        "Mahesabu"
+    ],
+    "radiobuttons": [
+        "Mfululizo wa hesabu",
+        "Mfululizo wa Jiometri"
+    ],
+    "fontsize": [
+        "Saizi",
+        "Ndogo",
+        "Kati",
+        "Kubwa"
+    ],
+    "appearance": [
+        "Mwonekano",
+        "Mada",
+        "Mwanga",
+        "Giza",
+        "Mfumo",
+        "Bluu",
+        "Kijani",
+        "Bluu ya giza"
+    ],
+    "languages": [
+        "Lugha"
+    ],
+    "errors": [
+        "Isipokuwa iliyotokea: Thamani ya Thamani - Hakikisha shamba zote zimejazwa na zina viingilio vya nambari",
+        "Isipokuwa ilitokea: Idadi batili ya Masharti - Urefu wa safu hauwezi kuwa nambari hasi au 0, tafadhali chagua urefu unaofaa",
+        "Isipokuwa imetokea: overflowerror - tafadhali punguza thamani ya nambari zilizoingizwa"
+    ],
+    "filemenu": [
+        "Faili",
+        "Anzisha tena",
+        "Utg\u00e5ng"
+    ],
+    "title": [
+        "Mfululizo wa muhtasari"
+    ],
+    "langloader": [
+        "Tafsiri",
+        "Mpango tayari umewekwa",
+        "haipatikani, au data yake ya JSON imeundwa vibaya"
+    ]
+}

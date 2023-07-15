@@ -291,7 +291,7 @@ class Appearance(ctk.CTkFrame):
         elif self.appearances.index(ap) == 1:
             self.appearance = "Dark"
         elif self.appearances.index(ap) == 2:
-            self.appearance = "System"
+            self.appearance = "system"
         ctk.set_appearance_mode(self.appearance)
 
     def changeTheme(self, col):
@@ -437,7 +437,7 @@ class Languages(ctk.CTkFrame):
         
     def langLoader(self, lang):
         if self.loadedLangTuple[0] == lang:
-            tk.messagebox.showinfo(title = "Translator", message = f"Program is already set to {lang}.")
+            tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], message = f"{self.currentLangDb['langloader'][1]} {lang}")
             return
 
         if not any(langTuple[0] == lang for langTuple in self.loadedLanguages):
@@ -450,8 +450,8 @@ class Languages(ctk.CTkFrame):
                     self.currentLangDb = self.loadedLangTuple[1] # Only assigns dictionary part of tuple to currentLangDb
             
             except json.decoder.JSONDecodeError:
-                tk.messagebox.showinfo(title = "Translator", message = f"{lang} is either not available, or\
-                                       it's json data is formatted incorrectly.")
+                tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], message = f"{lang} {self.currentLangDb['langloader'][2]}")
+                self.langOptions.set(self.loadedLangTuple[0]) # Change optionmenu selection back to the current language
 
         else:
             # Switch database to already loaded language
@@ -467,7 +467,7 @@ class Languages(ctk.CTkFrame):
         self.groupedValues = [values[0], values[2:5]], [values[1], values[5:]]
         rawLangDb["appearance"] = self.groupedValues
 
-        return (lang, rawLangDb)   
+        return (lang, rawLangDb) # Assigned to the variable loadedLangTuple 
 
 if __name__ == "__main__": # Allows program to only run when the file is 
                            # executed as a script, allowing for modularity and reusability

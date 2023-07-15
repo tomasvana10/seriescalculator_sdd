@@ -44,5 +44,10 @@
     ],
     "title": [
         "\u6c42\u548c\u7cfb\u5217"
+    ],
+    "langloader": [
+        "\u7ffb\u8b6f",
+        "\u7a0b\u5e8f\u5df2\u7d93\u8a2d\u7f6e\u70ba",
+        "\u662f\u5426\u53ef\u7528\uff0c\u6216\u8005\u5176JSON\u6578\u64da\u683c\u5f0f\u4e0d\u6b63\u78ba"
     ]
 }

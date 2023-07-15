@@ -44,5 +44,10 @@
     ],
     "title": [
         "Seri Simpul"
+    ],
+    "langloader": [
+        "Menerjemahkan",
+        "Program sudah diatur ke",
+        "tidak tersedia, atau data JSON diformat secara tidak benar"
     ]
 }

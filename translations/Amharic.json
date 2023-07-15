@@ -1,23 +1,23 @@
 {
     "entries": [
-        "First term",
-        "Common difference",
-        "Common ratio",
-        "Number of terms"
+        "\u12e8\u1218\u1300\u1218\u122a\u12eb \u1243\u120d",
+        "\u12e8\u1270\u1208\u1218\u12f0 \u120d\u12e9\u1290\u1275",
+        "\u12e8\u1270\u1208\u1218\u12f0\u12cd \u12cd\u12f5\u122d",
+        "\u12e8\u12a0\u1308\u120d\u130d\u120e\u1275 \u1265\u12db\u1275"
     ],
     "buttons": [
-        "Clear",
-        "Calculate"
+        "\u121b\u133d\u12f3\u1275",
+        "\u12a0\u1235\u120b"
     ],
     "radiobuttons": [
-        "Arithmetic Series",
-        "Geometric Series"
+        "\u12e8\u1240\u12f5\u121e\u12cd \u1270\u12a8\u1273\u1273\u12ed",
+        "\u12e8\u1302\u12a6\u121c\u1275\u122a\u12ad \u1270\u12a8\u1273\u1273\u12ed"
     ],
     "fontsize": [
-        "Size",
-        "Small",
-        "Medium",
-        "Large"
+        "\u1218\u1320\u1295",
+        "\u1275\u1295\u123d",
+        "\u1218\u12ab\u12a8\u1208\u129b",
+        "\u1275\u120d\u1245"
     ],
     "appearance": [
         "Appearance",
@@ -46,7 +46,7 @@
         "Summing Series"
     ],
     "langloader": [
-        "Translate",
+        "Translator",
         "Program is already set to",
         "is either not available, or its JSON data is formatted incorrectly"
     ]

@@ -44,5 +44,10 @@
     ],
     "title": [
         "Siri penjumlahan"
+    ],
+    "langloader": [
+        "Terjemahkan",
+        "Program sudah ditetapkan ke",
+        "sama ada tidak tersedia, atau data JSONnya diformat dengan tidak betul"
     ]
 }

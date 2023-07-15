@@ -44,5 +44,10 @@
     ],
     "title": [
         "Seri Siri"
+    ],
+    "langloader": [
+        "Translate",
+        "Program wis disetel menyang",
+        "salah siji ora kasedhiya, utawa data JSON sing diformat ora bener"
     ]
 }

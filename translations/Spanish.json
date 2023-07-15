@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Primer periodo",
+        "Diferencia com\u00fan",
+        "Raz\u00f3n com\u00fan",
+        "N\u00famero de t\u00e9rminos"
+    ],
+    "buttons": [
+        "N\u00famero de t\u00e9rminos",
+        "Calcular"
+    ],
+    "radiobuttons": [
+        "Serie aritm\u00e9tica",
+        "Series geom\u00e9tricas"
+    ],
+    "fontsize": [
+        "Tama\u00f1o",
+        "Peque\u00f1o",
+        "Medio",
+        "Grande"
+    ],
+    "appearance": [
+        "Apariencia",
+        "Temas",
+        "Luz",
+        "Luz",
+        "Sistema",
+        "Azul",
+        "Verde",
+        "Azul oscuro"
+    ],
+    "languages": [
+        "Lenguas"
+    ],
+    "errors": [
+        "Una excepci\u00f3n ocurrida: ValueError: aseg\u00farese de que todos los campos se llenen y tengan entradas num\u00e9ricas",
+        "Se produjo una excepci\u00f3n: n\u00famero no v\u00e1lido de t\u00e9rminos: la longitud de la serie no puede ser un n\u00famero negativo o 0, elija una longitud apropiada",
+        "Una excepci\u00f3n ocurrida: Overflowerror: reduzca el valor de los enteros ingresados"
+    ],
+    "filemenu": [
+        "Archivo",
+        "Reanudar",
+        "Salida"
+    ],
+    "title": [
+        "Serie de suming"
+    ],
+    "langloader": [
+        "Traducir",
+        "El programa ya est\u00e1 configurado en",
+        "no est\u00e1 disponible o sus datos JSON est\u00e1n formateados incorrectamente"
+    ]
+}
