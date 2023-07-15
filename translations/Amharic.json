@@ -20,34 +20,34 @@
         "\u1275\u120d\u1245"
     ],
     "appearance": [
-        "Appearance",
-        "Themes",
-        "Light",
-        "Dark",
-        "System",
-        "Blue",
-        "Green",
-        "Dark blue"
+        "\u1218\u120d\u12ad",
+        "\u1308\u133d\u1273\u12ce\u127d",
+        "\u1265\u122d\u1203\u1295",
+        "\u1328\u1208\u121b",
+        "\u1235\u122d\u12d3\u1275",
+        "\u1230\u121b\u12eb\u12ca",
+        "\u12a0\u1228\u1295\u1313\u12f4",
+        "\u1325\u1241\u122d \u1230\u121b\u12eb\u12ca"
     ],
     "languages": [
-        "Languages"
+        "\u124b\u1295\u124b\u12ce\u127d"
     ],
     "errors": [
-        "An exception occured: ValueError - Ensure all fields are filled and have numeric entries",
-        "An exception occured: InvalidNumberOfTerms - The length of the series cannot be a negative number or 0, please choose an appropriate length",
-        "An exception occured: OverflowError - Please reduce the value of the entered integers"
+        "\u1208\u12e8\u1275 \u12eb\u1208 \u12f5\u130d\u130d\u121e\u123d - \u12a0\u12a8\u122d\u12ab\u122a - \u1201\u1209\u121d \u1218\u1235\u12ae\u127d \u12e8\u1270\u121e\u1209 \u12a5\u1293 \u1241\u1325\u122b\u12ca \u130d\u1264\u1276\u127d \u12a5\u1295\u12f2\u1296\u1229 \u1218\u1296\u122b\u1278\u12cd\u1295 \u12eb\u1228\u130b\u130d\u1321",
+        "\u1208\u12e8\u1275 \u12eb\u1208 \u1290\u1308\u122d \u1270\u12a8\u1235\u1277\u120d-\u120d\u12ad \u12eb\u120d\u1206\u1290 \u12e8\u12a0\u1308\u120d\u130d\u120e\u1275 \u1265\u12db\u1275 - \u12e8\u1270\u12a8\u1273\u1273\u12ed \u122d\u12dd\u1218\u1275 \u12a0\u1209\u1273\u12ca \u1241\u1325\u122d \u12c8\u12ed\u121d 0 \u120a\u1206\u1295 \u12a0\u12ed\u127d\u120d\u121d, \u12a5\u1263\u12ad\u12ce\u1295 \u1270\u1308\u1262\u12cd\u1295 \u122d\u12dd\u1218\u1275 \u12ed\u121d\u1228\u1321",
+        "\u1208\u12e8\u1275 \u12eb\u1208 \u1201\u1294\u1273 \u1270\u12a8\u1235\u1277\u120d-\u12a8\u1218\u1320\u1295 \u1260\u120b\u12ed \u1218\u1270\u120b\u1208\u134a\u12eb\u12ce\u127d - \u12a5\u1263\u12ad\u12ce \u12e8\u1308\u1263\u12cd\u1295 \u12e8\u1308\u1263\u12cd\u1295 \u12e8 Intergerers \u12cb\u130b\u1295 \u12ed\u1240\u1295\u1231"
     ],
     "filemenu": [
-        "File",
-        "Restart",
-        "Exit"
+        "\u134b\u12ed\u120d",
+        "\u12a5\u1295\u12f0\u1308\u1293 \u1300\u121d\u122d",
+        "\u12cd\u1323"
     ],
     "title": [
-        "Summing Series"
+        "\u12e8\u1270\u12a8\u1273\u1273\u12ed \u1270\u12a8\u1273\u1273\u12ed"
     ],
     "langloader": [
-        "Translator",
-        "Program is already set to",
-        "is either not available, or its JSON data is formatted incorrectly"
+        "\u1218\u1270\u122d\u130e\u121d",
+        "\u1218\u122d\u1203\u130d\u1265\u1229 \u1240\u12f5\u121e\u12cd\u1291 \u1270\u12d8\u130b\u1305\u1277\u120d",
+        "\u12c8\u12ed\u121d \u12e8\u1304\u1230\u1295 \u1218\u1228\u1303 \u1260\u1270\u1233\u1233\u1270 \u1218\u1295\u1308\u12f5 \u12a0\u12ed\u1240\u122d\u121d"
     ]
 }
