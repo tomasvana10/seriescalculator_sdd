@@ -1,7 +1,7 @@
 # seriescalculator_sdd [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/tomasvana10/seriescalculator_sdd/main/LICENSE.md)
  Calculator GUI that provides solutions for arithmetic and geometric series using the **CustomTkinter** module<br>
  Made as a learning project for the Preliminary Software Design and Development course
- - Download zip: [click here](https://github.com/tomasvana10/calculator_sdd/archive/refs/heads/main.zip)
+ - Download zip: [click here](https://github.com/tomasvana10/seriescalculator_sdd/archive/refs/heads/main.zip)
 
  ## Dependencies
  - `customtkinter==0.3` (installed with pip)<br>
@@ -9,7 +9,7 @@
  
  ## Steps to running the program
  Once pip is installed on your computer, follow these steps:
- - Run this command in your terminal to clone the repository: `git clone https://github.com/tomasvana10/calculator_sdd.git`
+ - Run this command in your terminal to clone the repository: `git clone https://github.com/tomasvana10/seriescalculator_sdd.git`
  - Copy the path of the repository on your computer and run `cd [path]`
  - Install the dependencies by running `pip install -r requirements.txt`. Ensure you type -r
  - Run the program: `python3 seriescalculator.py`
