@@ -60,7 +60,7 @@ class Program(ctk.CTk):
     
     def restartProgram(self, theme = "blue"):
         self.destroy()
-        self.program = Program("Calculator", (700, 580), "System", theme, 1.0)
+        self.program = Program("Summing Series", (700, 580), "System", theme, 1.0)
         self.program.mainloop()
 
 class Entries(ctk.CTkFrame):
