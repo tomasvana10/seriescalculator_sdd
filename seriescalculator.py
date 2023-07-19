@@ -3,23 +3,30 @@ import tkinter.messagebox
 import customtkinter as ctk
 import json
 import os
+from configparser import ConfigParser
 
 class Program(ctk.CTk):
     '''Main Program Window'''
-    def __init__(self, title, size, appearance, theme, scale): 
+    def __init__(self, title, size): 
         super().__init__()
+        # Providing program directory for assistance to child classes
+        self.currentDir = os.path.dirname(os.path.abspath(__file__)) 
+
+        self.cfg = ConfigParser() # Allows program to edit config file
+        self.cfg.read(f"{self.currentDir}/config.ini")
 
         '''Default program configuration'''
         self.title(title)
         self.geometry(f"{size[0]}x{size[1]}")
         self.maxsize(size[0], size[1])
-        ctk.set_appearance_mode(appearance)
-        ctk.set_default_color_theme(theme)
-        ctk.set_widget_scaling(scale)
+        ctk.set_appearance_mode(self.cfg.get("Main", "appearance"))
+        ctk.set_default_color_theme(self.cfg.get("Main", "theme"))
+        ctk.set_widget_scaling(self.cfg.getfloat("Main", "scale"))
 
-        # Providing program directory for assistance to child classes
-        self.currentDir = os.path.dirname(os.path.abspath(__file__)) 
+        self.frameGen()
+        self.classInst()
 
+    def frameGen(self):
         '''Frames'''
         self.mainFrame = ctk.CTkFrame(self)
         self.mainFrame.pack(fill = tk.BOTH, expand = True)
@@ -42,6 +49,7 @@ class Program(ctk.CTk):
                                        font = ctk.CTkFont(size = 23, weight = "bold"))
         self.titleLabel.grid(row = 1, column = 1, padx = 20)
 
+    def classInst(self):
         '''Widget Classes'''
         self.entries = Entries(self, self.calcFrame) 
         self.output = Output(self, self.calcFrame)
@@ -54,32 +62,46 @@ class Program(ctk.CTk):
         '''Accessibility Classes'''
         self.fontsize = FontSize(self, self.sidebarFrame)
         self.appearance = Appearance(self, self.sidebarFrame)
-        self.languages = Languages(self, self.sidebarFrame, self.entries, 
-                                   self.buttons, self.radiobuttons, self.fontsize, 
-                                   self.appearance, self.filemenu)
+        self.languages = Languages(self, self.sidebarFrame, self.entries, self.buttons, 
+                                   self.radiobuttons, self.fontsize, self.appearance, self.filemenu)
+        self.languages.switchLang(self.cfg.get("Main", "language"))
     
-    def restartProgram(self, theme = "blue"):
+    def configUpdater(self, scale = False, appearance = False, theme = False, language = False):
+        self.cfg.read(f"{self.currentDir}/config.ini")
+        if scale:
+            self.cfg["Main"]["scale"] = str(scale)
+        if appearance:
+            self.cfg["Main"]["appearance"] = appearance
+        if theme:
+            self.cfg["Main"]["theme"] = theme
+        if language:
+            self.cfg["Main"]["language"] = language
+        
+        with open(f"{self.currentDir}/config.ini", "w") as f:
+            self.cfg.write(f)
+
+    def restartProgram(self):
         self.destroy()
-        self.program = Program("Summing Series", (700, 580), "System", theme, 1.0)
+        self.program = Program("Summing Series", (700, 580)) 
         self.program.mainloop()
 
+
 class Entries(ctk.CTkFrame):
-    '''Entry creation and related functions'''
+    '''Entry creation and gridding and clear entry function'''
     def __init__(self, master, calcframe): 
-        super().__init__(calcframe) # Ensures proper inheritance
+        super().__init__(calcframe) # All widgets are gridded in a frame, which is gridded onto calcframe
         self.grid(row = 2, column = 1, sticky = "e")
 
-        self.placeholderText = ["Common difference", "Common ratio"] # Just for second entry as it is regularly reconfigured
+        self.placeholderText = ["Common difference", "Common ratio"] # Modified by translator which then 
+                                                                     # calls placeholderSwitcher()
 
         self.entryGen() 
-        self.entryPlacer()
 
-    def entryGen(self): # Widget creation
+    def entryGen(self): 
         self.firstTerm = ctk.CTkEntry(self, placeholder_text = "First term") 
         self.commonDifference = ctk.CTkEntry(self, placeholder_text = "Common difference")
         self.numberOfTerms = ctk.CTkEntry(self, placeholder_text = "Number of terms")
-        
-    def entryPlacer(self): # Placing widgets
+
         self.firstTerm.grid(row = 1, column = 1)
         self.commonDifference.grid(row = 2, column = 1, pady = 10)
         self.numberOfTerms.grid(row = 3, column = 1)
@@ -93,41 +115,43 @@ class Entries(ctk.CTkFrame):
                             # becoming editable (focusing on main CTk() instance)
 
     def clearEntries(self): 
-        if self.firstTerm.get() != "":
+        if self.firstTerm.get() != "": # Entries are only cleared if there is a string of length > 0
+                                       # Prevents clearing placeholder text
             self.firstTerm.delete(0, ctk.END)
         if self.commonDifference.get() != "":
             self.commonDifference.delete(0, ctk.END)
         if self.numberOfTerms.get() != "":
             self.numberOfTerms.delete(0, ctk.END)
-        self.master.focus()
+        self.master.focus() # Same concept in placeholderSwitcher()
+
 
 class Output(ctk.CTkFrame):
-    '''Text box creation and insertion of result'''
+    '''Text box creation and gridding and text insertion function'''
     def __init__(self, master, calcframe):
         super().__init__(calcframe)
         self.grid(row = 3, column = 1, columnspan = 2, sticky = "n", padx = 10, 
                   pady = (10, 30))
+        self.grid_columnconfigure(1, weight=1)  
+        self.grid_rowconfigure(1, weight=1) 
 
         self.outputGen()
-        self.outputPlacer()
 
     def outputGen(self):
         self.sumOutput = ctk.CTkTextbox(self, state = "disabled", width = 300, 
-                                        height = 200, wrap = tk.WORD) # Only allows copying of text, not entry or deletion
+                                        height = 200, wrap = tk.WORD) # Only allows copying of 
+                                                                      # text, not entry or deletion
 
-    def outputPlacer(self):
         self.sumOutput.grid(row=1, column=1)
-        self.grid_columnconfigure(1, weight=1)  
-        self.grid_rowconfigure(1, weight=1)  
     
     def insertText(self, text):
         self.sumOutput.configure(state = "normal") # Enable text entry
         self.sumOutput.delete(1.0, tk.END) 
         self.sumOutput.insert(1.0, text) # Insert text
-        self.sumOutput.configure(state = "disabled")
+        self.sumOutput.configure(state = "disabled") # Disable text entry
+
 
 class Radiobuttons(ctk.CTkFrame):
-    '''Radiobutton creation'''
+    '''Radiobutton creation and gridding'''
     def __init__(self, master, calcframe, entries):
         super().__init__(calcframe)
         self.grid(row = 1, column = 1, columnspan = 2, pady = (55, 20), sticky = "s")
@@ -135,21 +159,22 @@ class Radiobuttons(ctk.CTkFrame):
         self.entries = entries
 
         self.radioButtonGen()
-        self.radioButtonPlacer()
 
     def radioButtonGen(self):
-        self.selection = tk.IntVar(value = 1) # Set radiobutton selection to Arithmetic Series
+        self.selection = tk.IntVar(value = 1) # Default value (Arithmetic Series)
         self.arithButton = ctk.CTkRadioButton(self, text = "Arithmetic Series", variable = self.selection, 
-                                              value = 1, command = lambda: self.entries.placeholderSwitcher(1))
+                                              value = 1, command = lambda: 
+                                              self.entries.placeholderSwitcher(1))
         self.geomButton = ctk.CTkRadioButton(self, text = "Geometric Series", variable = self.selection, 
-                                             value = 2, command = lambda: self.entries.placeholderSwitcher(2))
+                                             value = 2, command = lambda: 
+                                             self.entries.placeholderSwitcher(2))
         
-    def radioButtonPlacer(self):
         self.arithButton.grid(row = 1, column = 1, padx = (0, 10))
         self.geomButton.grid(row = 1, column = 2)
 
+
 class Buttons(ctk.CTkFrame):
-    '''Button creation, clear and calculate functions and error handling'''
+    '''Button creation and gridding, clear and calculate functions and error handling'''
     def __init__(self, master, calcframe, entries, radiobuttons, output):
         super().__init__(calcframe)
         self.grid(row = 2, column = 2, padx = (20, 0), sticky = "w")
@@ -166,13 +191,11 @@ class Buttons(ctk.CTkFrame):
         ]
     
         self.buttonGen()
-        self.buttonPlacer()
         
     def buttonGen(self):
         self.clearButton = ctk.CTkButton(self, text = "Clear", command = self.clear)
         self.calculateButton = ctk.CTkButton(self, text = "Calculate", command = self.calculate)
-    
-    def buttonPlacer(self):
+
         self.clearButton.grid(row = 1, column = 1, pady = (0, 10))
         self.calculateButton.grid(row = 2, column = 1)
     
@@ -194,8 +217,8 @@ class Buttons(ctk.CTkFrame):
                     self.output.insertText(self.errors[1])
 
                 else:
-                    self.sum = (self.numberOfTerms / 2) * (2 * self.firstTerm + \
-                                                           (self.numberOfTerms - 1) * self.commonDiffOrRatio)
+                    self.sum = (self.numberOfTerms / 2) * (2 * self.firstTerm + (self.numberOfTerms - 1) * \
+                                                           self.commonDiffOrRatio)
                     self.output.insertText(self.sum)
                 
             elif self.seqType == 2: # Geometric Series
@@ -207,8 +230,8 @@ class Buttons(ctk.CTkFrame):
                         self.sum = self.firstTerm * self.numberOfTerms
 
                     else:
-                        self.sum = self.firstTerm * (1 - self.commonDiffOrRatio \
-                                                     ** self.numberOfTerms) / (1 - self.commonDiffOrRatio)
+                        self.sum = self.firstTerm * (1 - self.commonDiffOrRatio ** self.numberOfTerms) / \
+                                                    (1 - self.commonDiffOrRatio)
 
                     self.output.insertText(self.sum)
     
@@ -218,99 +241,82 @@ class Buttons(ctk.CTkFrame):
             elif type(ex).__name__ == "OverflowError":
                 self.output.insertText(self.errors[2])
 
+
 class FontSize(ctk.CTkFrame):
     '''Font size option menu creation'''
     def __init__(self, master, sidebarframe):
         super().__init__(sidebarframe)
         self.grid(row = 2, column = 1)
 
+        self.master = master
+
         self.sizes = ["Small", "Medium", "Large"]
 
         self.fontOptionsMaker()
-        self.fontOptionsPlacer()
     
     def fontOptionsMaker(self):
         self.fontOptions = ctk.CTkOptionMenu(self, values = self.sizes, 
                                              command = self.changeScale)
         self.fontOptionsLabel = ctk.CTkLabel(self, text = "Size")
-        self.fontOptions.set("Medium")
-    
-    def fontOptionsPlacer(self):
+
+        # Default values from config.ini
+        self.scaleFloat = float(self.master.cfg.get("Main", "scale"))
+        self.scaleStr = "Small" if self.scaleFloat == 0.7 else \
+        "Medium" if self.scaleFloat == 1.0 else "Large"
+        self.fontOptions.set(self.scaleStr)
+
         self.fontOptions.grid(row = 2, column = 1)
         self.fontOptionsLabel.grid(row = 1, column = 1)
     
-    def changeScale(self, size):
-        if self.sizes.index(size) == 0:
-            self.scale = 0.7
-        elif self.sizes.index(size) == 1:
-            self.scale = 1.0
-        elif self.sizes.index(size) == 2:
-            self.scale = 1.3
-        ctk.set_widget_scaling(self.scale)
+    def changeScale(self, choice):
+        self.scaleChoice = 0.7 if self.sizes.index(choice) == 0 else \
+        1.0 if self.sizes.index(choice) == 1 else 1.3
+        ctk.set_widget_scaling(self.scaleChoice)
+        self.master.configUpdater(scale = self.scaleChoice)
 
-    def changeLangEvent(self):
-        self.fontOptions.configure(values = self.sizes)
-        self.fontOptions.set(self.sizes[1])
-        self.changeScale(self.sizes[1])
 
 class Appearance(ctk.CTkFrame):
     '''Options to change appearance and colour themes'''
     def __init__(self, master, sidebarframe):
         super().__init__(sidebarframe)
         self.grid(row = 3, column = 1)
-
+        
         self.master = master
 
-        self.appearances = ["Light", "Dark", "System"]
-        self.themes = ["Blue", "Green", "Dark blue"]
+        self.appearances = ["light", "dark", "system"]
+        self.themes =      ["blue", "green", "dark-blue"]
 
         self.appearanceOptionsMaker()
-        self.appearanceOptionsPlacer()
 
     def appearanceOptionsMaker(self):
         self.appearanceOptions = ctk.CTkOptionMenu(self, values = self.appearances, 
                                                    command = self.changeAppearance)
-        self.appearanceOptions.set("System")
         self.themeOptions = ctk.CTkOptionMenu(self, values = self.themes, 
                                               command = self.changeTheme)
-        self.themeOptions.set("Blue")
-        self.appearanceOptionsLabel = ctk.CTkLabel(self, text = "Appearance")
-        self.themeOptionsLabel = ctk.CTkLabel(self, text = "Themes")
+        self.appearanceOptionsLabel = ctk.CTkLabel(self)
+        self.themeOptionsLabel = ctk.CTkLabel(self)
         
-    def appearanceOptionsPlacer(self):
+        # Default values from config.ini
+        self.appearanceOptions.set(self.master.cfg.get("Main", "appearance"))
+        self.themeOptions.set(self.master.cfg.get("Main", "theme"))
+
         self.appearanceOptions.grid(row = 2, column = 1)
         self.themeOptions.grid(row = 4, column = 1)
         self.appearanceOptionsLabel.grid(row = 1, column = 1)
         self.themeOptionsLabel.grid(row = 3, column = 1)
 
-    def changeAppearance(self, ap): 
-        # These functions are lengthy as you can't change the program's appearance with
-        # other languages, so instead, list indexes are compared
-        if self.appearances.index(ap) == 0:
-            self.appearance = "Light"
-        elif self.appearances.index(ap) == 1:
-            self.appearance = "Dark"
-        elif self.appearances.index(ap) == 2:
-            self.appearance = "system"
-        ctk.set_appearance_mode(self.appearance)
+    def changeAppearance(self, choice): 
+        self.appearanceChoice = "light" if self.appearances.index(choice) == 0 else \
+        "dark" if self.appearances.index(choice) == 1 else "system"
+        ctk.set_appearance_mode(self.appearanceChoice)
+        self.master.configUpdater(appearance = self.appearanceChoice)
 
-    def changeTheme(self, col):
-        if self.themes.index(col) == 0:
-            self.colour = "blue"
-        elif self.themes.index(col) == 1:
-            self.colour = "green"
-        elif self.themes.index(col) == 2:
-            self.colour = "dark-blue"
-        self.master.restartProgram(self.colour)
+    def changeTheme(self, choice):
+        self.themeChoice = "blue" if self.themes.index(choice)== 0 else \
+        "green" if self.themes.index(choice) == 1 else "dark-blue"
+        self.master.configUpdater(theme = self.themeChoice)
+        self.master.restartProgram()
 
-    def changeLangEvent(self):
-        self.appearanceOptions.configure(values = self.appearances)
-        self.appearanceOptions.set(self.appearances[2])
-        ctk.set_appearance_mode("System")
-
-        self.themeOptions.configure(values = self.themes)
-        self.themeOptions.set(self.themes[0])
-        ctk.set_appearance_mode("Blue")
 
 class FileMenu(tk.Menu):
     '''Filemenu structure creation with commands'''
@@ -338,6 +344,7 @@ class FileMenu(tk.Menu):
         # Setting main menu
         self.master.config(menu = self.menu)
 
+
 class Languages(ctk.CTkFrame):
     '''Loads language jsons and switches widget text'''
     def __init__(self, master, sidebarframe, entries, buttons, radiobuttons, fontsize, appearance, filemenu):
@@ -353,91 +360,91 @@ class Languages(ctk.CTkFrame):
         self.filemenu = filemenu
 
         self.translationsPath = os.path.join(self.master.currentDir, "translations") 
-
         self.currentLangDb = {} # Stores text of current language and it's relation to widget variables
-
-        self.loadedLanguages = [] # Stores loaded language dictionaries in tuple form; ("lang", langDb)
-
+        self.loadedLanguages = [] # Stores loaded language dictionaries in tuple form; ("langname", langDb)
         self.loadedLangTuple = ("",) # Must be created outside of switchLang(). Aids to detect if
                                      # user is switching to same language
 
         self.langOptionsMaker() 
-        self.langOptionsPlacer()
-
-        self.switchLang("English") 
 
     def langOptionsMaker(self):
         self.availableLanguages = os.listdir(self.translationsPath) # Reads json file and returns a list of available languages
         self.availableLanguages = [jsonFile.replace(".json", "") for jsonFile in self.availableLanguages]
         self.availableLanguages = sorted(self.availableLanguages) 
         # Available languages look like this: ["English", "Spanish", "French"]
-
         self.langOptions = ctk.CTkOptionMenu(self, values = self.availableLanguages, 
                                               command = self.switchLang)
-        self.langOptions.set("English")
         self.langOptionsLabel = ctk.CTkLabel(self, text = "Languages")
-
-    def langOptionsPlacer(self):
         self.langOptions.grid(row = 2, column = 1)
         self.langOptionsLabel.grid(row = 1, column = 1)
 
     def switchLang(self, lang):
-        self.langLoader(lang) # Sets new currentLangDb
+        self.langLoader(lang) 
 
-        # Switching entry placeholder text
+        '''Entries'''
         self.entries.firstTerm.configure(placeholder_text = self.currentLangDb["entries"][0])
         self.entries.placeholderText[0] = self.currentLangDb["entries"][1][0]
         self.entries.placeholderText[1] = self.currentLangDb["entries"][1][1]
         self.entries.placeholderSwitcher(self.radiobuttons.selection.get())
         self.entries.numberOfTerms.configure(placeholder_text = self.currentLangDb["entries"][2])
 
-        # Switching button text
+        '''Buttons'''
         self.buttons.clearButton.configure(text = self.currentLangDb["buttons"][0])
         self.buttons.calculateButton.configure(text = self.currentLangDb["buttons"][1])
 
-        # Switching radiobutton text
+        '''Radiobuttons'''
         self.radiobuttons.arithButton.configure(text = self.currentLangDb["radiobuttons"][0])
         self.radiobuttons.geomButton.configure(text = self.currentLangDb["radiobuttons"][1])
 
-        # Switching font size options text
+        '''Fontsize optionbox and label'''
         self.fontsize.fontOptionsLabel.configure(text = self.currentLangDb["fontsize"][0])
-        for i, option in enumerate(self.fontsize.sizes):
+        # Remembers prior selection and sets option display to that selection but in the new language
+        self.sizeIndex = self.fontsize.sizes.index(self.fontsize.fontOptions.get())
+        for i, _ in enumerate(self.fontsize.sizes):
             self.fontsize.sizes[i] = self.currentLangDb["fontsize"][1][i]
-        self.fontsize.changeLangEvent()
+        self.fontsize.fontOptions.configure(values = self.fontsize.sizes)
+        self.fontsize.fontOptions.set(self.fontsize.sizes[self.sizeIndex])
 
-        # Switching appearance options text
+        '''Appearance optionbox and label'''
         self.appearance.appearanceOptionsLabel.configure(text = self.currentLangDb["appearance"][0][0])
-        for i, option in enumerate(self.appearance.appearances):
+        self.appearanceIndex = self.appearance.appearances.index(self.appearance.appearanceOptions.get())
+        for i, _ in enumerate(self.appearance.appearances):
             self.appearance.appearances[i] = self.currentLangDb["appearance"][0][1][i]
+        self.appearance.appearanceOptions.configure(values = self.appearance.appearances)
+        self.appearance.appearanceOptions.set(self.appearance.appearances[self.appearanceIndex])
         
         self.appearance.themeOptionsLabel.configure(text = self.currentLangDb["appearance"][1][0])
-        for i, option in enumerate(self.appearance.themes):
+        self.themeIndex = self.appearance.themes.index(self.appearance.themeOptions.get())
+        for i, _ in enumerate(self.appearance.themes):
             self.appearance.themes[i] = self.currentLangDb["appearance"][1][1][i]
-        self.appearance.changeLangEvent()
+        self.appearance.themeOptions.configure(values = self.appearance.themes)
+        self.appearance.themeOptions.set(self.appearance.themes[self.themeIndex])
 
-        # Switching language options text
+        '''Language optionbox and label'''
         self.langOptionsLabel.configure(text = self.currentLangDb["languages"][0])
+        self.langOptions.set(self.master.cfg.get("Main", "language"))
 
-        # Switching error text
-        for i, error in enumerate(self.buttons.errors):
+        '''Error text'''
+        for i, _ in enumerate(self.buttons.errors):
             self.buttons.errors[i] = self.currentLangDb["errors"][i]
-        self.buttons.calculate()
+        self.buttons.calculate() 
 
-        # Switching file menu text
+        '''Filemenu'''
         self.filemenu.menu.entryconfigure(self.filemenu.menuLabels[0], label = self.currentLangDb["filemenu"][0])
         self.filemenu.fileMenu.entryconfigure(self.filemenu.menuLabels[1], label = self.currentLangDb["filemenu"][1])
         self.filemenu.fileMenu.entryconfigure(self.filemenu.menuLabels[2], label = self.currentLangDb["filemenu"][2])
-        for i, menuLabel in enumerate(self.filemenu.menuLabels):
+        for i, _ in enumerate(self.filemenu.menuLabels):
             self.filemenu.menuLabels[i] = self.currentLangDb["filemenu"][i]
 
-        # Switching title text
+        '''Title and title label'''
         self.master.title(self.currentLangDb["title"][0])
-        # and title label text
         self.master.titleLabel.configure(text = self.currentLangDb["title"][0])
         
     def langLoader(self, lang):
+        # If language is already set to the language being switched to
         if self.loadedLangTuple[0] == lang:
-            tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], message = f"{self.currentLangDb['langloader'][1]} {lang}")
+            tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], 
+                                   message = f"{self.currentLangDb['langloader'][1]} {lang}")
             return
 
         if not any(langTuple[0] == lang for langTuple in self.loadedLanguages):
@@ -445,19 +452,25 @@ class Languages(ctk.CTkFrame):
             try:
                 with open(f"{self.translationsPath}/{lang.title()}.json", "r") as f: 
                     rawLangDb = json.load(f)
-                    self.loadedLangTuple = self.langDbConfigurer(lang, rawLangDb) # Returns ("lang", lang dictionary)
+                    self.loadedLangTuple = self.langDbConfigurer(lang, rawLangDb) # Returns ("lang", 
+                                                                                  # lang dictionary)
                     self.loadedLanguages.append(self.loadedLangTuple) 
-                    self.currentLangDb = self.loadedLangTuple[1] # Only assigns dictionary part of tuple to currentLangDb
+                    self.currentLangDb = self.loadedLangTuple[1] # Only assigns dictionary part of 
+                                                                 # tuple to currentLangDb
+                    self.master.configUpdater(language = self.loadedLangTuple[0])
             
             except json.decoder.JSONDecodeError:
-                tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], message = f"{lang} {self.currentLangDb['langloader'][2]}")
-                self.langOptions.set(self.loadedLangTuple[0]) # Change optionmenu selection back to the current language
+                tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], 
+                                       message = f"{lang} {self.currentLangDb['langloader'][2]}")
+                self.langOptions.set(self.loadedLangTuple[0]) # Change optionmenu selection back to
+                                                              # the current language
 
         else:
             # Switch database to already loaded language
             self.loadedLangTuple = [langTuple for langTuple in self.loadedLanguages if langTuple[0] == lang]
             self.currentLangDb = self.loadedLangTuple[0][1]
-                
+            self.master.configUpdater(language = self.loadedLangTuple[0])
+
     def langDbConfigurer(self, lang, rawLangDb):
         rawLangDb["entries"][1:3] = [rawLangDb["entries"][1:3]] # Group index 1 and 2 into single list
         
@@ -471,5 +484,5 @@ class Languages(ctk.CTkFrame):
 
 if __name__ == "__main__": # Allows program to only run when the file is 
                            # executed as a script, allowing for modularity and reusability
-    program = Program("Summing Series", (700, 580), "System", "blue", 1.0) 
+    program = Program("Summing Series", (700, 580)) 
     program.mainloop() 

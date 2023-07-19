@@ -84,6 +84,10 @@ def updateAll():
 
 def jsonWriter(lang):
     jsonFile = os.path.join(path, f"{lang}.json")
+    
+    if not os.path.exists(jsonFile):
+        open(f"{path}/{lang}.json", "x")
+
     if os.path.getsize(jsonFile) > 0:
         print(f"Data appears to already exist in {lang}.json. You might want to try updating it instead.")
         return
@@ -108,7 +112,7 @@ def jsonWriter(lang):
 
         with open(f"{path}/{lang}.json", "w") as f: 
             f.write(newJsonDict)
-    
+            
     print(f"{lang} translations are complete")
 
 def onStart():

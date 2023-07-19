@@ -1,0 +1,68 @@
+{
+    "entries": [
+        "\u00c9ischt K\u00e9ier",
+        "Gemeinsame \u00cbnnerscheed",
+        "Allgemeng Verh\u00e4ltnis",
+        "Zuel vun den Konditioune vum Konditioune"
+    ],
+    "buttons": [
+        "Liichten",
+        "R\u00e9cen"
+    ],
+    "radiobuttons": [
+        "Arithmetesch Serie",
+        "Geometresch Serie"
+    ],
+    "fontsize": [
+        "Gr\u00e9isst",
+        "Klengen",
+        "M\u00ebttelm\u00e9isseg",
+        "Grouss"
+    ],
+    "appearance": [
+        "Ergesetzung",
+        "Themen",
+        "Liicht",
+        "Donkidn",
+        "System de System",
+        "Blo",
+        "Gr\u00e9ng",
+        "Donkelblo"
+    ],
+    "languages": [
+        "Sprooch S\u00e9cherheet"
+    ],
+    "errors": [
+        "Eng Ausnahm geschitt: W\u00e4erterror - Gitt all Felder si gef\u00ebllt an hunn numeresch Entr\u00e9en",
+        "Eng Ausnam ass geschitt: Ong\u00eblteg Zuel vu Begr\u00ebffer - d'L\u00e4ngt vun der Serie kann net eng negativ Zuel oder 0 sinn, wielt w.e.g. eng passend L\u00e4ngt",
+        "Eng Ausnam ass geschitt: Iwwerflowerror - rufft w.e.g. de W\u00e4ert vun der kommenderem ganzer Zuelen"
+    ],
+    "filemenu": [
+        "Fiernn\u00e9ieren",
+        "Neistart",
+        "Stonneplang"
+    ],
+    "title": [
+        "Summing Serie"
+    ],
+    "langloader": [
+        "Iwwersetzen",
+        "Programm ass scho gesat",
+        "ass entweder net verf\u00fcgbar, oder seng JSON Date format\u00e9iert ass falsch"
+    ],
+    "customthemes": [
+        "Anhracit",
+        "Schendung",
+        "Geescht Zuch",
+        "Grieferen",
+        "Greyghost",
+        "Hades",
+        "Harleyqunnn",
+        "Moonelitsky",
+        "Neonbanana",
+        "Nuecht",
+        "Oceanix",
+        "Testecard",
+        "Trojanblue"
+    ]
+}
