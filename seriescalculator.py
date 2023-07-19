@@ -75,7 +75,7 @@ class Program(ctk.CTk):
         if theme:
             self.cfg["Main"]["theme"] = theme
         if language:
-            self.cfg["Main"]["language"] = language
+            self.cfg["Main"]["language"] = str(language)
         
         with open(f"{self.currentDir}/config.ini", "w") as f:
             self.cfg.write(f)
