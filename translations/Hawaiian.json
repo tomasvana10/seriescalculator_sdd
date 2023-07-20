@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Hua'\u014dlelo mua",
+        "\u02bbOko\u02bba\u02bboko\u02bba",
+        "\u02bbAno ma\u02bbamau",
+        "Ka helu o n\u0101 hua'\u014dlelo"
+    ],
+    "buttons": [
+        "Maopopo",
+        "Ke helu nei"
+    ],
+    "radiobuttons": [
+        "\u02bbO ka hui Arithmetic",
+        "Ka Waihona Goetric Fuetetric"
+    ],
+    "fontsize": [
+        "Nui",
+        "Li\u02bbili\u02bbi",
+        "K\u016bpono",
+        "Nui"
+    ],
+    "appearance": [
+        "Helehelena",
+        "N\u0101 muli loa",
+        "M\u0101m\u0101",
+        "P\u014d\u02bbele",
+        "'\u014cnaehana'\u014dnaehana",
+        "Pol\u016b",
+        "\u02bb\u014dma\u02bboma\u02bbo",
+        "Uliuli uliuli"
+    ],
+    "languages": [
+        "'\u014clelo"
+    ],
+    "errors": [
+        "Ua loa\u02bba kahi mea'\u0113 a\u02bbe: waiwai waiwai - e h\u014d\u02bboia i n\u0101 mahina \u0101pau e ho\u02bbopiha a loa\u02bba i n\u0101 helu helu helu",
+        "Ua loa\u02bba kahi\u02bboko\u02bba: Ka helu hewa\u02bbole o n\u0101 hua'\u014dlelo",
+        "\u02bbO kahi mea'\u0113 a\u02bbe"
+    ],
+    "filemenu": [
+        "K\u014dkuhi",
+        "Ho\u02bbomaka\u02bbia",
+        "Ke puka nei"
+    ],
+    "title": [
+        "Summing series"
+    ],
+    "langloader": [
+        "Unuhi MOOLE",
+        "Ua ho\u02bbonohonoho\u02bbia ka papahana",
+        "\u02bba\u02bbole i loa\u02bba\u02bbole, a i\u02bbole he helu\u02bbole\u02bbia kona data JSON"
+    ]
+}

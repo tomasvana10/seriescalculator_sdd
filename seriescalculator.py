@@ -12,8 +12,8 @@ class Program(ctk.CTk):
         # Providing program directory for assistance to child classes
         self.currentDir = os.path.dirname(os.path.abspath(__file__)) 
 
-        self.cfg = ConfigParser() # Allows program to edit config file
-        self.cfg.read(f"{self.currentDir}/config.ini")
+        self.cfg = ConfigParser() 
+        self.cfg.read(f"{self.currentDir}/config.ini") # Allows program to edit config
 
         '''Default program configuration'''
         self.title(title)
@@ -98,9 +98,9 @@ class Entries(ctk.CTkFrame):
         self.entryGen() 
 
     def entryGen(self): 
-        self.firstTerm = ctk.CTkEntry(self, placeholder_text = "First term") 
-        self.commonDifference = ctk.CTkEntry(self, placeholder_text = "Common difference")
-        self.numberOfTerms = ctk.CTkEntry(self, placeholder_text = "Number of terms")
+        self.firstTerm = ctk.CTkEntry(self) 
+        self.commonDifference = ctk.CTkEntry(self)
+        self.numberOfTerms = ctk.CTkEntry(self)
 
         self.firstTerm.grid(row = 1, column = 1)
         self.commonDifference.grid(row = 2, column = 1, pady = 10)
@@ -162,13 +162,11 @@ class Radiobuttons(ctk.CTkFrame):
 
     def radioButtonGen(self):
         self.selection = tk.IntVar(value = 1) # Default value (Arithmetic Series)
-        self.arithButton = ctk.CTkRadioButton(self, text = "Arithmetic Series", variable = self.selection, 
-                                              value = 1, command = lambda: 
-                                              self.entries.placeholderSwitcher(1))
-        self.geomButton = ctk.CTkRadioButton(self, text = "Geometric Series", variable = self.selection, 
-                                             value = 2, command = lambda: 
-                                             self.entries.placeholderSwitcher(2))
-        
+        self.arithButton = ctk.CTkRadioButton(self, variable = self.selection, value = 1, 
+                                              command = lambda: self.entries.placeholderSwitcher(1))
+        self.geomButton = ctk.CTkRadioButton(self, variable = self.selection, value = 2, 
+                                             command = lambda: self.entries.placeholderSwitcher(2))
+    
         self.arithButton.grid(row = 1, column = 1, padx = (0, 10))
         self.geomButton.grid(row = 1, column = 2)
 
@@ -193,8 +191,8 @@ class Buttons(ctk.CTkFrame):
         self.buttonGen()
         
     def buttonGen(self):
-        self.clearButton = ctk.CTkButton(self, text = "Clear", command = self.clear)
-        self.calculateButton = ctk.CTkButton(self, text = "Calculate", command = self.calculate)
+        self.clearButton = ctk.CTkButton(self, command = self.clear)
+        self.calculateButton = ctk.CTkButton(self, command = self.calculate)
 
         self.clearButton.grid(row = 1, column = 1, pady = (0, 10))
         self.calculateButton.grid(row = 2, column = 1)
@@ -257,7 +255,7 @@ class FontSize(ctk.CTkFrame):
     def fontOptionsMaker(self):
         self.fontOptions = ctk.CTkOptionMenu(self, values = self.sizes, 
                                              command = self.changeScale)
-        self.fontOptionsLabel = ctk.CTkLabel(self, text = "Size")
+        self.fontOptionsLabel = ctk.CTkLabel(self)
 
         # Default values from config.ini
         self.scaleFloat = float(self.master.cfg.get("Main", "scale"))
@@ -481,6 +479,7 @@ class Languages(ctk.CTkFrame):
         rawLangDb["appearance"] = self.groupedValues
 
         return (lang, rawLangDb) # Assigned to the variable loadedLangTuple 
+
 
 if __name__ == "__main__": # Allows program to only run when the file is 
                            # executed as a script, allowing for modularity and reusability

@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Primus terminus",
+        "Differentia",
+        "Commune Ratio",
+        "Numerum terminorum"
+    ],
+    "buttons": [
+        "Liquido",
+        "Computo"
+    ],
+    "radiobuttons": [
+        "Arithmetica series",
+        "Geometrica series"
+    ],
+    "fontsize": [
+        "Magnitudo",
+        "Parvus",
+        "Medium",
+        "Magna"
+    ],
+    "appearance": [
+        "Species",
+        "Themata",
+        "lux",
+        "Tenebrosus",
+        "Ratio",
+        "caeruleum",
+        "Viride",
+        "Caerula"
+    ],
+    "languages": [
+        "Linguae"
+    ],
+    "errors": [
+        "Exceptio Occurritur: ValueError - ensure omnes agros repleti et numerorum entries",
+        "Exceptio occurrit: Aliquam numerus terminorum - longitudinem seriei non esse negativus numero vel 0, velit eligere convenientem longitudinem",
+        "Exceptio Occurrit: Flumenerror - Placere redigendum de valore ad ingressi integri"
+    ],
+    "filemenu": [
+        "Lima",
+        "Sileo",
+        "Exitus"
+    ],
+    "title": [
+        "Series"
+    ],
+    "langloader": [
+        "Transfero",
+        "Program iam set est",
+        "est vel non available, aut suum JSON data est formatted male"
+    ]
+}

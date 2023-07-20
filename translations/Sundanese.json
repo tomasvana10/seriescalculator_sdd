@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Istilah munggaran",
+        "B\u00e9dana",
+        "Bantuan",
+        "Jumlah istilah"
+    ],
+    "buttons": [
+        "Jelas",
+        "Ngitung"
+    ],
+    "radiobuttons": [
+        "S\u00e9ri aritmetika",
+        "S\u00e9ri geometri"
+    ],
+    "fontsize": [
+        "Ukuran",
+        "Leutik",
+        "Sedeng",
+        "Gede"
+    ],
+    "appearance": [
+        "Katingali",
+        "Tema",
+        "Cahaya",
+        "Poek",
+        "Sistem",
+        "Biru",
+        "Hejo",
+        "Biru kolot"
+    ],
+    "languages": [
+        "Bilata"
+    ],
+    "errors": [
+        "Kacuali kajantenan: Nonton - mastikeun sadayana widang anu dieusi sareng gaduh \u00e9ntri numerik",
+        "Pangecualian kajantenan: Jumlah Sarat Intan - panjang s\u00e9ri henteu tiasa janten nomer n\u00e9gatip atanapi 0, punten pilih panjang",
+        "Kacuali kajantenan: Gajan Gancang - Punten ngirangan nilai anu diasupkeun"
+    ],
+    "filemenu": [
+        "File",
+        "Uihan deui",
+        "Kaluar"
+    ],
+    "title": [
+        "Sasarkeun s\u00e9ri"
+    ],
+    "langloader": [
+        "Narjamahkeun",
+        "Program parantos diatur",
+        "boh henteu sayogi, atanapi data JSON na dilarapkeun leres"
+    ]
+}

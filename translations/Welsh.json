@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Tymor Cyntaf",
+        "Gwahaniaeth cyffredin",
+        "Gymhareb Gyffredin",
+        "Nifer y Telerau"
+    ],
+    "buttons": [
+        "Gliria \u2019",
+        "Clandret"
+    ],
+    "radiobuttons": [
+        "Cyfres Rhifyddeg",
+        "Cyfres Geometrig"
+    ],
+    "fontsize": [
+        "Maint",
+        "Bach",
+        "Nghanolig",
+        "Fawr"
+    ],
+    "appearance": [
+        "Ymddangosiad",
+        "Them\u00e2u",
+        "Henynned",
+        "Dywyllaf",
+        "System",
+        "Glas",
+        "Wyrddach",
+        "Glas tywyll"
+    ],
+    "languages": [
+        "Ieithoedd"
+    ],
+    "errors": [
+        "Eithriad a Ddigwyddir: valueError - Sicrhewch fod yr holl gaeau'n cael eu llenwi a chael cofnodion rhifol",
+        "Digwyddodd eithriad: Nifer annilys o dermau - ni all hyd y gyfres fod yn rhif negyddol neu 0, dewiswch hyd priodol",
+        "Digwyddodd eithriad: gorlifo - gostyngwch werth y cyfanrifau a gofnodwyd"
+    ],
+    "filemenu": [
+        "Rhathellem",
+        "Ail-ddechrau",
+        "Allanfa"
+    ],
+    "title": [
+        "Cyfres Crynhoi"
+    ],
+    "langloader": [
+        "Gyfieithith",
+        "Mae'r rhaglen eisoes wedi'i gosod i",
+        "naill ai ddim ar gael, neu mae ei ddata JSON wedi'i fformatio'n anghywir"
+    ]
+}

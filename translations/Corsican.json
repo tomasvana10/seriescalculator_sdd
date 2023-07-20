@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Primu terminu",
+        "Differenza cumuna",
+        "Ratio cumunu",
+        "N\u00f9meru di termini"
+    ],
+    "buttons": [
+        "Chjara",
+        "Calcallu"
+    ],
+    "radiobuttons": [
+        "Serie aritmetica",
+        "Serie geometrica"
+    ],
+    "fontsize": [
+        "Dimensione",
+        "Picculu",
+        "MEDIUM",
+        "Grande"
+    ],
+    "appearance": [
+        "Apparenza",
+        "Temi",
+        "Luce",
+        "DARCA",
+        "Sistema",
+        "Turchinu",
+        "Verde",
+        "Blu scuru"
+    ],
+    "languages": [
+        "Lingue"
+    ],
+    "errors": [
+        "Una eccezzioni ch\u00ec h\u00e8 accaduta: ValoreError - assicur\u00e0 ch\u00ec tutti i campi s\u00f2 chjusi \u00e8 av\u00e8 entrate numeriche",
+        "Un eccezzioni h\u00e8 accadutu: Numeru di Termini Invalidu - A durata di a serie \u00f9n p\u00f2 esse un numeru negativu o 0, per piac\u00e8 sceglite una lunghezza adatta",
+        "Una eccezzioni h\u00e8 accaduta: overflowerror - per piac\u00e8 riduce u valore di i numeri interi inseriti"
+    ],
+    "filemenu": [
+        "File",
+        "Ristartate",
+        "Surtita"
+    ],
+    "title": [
+        "Serie Summing"
+    ],
+    "langloader": [
+        "Traduci",
+        "U prugramma h\u00e8 digi\u00e0 stabilitu",
+        "h\u00e8 o micca dispunibule, o i so dati JSON h\u00e8 formattatu sbagliatu"
+    ]
+}

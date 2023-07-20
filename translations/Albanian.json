@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Termi i par\u00eb",
+        "Ndryshimi i zakonsh\u00ebm",
+        "Raport i p\u00ebrbashk\u00ebt",
+        "Numri i termave"
+    ],
+    "buttons": [
+        "Qart\u00eb",
+        "Llogaris"
+    ],
+    "radiobuttons": [
+        "Serial",
+        "Seri gjeometrike"
+    ],
+    "fontsize": [
+        "Madh\u00ebsi",
+        "I vog\u00ebl",
+        "Mesatare",
+        "I gjer\u00eb"
+    ],
+    "appearance": [
+        "Pamje",
+        "Tema",
+        "I ndezur",
+        "I err\u00ebt",
+        "Sistem",
+        "Blu",
+        "I gjelb\u00ebr",
+        "BLU e erret"
+    ],
+    "languages": [
+        "Gjuh\u00eb"
+    ],
+    "errors": [
+        "Ka ndodhur nj\u00eb p\u00ebrjashtim: ValueError - Sigurohuni q\u00eb t\u00eb gjitha fushat t\u00eb mbushen dhe t\u00eb ken\u00eb sh\u00ebnime numerike",
+        "Ndodhi nj\u00eb p\u00ebrjashtim: Numri i pavlefsh\u00ebm i termave - Gjat\u00ebsia e seris\u00eb nuk mund t\u00eb jet\u00eb nj\u00eb num\u00ebr negativ ose 0, ju lutemi zgjidhni nj\u00eb gjat\u00ebsi t\u00eb p\u00ebrshtatshme",
+        "Ka ndodhur nj\u00eb p\u00ebrjashtim: OverflowerRor - Ju lutemi zvog\u00ebloni vler\u00ebn e numrave t\u00eb plot\u00eb t\u00eb futur"
+    ],
+    "filemenu": [
+        "Dosje",
+        "Rifillo, fillo p\u00ebrs\u00ebri",
+        "Dalje"
+    ],
+    "title": [
+        "Seri p\u00ebrmbledh\u00ebse"
+    ],
+    "langloader": [
+        "P\u00ebrkthej",
+        "Programi \u00ebsht\u00eb vendosur tashm\u00eb n\u00eb",
+        "ose nuk \u00ebsht\u00eb n\u00eb dispozicion, ose t\u00eb dh\u00ebnat e saj JSON jan\u00eb formatuar gabimisht"
+    ]
+}

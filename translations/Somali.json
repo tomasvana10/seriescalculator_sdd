@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Ereyga koowaad",
+        "Kala duwanaanshaha guud",
+        "Saamiga guud",
+        "Tirada ereyada"
+    ],
+    "buttons": [
+        "Waadixin ah",
+        "Xisaabin"
+    ],
+    "radiobuttons": [
+        "Tijaabo Arithetic ah",
+        "Taxanaha joomatari"
+    ],
+    "fontsize": [
+        "Weynaan",
+        "Yar",
+        "Heer dhexe ah",
+        "Weyn"
+    ],
+    "appearance": [
+        "Muuqashada",
+        "Mowduucyada",
+        "Iftiin",
+        "Mugdi ah",
+        "Nidaam",
+        "Buluug",
+        "Cagaar",
+        "Buluug madow"
+    ],
+    "languages": [
+        "Luuqadaha"
+    ],
+    "errors": [
+        "Waxa ka reeban Dhacdooyinka: Qiimeerror - Hubinta in dhammaan beeraha ay buuxsameen oo ay leeyihiin soo-galitaan lambar ah",
+        "Ka-reebitaan ayaa dhacay: Tiro aan sax ahayn oo ah shuruudaha - dhererka taxanaha ayaa noqon kara tiro taban ama 0, fadlan dooro dherer ku habboon",
+        "Waxaa ka reeban inuu dhaco: Dulsaarro - Fadlan yaree qiimaha isugeynta soo gashay"
+    ],
+    "filemenu": [
+        "Fayl",
+        "Dib u bilow",
+        "Bixitaan"
+    ],
+    "title": [
+        "Soo koobid taxanaha"
+    ],
+    "langloader": [
+        "Tarjumid",
+        "Barnaamij ayaa horey loo dhigay",
+        "ma aha mid la heli karo, ama xogta JSON waxaa loo qaabeeyey si qalad ah"
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "F\u00f6rsta terminen",
+        "Vanlig skillnad",
+        "Vanlig f\u00f6rh\u00e5llande",
+        "Antal villkor"
+    ],
+    "buttons": [
+        "Klar",
+        "Ber\u00e4kna"
+    ],
+    "radiobuttons": [
+        "Aritmetisk serie",
+        "Geometrisk serie"
+    ],
+    "fontsize": [
+        "Storlek",
+        "Sm\u00e5",
+        "Medium",
+        "Stor"
+    ],
+    "appearance": [
+        "Utseende",
+        "Teman",
+        "Ljus",
+        "M\u00f6rk",
+        "Systemet",
+        "Bl\u00e5",
+        "Gr\u00f6n",
+        "M\u00f6rkbl\u00e5"
+    ],
+    "languages": [
+        "spr\u00e5k"
+    ],
+    "errors": [
+        "Ett undantag intr\u00e4ffade: ValueError - Se till att alla f\u00e4lt \u00e4r fyllda och har numeriska poster",
+        "Ett undantag intr\u00e4ffade: ogiltigt antal termer - seriens l\u00e4ngd kan inte vara ett negativt antal eller 0, v\u00e4lj en l\u00e4mplig l\u00e4ngd",
+        "Ett undantag intr\u00e4ffade: OverflowerRor - Minska v\u00e4rdet p\u00e5 de inmatade heltalen"
+    ],
+    "filemenu": [
+        "Fil",
+        "Omstart",
+        "Utg\u00e5ng"
+    ],
+    "title": [
+        "Summeringsserien"
+    ],
+    "langloader": [
+        "\u00d6vers\u00e4tt",
+        "Programmet \u00e4r redan inst\u00e4llt p\u00e5",
+        "\u00e4r antingen inte tillg\u00e4nglig, eller dess JSON -data formateras felaktigt"
+    ]
+}

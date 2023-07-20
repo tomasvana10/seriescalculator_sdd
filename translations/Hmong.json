@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Thawj lub sij hawm",
+        "Ib Yam Sib Txawv",
+        "Cov Piv Txwv Sib Tw",
+        "Tus naj npawb ntawm cov ntsiab lus"
+    ],
+    "buttons": [
+        "Meej",
+        "Suav"
+    ],
+    "radiobuttons": [
+        "Arithmetic Series",
+        "Kev soj xyuas cov series"
+    ],
+    "fontsize": [
+        "Qhov loj",
+        "Me",
+        "Nruab nrab",
+        "Loj"
+    ],
+    "appearance": [
+        "Kev tshwm sim",
+        "Tus ntxhais",
+        "Qho kaj",
+        "Tsaus ntuj",
+        "Txoj hau kev",
+        "Xim xiav",
+        "Xim ntsuab",
+        "Tsaus xiav"
+    ],
+    "languages": [
+        "Yam lus"
+    ],
+    "errors": [
+        "Qhov zam tau tshwm sim: Tus neeg muaj nuj nqi - xyuas kom txhua daim teb muaj thiab muaj cov lej nkag",
+        "Qhov kev zam tau tshwm sim: Cov lus tsis raug ntawm cov ntsiab lus - qhov ntev ntawm lub koob tsis tuaj yeem yog tus lej tsis zoo lossis 0, thov xaiv qhov ntev",
+        "Qhov kev zam tau tshwm sim: overflowerror - thov txo tus nqi ntawm cov lej nkag mus"
+    ],
+    "filemenu": [
+        "Rab kem",
+        "Rov ua dua",
+        "Tawm"
+    ],
+    "title": [
+        "Summing Series"
+    ],
+    "langloader": [
+        "Txhais lus",
+        "Program twb tau teev rau",
+        "yog ib qho tsis muaj, lossis nws JSON cov ntaub ntawv yog tsim tsis raug"
+    ]
+}

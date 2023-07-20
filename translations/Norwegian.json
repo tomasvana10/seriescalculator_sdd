@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "F\u00f8rste termin",
+        "Vanlig forskjell",
+        "Vanlig forhold",
+        "Antall vilk\u00e5r"
+    ],
+    "buttons": [
+        "Klar",
+        "Regne ut"
+    ],
+    "radiobuttons": [
+        "Aritmetiske serier",
+        "Geometrisk serie"
+    ],
+    "fontsize": [
+        "St\u00f8rrelse",
+        "Liten",
+        "Medium",
+        "Stor"
+    ],
+    "appearance": [
+        "Utseende",
+        "Temaer",
+        "Lys",
+        "M\u00f8rk",
+        "System",
+        "Bl\u00e5",
+        "Gr\u00f8nn",
+        "M\u00f8rke bl\u00e5"
+    ],
+    "languages": [
+        "Spr\u00e5k"
+    ],
+    "errors": [
+        "Et unntak oppst\u00e5tt: ValueError - Forsikre deg om at alle felt er fylt og har numeriske oppf\u00f8ringer",
+        "Et unntak skjedde: Ugyldig antall begreper - lengden p\u00e5 serien kan ikke v\u00e6re et negativt tall eller 0, velg en passende lengde",
+        "Et unntak oppstod: Overflowerror - Reduser verdien av de angitte heltallene"
+    ],
+    "filemenu": [
+        "Fil",
+        "Omstart",
+        "Exit"
+    ],
+    "title": [
+        "Summingserier"
+    ],
+    "langloader": [
+        "Oversette",
+        "Programmet er allerede satt til",
+        "er enten ikke tilgjengelig, eller JSON -dataene er formatert feil"
+    ]
+}

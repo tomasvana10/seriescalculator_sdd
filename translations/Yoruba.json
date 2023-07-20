@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Igba ak\u1ecdk\u1ecd",
+        "Iyat\u1ecd ti o w\u1ecdp\u1ecd",
+        "Ipin ti o w\u1ecdp\u1ecd",
+        "N\u1ecdmba ti aw\u1ecdn ofin"
+    ],
+    "buttons": [
+        "Ko kuro",
+        "I\u1e63iro"
+    ],
+    "radiobuttons": [
+        "Series jara",
+        "Seometirika l\u1eb9s\u1eb9s\u1eb9"
+    ],
+    "fontsize": [
+        "Iw\u1ecdn",
+        "Kekere",
+        "Laarin",
+        "Nla"
+    ],
+    "appearance": [
+        "Ifarahan",
+        "Aw\u1ecdn akori",
+        "Im\u1ecdl\u1eb9",
+        "Dudu",
+        "Eto",
+        "Bulu",
+        "Alaw\u1ecd ewe",
+        "Bulu dudu"
+    ],
+    "languages": [
+        "Aw\u1ecdn ede"
+    ],
+    "errors": [
+        "Iyat\u1ecd ti o waye: GIDI - rii daju pe gbogbo aw\u1ecdn aaye ti wa ni kun ati pe o ni aw\u1ecdn tit\u1eb9 sii n\u1ecdmba",
+        "Iyat\u1ecd ti waye: N\u1ecdmba ti ko wulo - ipari ti jara ko le j\u1eb9 n\u1ecdmba odi tabi 0, j\u1ecdw\u1ecd yan gigun ti o y\u1eb9",
+        "Iyat\u1ecd ti o waye: Juflowerrorr - j\u1ecdw\u1ecd dinku iye ti aw\u1ecdn odidi ti o w\u1ecdle"
+    ],
+    "filemenu": [
+        "Faili",
+        "Tun b\u1eb9r\u1eb9",
+        "Jade"
+    ],
+    "title": [
+        "Akop\u1ecd jaagi"
+    ],
+    "langloader": [
+        "Tum\u1ecd",
+        "Eto ti \u1e63eto t\u1eb9l\u1eb9 si",
+        "j\u1eb9 boya ko si, tabi data Json r\u1eb9 ni \u1ecdna ti ko t\u1ecd"
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Polelo ea pele",
+        "Phapang e tloaelehileng",
+        "Karolelano e tloaelehileng",
+        "Palo ea mantsoe"
+    ],
+    "buttons": [
+        "Hlakisa",
+        "Bala"
+    ],
+    "radiobuttons": [
+        "Li-arethmetic litoto tsa Arithmetic",
+        "Lits'oants'o tsa Geometri"
+    ],
+    "fontsize": [
+        "Boholo",
+        "Nyane",
+        "Metsi a mahareng",
+        "Kholo"
+    ],
+    "appearance": [
+        "Ponahalo",
+        "Lihlooho tsa litaba",
+        "Leseli",
+        "Lefifi",
+        "Sistimi",
+        "Blue",
+        "Botala",
+        "Boputsoa bo lefifi"
+    ],
+    "languages": [
+        "Lipuo"
+    ],
+    "errors": [
+        "Mokhelo o ile oa etsahala: Molemo - netefatsa hore masimo ohle a tletse mme a na le li-acties",
+        "Mokhelo o etsahetse: Palo e sa sebetseng ea mantsoe - bolelele ba letoto ha e khone ho ba palo e mpe kapa 0, ka kopo khetha bolelele bo loketseng",
+        "Mokhelo o ile oa etsahala: Overflowraror - ka kopo fokotsa boleng ba linomoro tse kentsoeng"
+    ],
+    "filemenu": [
+        "Faele",
+        "Qala hape",
+        "Etsoa"
+    ],
+    "title": [
+        "Ho akaretsa letoto la kakaretso"
+    ],
+    "langloader": [
+        "Translate",
+        "Lenaneo le se le ntse le hlophisitsoe ho",
+        "ha e fumanehe, kapa data ea eona ea JS JS e hlophisitsoe ka nepo"
+    ]
+}

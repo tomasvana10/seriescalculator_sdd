@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Term\u00ea yekem",
+        "C\u00fbdahiya hevbe\u015f",
+        "R\u00eajeya hevbe\u015f",
+        "Hejmara \u015fertan"
+    ],
+    "buttons": [
+        "Zelal",
+        "Hesabkirin"
+    ],
+    "radiobuttons": [
+        "Series Arithmetic",
+        "Series Geometric"
+    ],
+    "fontsize": [
+        "Mezinay\u00ee",
+        "Bi\u00e7\u00fbk",
+        "Medya",
+        "Mezin"
+    ],
+    "appearance": [
+        "Xuyab\u00fbn\u00ee",
+        "Temas",
+        "Sivik",
+        "Tar\u00ee",
+        "S\u00eestem",
+        "\u015e\u00een",
+        "Kesk",
+        "\u015e\u00een\u00ea tar\u00ee"
+    ],
+    "languages": [
+        "Ziman"
+    ],
+    "errors": [
+        "Derketinek \u00e7\u00eab\u00fb: ValueError - Pi\u015ftrast bike ku hem\u00ee zev\u00ee tije ne \u00fb navn\u00ee\u015f\u00ean hejmar\u00ee hene",
+        "Derketinek \u00e7\u00eab\u00fb: Hejmara nederbasdar - Dir\u00eajahiya r\u00eaz\u00ea nikare hejmarek ney\u00een\u00ee an 0 be, ji kerema xwe dir\u00eajahiya maq\u00fbl hilbij\u00earin",
+        "Derketinek \u00e7\u00eab\u00fb: OverflowError - Ji kerema xwe nirxa hejmar\u00ean t\u00eakeland\u00ee k\u00eam bikin"
+    ],
+    "filemenu": [
+        "Dos\u00ee",
+        "Destp\u00eakirin",
+        "Der\u00ee"
+    ],
+    "title": [
+        "Summing Series"
+    ],
+    "langloader": [
+        "Wergerandin",
+        "Bername ber\u00ea t\u00ea dan\u00een",
+        "an ne amade ye, an daneya jon\u00ean w\u00ea bi \u00e7ewt t\u00eane form kirin"
+    ]
+}

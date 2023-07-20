@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Prvi mandat",
+        "Uobi\u010dajena razlika",
+        "Zajedni\u010dki omjer",
+        "Broj pojmova"
+    ],
+    "buttons": [
+        "\u010cisto",
+        "Izra\u010dunati"
+    ],
+    "radiobuttons": [
+        "Aritmeti\u010dka serija",
+        "Geometrijska serija"
+    ],
+    "fontsize": [
+        "Veli\u010dina",
+        "Mali",
+        "Srednji",
+        "Velik"
+    ],
+    "appearance": [
+        "Izgled",
+        "Teme",
+        "Svjetlo",
+        "Tamna",
+        "Sustav",
+        "Plavi",
+        "Zelena",
+        "Tamno plava"
+    ],
+    "languages": [
+        "Jezici"
+    ],
+    "errors": [
+        "Do\u0161lo je do iznimke: ValueError - Osigurajte da su sva polja popunjena i imaju numeri\u010dke unose",
+        "Do\u0161lo je do iznimke: Neva\u017ee\u0107i broj pojmova - duljina serije ne mo\u017ee biti negativan broj ili 0, odaberite odgovaraju\u0107u duljinu",
+        "Do\u0161lo je do iznimke: Overflowerror - Molimo smanjite vrijednost unesenih cijelih brojeva"
+    ],
+    "filemenu": [
+        "Datoteka",
+        "Ponovno pokrenuti",
+        "Izlaz "
+    ],
+    "title": [
+        "Sa\u017eet serija"
+    ],
+    "langloader": [
+        "Prevedi",
+        "Program je ve\u0107 postavljen na",
+        "je ili nije dostupan, ili su njegovi JSON podaci pogre\u0161no formatirani"
+    ]
+}

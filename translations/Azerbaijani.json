@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "\u0130lk m\u00fcdd\u0259t",
+        "\u00dcmumi f\u0259rq",
+        "\u00dcmumi nisb\u0259t",
+        "\u015e\u0259rtl\u0259rin say\u0131"
+    ],
+    "buttons": [
+        "Ayd\u0131n",
+        "Hesablamaq"
+    ],
+    "radiobuttons": [
+        "Arifmetik seriya",
+        "H\u0259nd\u0259si seriya"
+    ],
+    "fontsize": [
+        "\u00d6l\u00e7\u00fc",
+        "Ki\u00e7ik",
+        "M\u00fchit",
+        "B\u00f6y\u00fck"
+    ],
+    "appearance": [
+        "G\u00f6r\u00fcn\u00fc\u015f",
+        "M\u00f6vzular",
+        "\u0130\u015f\u0131q",
+        "Qaranl\u0131q",
+        "Sistem",
+        "Mavi",
+        "Ya\u015f\u0131l",
+        "T\u00fcnd g\u00f6y"
+    ],
+    "languages": [
+        "Dil"
+    ],
+    "errors": [
+        "Bir istisna meydana g\u0259ldi: NamineError - B\u00fct\u00fcn sah\u0259l\u0259rin doldurulmas\u0131n\u0131 v\u0259 r\u0259q\u0259mli giri\u015fl\u0259rin olmas\u0131n\u0131 t\u0259min edin",
+        "\u0130stisna meydana g\u0259ldi: etibars\u0131z \u015f\u0259rtl\u0259r - Serial\u0131n uzunlu\u011fu m\u0259nfi v\u0259 ya 0 ola bilm\u0259z, uy\u011fun bir uzunluq se\u00e7in",
+        "Bir istisna meydana g\u0259ldi: h\u0259ddind\u0259n art\u0131q y\u00fckl\u0259m\u0259 - daxil edilmi\u015f tam \u0259d\u0259dl\u0259rin d\u0259y\u0259rini azald\u0131n"
+    ],
+    "filemenu": [
+        "Fayl",
+        "Yenid\u0259n ba\u015flamaq",
+        "\u00c7\u0131xmaq"
+    ],
+    "title": [
+        "Cumping seriyas\u0131"
+    ],
+    "langloader": [
+        "T\u0259rc\u00fcm\u0259 etm\u0259k",
+        "Proqram art\u0131q qurulmu\u015fdur",
+        "ya m\u00f6vcud deyil, ya da JSON m\u0259lumatlar\u0131 s\u0259hv formatlan\u0131r"
+    ]
+}

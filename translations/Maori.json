@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Te kupu tuatahi",
+        "Te rereketanga noa",
+        "Totohenga noa",
+        "Tuhinga o mua"
+    ],
+    "buttons": [
+        "Purata",
+        "Wh\u0101rite"
+    ],
+    "radiobuttons": [
+        "Raupapa arithmetic",
+        "Raupapa geometric"
+    ],
+    "fontsize": [
+        "Rahi",
+        "Iti",
+        "Kauwaka",
+        "Nui"
+    ],
+    "appearance": [
+        "Putanga",
+        "Kaupapa",
+        "Taim\u0101m\u0101",
+        "Wheuri",
+        "P\u016bnaha",
+        "Kikorangi",
+        "K\u0101k\u0101riki",
+        "Kikorangi te kikorangi"
+    ],
+    "languages": [
+        "Reo"
+    ],
+    "errors": [
+        "He mea tino nui: te lexemerror - whakarite kia whakakiia nga mara katoa, kia whai urunga nama",
+        "He mea motuhake i puta: Te maha o nga kupu - kaore e taea te roa o te raupapa, 0 ranei, tohua te roa e tika ana",
+        "He mea tino nui: Te Maurikore - Whakaitihia te uara o nga kaiwhakauru"
+    ],
+    "filemenu": [
+        "K\u014dnae",
+        "Whakaara",
+        "Putanga"
+    ],
+    "title": [
+        "Rarangi Huihuinga"
+    ],
+    "langloader": [
+        "Whakam\u0101ori",
+        "Kua whakaritea te kaupapa",
+        "kaore ano kia waatea, ko nga raraunga JSON ranei e haangai ana"
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "A 'chiad teirm",
+        "Eadar-dhealachadh cumanta",
+        "Co-mheas cumanta",
+        "\u00c0ireamh de theirmean"
+    ],
+    "buttons": [
+        "Soilleir",
+        "Obraich a-mach"
+    ],
+    "radiobuttons": [
+        "Sreath \u00e0ireamhachd",
+        "Sreath geoimeatrach"
+    ],
+    "fontsize": [
+        "Meud",
+        "Beag",
+        "Meadhanach",
+        "M\u00f2r"
+    ],
+    "appearance": [
+        "Coltas",
+        "Cuspairean",
+        "Solas",
+        "Dorcha",
+        "Siostam",
+        "Gorm",
+        "Uaine",
+        "Gorm dorcha"
+    ],
+    "languages": [
+        "C\u00e0nanan"
+    ],
+    "errors": [
+        "Eisgeachd a-rithist: Cuimhneachan - D\u00e8an cinnteach gu bheil na raointean uile air an l\u00econadh agus tha inntrigidhean ann",
+        "Thachair eisgeachd: \u00c0ireamh dhleastanais de theirmean - chan urrainn an t-sreath a bhith na \u00e0ireamh \u00e0icheil no 0, tagh Faid iomchaidh",
+        "Eisgeachd a-rithist: Toodflowerror - Feuch an lughdaich luach a 'chonnspaid a chaidh a-steach"
+    ],
+    "filemenu": [
+        "Faidhle",
+        "Ath-th\u00f2isich",
+        "F\u00e0gail"
+    ],
+    "title": [
+        "Sreath a 'chr\u00e0irn"
+    ],
+    "langloader": [
+        "Eadar-theangachadh",
+        "Pr\u00f2gram air a shuidheachadh mu thr\u00e0th",
+        "an d\u00e0rna cuid chan eil e ri fhaighinn, no tha an d\u00e0ta JSON aige air a chruth gu ce\u00e0rr"
+    ]
+}

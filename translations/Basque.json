@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Lehenengo epea",
+        "Alde arrunta",
+        "Rozio arrunta",
+        "Baldintza kopurua"
+    ],
+    "buttons": [
+        "Hustu",
+        "Kalkulatu"
+    ],
+    "radiobuttons": [
+        "Serie aritmetikoa",
+        "Multzo geometrikoak"
+    ],
+    "fontsize": [
+        "Tamaina",
+        "Txiki",
+        "Bitarte",
+        "Handi"
+    ],
+    "appearance": [
+        "Agerpen",
+        "Haibideak",
+        "Arin",
+        "Iluna",
+        "Sistema",
+        "Urdin",
+        "Berde",
+        "Urdin iluna"
+    ],
+    "languages": [
+        "Hizkuntz"
+    ],
+    "errors": [
+        "Salbuespen bat gertatu da: ValueError - Ziurtatu eremu guztiak bete eta zenbakizko sarrerak izatea",
+        "Salbuespen bat gertatu da: baldintza baliogabea - seriearen luzera ezin da zenbaki negatiboa izan edo 0, aukeratu luzera egokia",
+        "Salbuespen bat gertatu da: gainezka - Murriztu sartutako zenbaki osoen balioa"
+    ],
+    "filemenu": [
+        "Karraska",
+        "Berriro hasi",
+        "Irteera"
+    ],
+    "title": [
+        "Laburpen seriea"
+    ],
+    "langloader": [
+        "Itzuli",
+        "Programa dagoeneko ezarrita dago",
+        "ez dago erabilgarri, edo bere json datuak oker formateatu dira"
+    ]
+}

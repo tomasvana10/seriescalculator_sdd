@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Eerste term",
+        "Gemeenschappelijk verschil",
+        "Veel voorkomende verhouding",
+        "Aantal termen"
+    ],
+    "buttons": [
+        "Duidelijk",
+        "Berekenen"
+    ],
+    "radiobuttons": [
+        "Rekenkundige serie",
+        "Geometrische serie"
+    ],
+    "fontsize": [
+        "Maat",
+        "Klein",
+        "Medium",
+        "Groot"
+    ],
+    "appearance": [
+        "Verschijning",
+        "Thema's",
+        "Licht",
+        "Donker",
+        "Systeem",
+        "Blauw",
+        "Groente",
+        "Donkerblauw"
+    ],
+    "languages": [
+        "Talen"
+    ],
+    "errors": [
+        "Er is een uitzondering opgetreden: ValueError - Zorg ervoor dat alle velden worden gevuld en hebben numerieke vermeldingen",
+        "Er is een uitzondering opgetreden: ongeldig aantal termen - de lengte van de serie kan geen negatief getal of 0 zijn, kies een geschikte lengte",
+        "Er is een uitzondering opgetreden: Overblowerror - Verminder de waarde van de ingevoerde gehele getallen"
+    ],
+    "filemenu": [
+        "Bestand",
+        "Herstarten",
+        "Uitgang"
+    ],
+    "title": [
+        "SOMMING SERIE"
+    ],
+    "langloader": [
+        "Vertalen",
+        "Programma is al ingesteld op",
+        "zijn niet beschikbaar, of de JSON -gegevens zijn onjuist opgemaakt"
+    ]
+}

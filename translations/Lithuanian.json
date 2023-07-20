@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Pirmoji kadencija",
+        "Bendras skirtumas",
+        "Bendras santykis",
+        "Termin\u0173 skai\u010dius"
+    ],
+    "buttons": [
+        "Ai\u0161ku",
+        "Apskai\u010diuoti"
+    ],
+    "radiobuttons": [
+        "Aritmetin\u0117 serija",
+        "Geometrin\u0117s serijos"
+    ],
+    "fontsize": [
+        "Dydis",
+        "Ma\u017eas",
+        "Vidutinis",
+        "Didelis"
+    ],
+    "appearance": [
+        "I\u0161vaizda",
+        "Temos",
+        "Lengvas",
+        "Tamsu",
+        "Sistema",
+        "M\u0117lyna",
+        "\u017dalias",
+        "Tamsiai m\u0117lyna"
+    ],
+    "languages": [
+        "Kalbos"
+    ],
+    "errors": [
+        "I\u0161imtis \u012fvyko: \u201eValueError\u201c - \u012fsitikinkite",
+        "I\u0161imtis \u012fvyko: Neteisingas termin\u0173 skai\u010dius - serijos ilgis negali b\u016bti neigiamas skai\u010dius arba 0, pra\u0161ome pasirinkti tinkam\u0105 ilg\u012f",
+        "I\u0161imtis \u012fvyko: \u201eOverflowerRor\u201c - suma\u017einkite \u012fvest\u0173 sveik\u0173j\u0173 skai\u010di\u0173 vert\u0119"
+    ],
+    "filemenu": [
+        "Failas",
+        "Perkrauti",
+        "I\u0161va\u017eiavimas"
+    ],
+    "title": [
+        "Summing Series"
+    ],
+    "langloader": [
+        "I\u0161versti",
+        "Programa jau nustatyta",
+        "yra arba n\u0117ra, arba jo JSON duomenys yra suformatuoti neteisingai"
+    ]
+}

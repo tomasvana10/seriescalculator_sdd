@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Unua Termino",
+        "Komuna diferenco",
+        "Komuna rilatumo",
+        "Nombro de Kondi\u0109oj"
+    ],
+    "buttons": [
+        "Klara",
+        "Kalkulu"
+    ],
+    "radiobuttons": [
+        "Aritmetika serio",
+        "Geometria serio"
+    ],
+    "fontsize": [
+        "Grandeco",
+        "Malgranda",
+        "Meza",
+        "Granda"
+    ],
+    "appearance": [
+        "Aspekto",
+        "Temoj",
+        "Lumo",
+        "Malhela",
+        "Sistemo",
+        "Blua",
+        "Verda",
+        "Malhelblua"
+    ],
+    "languages": [
+        "Lingvoj"
+    ],
+    "errors": [
+        "Escepto Okazita: ValueError - Certigu, ke \u0109iuj kampoj estas plenigitaj kaj havas nombrajn enskribojn",
+        "Escepto okazis: nevalida nombro da terminoj - la longo de la serio ne povas esti negativa nombro a\u016d 0, bonvolu elekti ta\u016dgan longon",
+        "Escepto okazis: Overflowerror - Bonvolu redukti la valoron de la enigitaj entjeroj"
+    ],
+    "filemenu": [
+        "Dosiero",
+        "Rekomenci",
+        "Eliru"
+    ],
+    "title": [
+        "Resumanta Serio"
+    ],
+    "langloader": [
+        "Traduki",
+        "Programo jam estas agordita al",
+        "a\u016d ne haveblas, a\u016d \u011diaj JSON -datumoj estas formatitaj mal\u011duste"
+    ]
+}

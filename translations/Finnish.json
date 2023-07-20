@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Ensimm\u00e4inen termi",
+        "Yhteinen ero",
+        "Yhteinen suhde",
+        "Termien lukum\u00e4\u00e4r\u00e4"
+    ],
+    "buttons": [
+        "Asia selv\u00e4",
+        "Laskea"
+    ],
+    "radiobuttons": [
+        "Aritmeettinen sarja",
+        "Geometrinen sarja"
+    ],
+    "fontsize": [
+        "Koko",
+        "Pieni",
+        "Keskipitk\u00e4",
+        "Suuri"
+    ],
+    "appearance": [
+        "Ulkomuoto",
+        "Teemat",
+        "Valaistus",
+        "Tumma",
+        "J\u00e4rjestelm\u00e4",
+        "Sininen",
+        "Vihre\u00e4",
+        "Tummansininen"
+    ],
+    "languages": [
+        "Kieli (kielet"
+    ],
+    "errors": [
+        "Poikkeus tapahtui: ValueError - Varmista, ett\u00e4 kaikki kent\u00e4t ovat t\u00e4ynn\u00e4 ja niill\u00e4 on numeerisia merkint\u00f6j\u00e4",
+        "Poikkeus tapahtui: Virheellinen termien lukum\u00e4\u00e4r\u00e4 - Sarjan pituus ei voi olla negatiivinen luku tai 0, valitse sopiva pituus",
+        "Poikkeus tapahtui: Yli Flowowerror - V\u00e4henn\u00e4 sy\u00f6tettyjen kokonaislukujen arvoa"
+    ],
+    "filemenu": [
+        "Tiedosto",
+        "Uudelleenk\u00e4ynnist\u00e4\u00e4",
+        "Poistuminen"
+    ],
+    "title": [
+        "Summaussarja"
+    ],
+    "langloader": [
+        "K\u00e4\u00e4nt\u00e4\u00e4",
+        "Ohjelma on jo asetettu",
+        "ei ole joko k\u00e4ytett\u00e4viss\u00e4, tai sen JSON -tiedot on muotoiltu v\u00e4\u00e4rin"
+    ]
+}

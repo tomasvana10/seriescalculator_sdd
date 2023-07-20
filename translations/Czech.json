@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Prvn\u00ed term\u00edn",
+        "Spole\u010dn\u00fd rozd\u00edl",
+        "Spole\u010dn\u00fd pom\u011br",
+        "Po\u010det podm\u00ednek"
+    ],
+    "buttons": [
+        "Pr\u016fhledn\u00e1",
+        "Vypo\u010d\u00edtat"
+    ],
+    "radiobuttons": [
+        "Aritmetick\u00e1 \u0159ada",
+        "Geometrick\u00e1 \u0159ada"
+    ],
+    "fontsize": [
+        "Velikost",
+        "Mal\u00fd",
+        "St\u0159edn\u00ed",
+        "Velk\u00fd"
+    ],
+    "appearance": [
+        "Vzhled",
+        "T\u00e9mata",
+        "Sv\u011btlo",
+        "Temn\u00fd",
+        "Syst\u00e9m",
+        "Modr\u00fd",
+        "Zelen\u00e1",
+        "Tmav\u011b modr\u00e1"
+    ],
+    "languages": [
+        "Jazyky"
+    ],
+    "errors": [
+        "Do\u0161lo k v\u00fdjimce: ValueError - Ujist\u011bte se, \u017ee v\u0161echna pole jsou vypln\u011bna a maj\u00ed numerick\u00e9 polo\u017eky",
+        "V\u00fdjimka do\u0161lo: Neplatn\u00fd po\u010det term\u00edn\u016f - d\u00e9lka s\u00e9rie nem\u016f\u017ee b\u00fdt z\u00e1porn\u00e9 \u010d\u00edslo nebo 0, vyberte pros\u00edm vhodnou d\u00e9lku",
+        "Do\u0161lo k v\u00fdjimce: OverflowerRor - Sni\u017ete pros\u00edm hodnotu zadan\u00fdch cel\u00fdch \u010d\u00edsel"
+    ],
+    "filemenu": [
+        "Soubor",
+        "Restart",
+        "V\u00fdstup"
+    ],
+    "title": [
+        "S\u00e9rie s\u00e9rie"
+    ],
+    "langloader": [
+        "p\u0159elo\u017eit",
+        "Program je ji\u017e nastaven na",
+        "nen\u00ed bu\u010f k dispozici, nebo jeho data JSON jsou form\u00e1tov\u00e1na nespr\u00e1vn\u011b"
+    ]
+}

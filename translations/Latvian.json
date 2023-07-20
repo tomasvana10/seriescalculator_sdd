@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Pirmais termi\u0146\u0161",
+        "Bie\u017ea at\u0161\u0137ir\u012bba",
+        "Kop\u012bga attiec\u012bba",
+        "Terminu skaits"
+    ],
+    "buttons": [
+        "Noskaidrot",
+        "Apr\u0113\u0137in\u0101t"
+    ],
+    "radiobuttons": [
+        "Aritm\u0113tikas s\u0113rija",
+        "\u0122eometrisk\u0101 s\u0113rija"
+    ],
+    "fontsize": [
+        "Izm\u0113rs",
+        "Mazs",
+        "Vid\u0113js",
+        "Liels"
+    ],
+    "appearance": [
+        "Izskats",
+        "T\u0113mas",
+        "Gaisma",
+        "Tum\u0161s",
+        "Sist\u0113ma",
+        "Zils",
+        "Za\u013c\u0161",
+        "Tum\u0161i zils"
+    ],
+    "languages": [
+        "Valodas"
+    ],
+    "errors": [
+        "Notika iz\u0146\u0113mums: v\u0113rt\u012bbaError - p\u0101rliecinieties, vai visi lauki ir aizpild\u012bti un ir skaitliski ieraksti",
+        "Notika iz\u0146\u0113mums: neder\u012bgs terminu skaits - s\u0113rijas garums nevar b\u016bt negat\u012bvs skaitlis vai 0, l\u016bdzu, izv\u0113lieties atbilsto\u0161u garumu",
+        "Notika iz\u0146\u0113mums: p\u0101rpl\u016bdes - l\u016bdzu, samaziniet ievad\u012bto skait\u013cu v\u0113rt\u012bbu"
+    ],
+    "filemenu": [
+        "Fails",
+        "Restart\u0113t",
+        "Izeja"
+    ],
+    "title": [
+        "Summ\u0113\u0161anas s\u0113rija"
+    ],
+    "langloader": [
+        "Tulkot",
+        "Programma jau ir iestat\u012bta uz",
+        "vai nu nav pieejams, vai ar\u012b t\u0101 JSON dati tiek format\u0113ti nepareizi"
+    ]
+}

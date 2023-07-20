@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "C\u00e9ad dt\u00e9arma",
+        "Difr\u00edocht choiteann",
+        "C\u00f3imheas coiteann",
+        "L\u00edon na dt\u00e9arma\u00ed"
+    ],
+    "buttons": [
+        "Glan amach",
+        "R\u00edomh"
+    ],
+    "radiobuttons": [
+        "Sraith uimhr\u00edochta",
+        "Sraith geoim\u00e9adrach"
+    ],
+    "fontsize": [
+        "M\u00e9id",
+        "Beag",
+        "Mhe\u00e1n",
+        "M\u00f3r"
+    ],
+    "appearance": [
+        "Dealramh",
+        "T\u00e9ama\u00ed",
+        "L\u00e9as",
+        "Dorcha",
+        "C\u00f3ras",
+        "Faoi bhr\u00f3n",
+        "Faiche",
+        "D\u00faghorm"
+    ],
+    "languages": [
+        "Teanga"
+    ],
+    "errors": [
+        "Tharla eisceacht: ValueError - Cinntigh go bhfuil na r\u00e9ims\u00ed go l\u00e9ir l\u00edonta agus go bhfuil iontr\u00e1lacha uimhri\u00fala acu",
+        "Tharla eisceacht: l\u00edon neamhbhail\u00ed t\u00e9arma\u00ed - n\u00ed f\u00e9idir fad na sraithe a bheith ina uimhir dhi\u00faltach n\u00f3 0, roghnaigh fad cu\u00ed le do thoil",
+        "Tharla eisceacht: Overflowerror - Laghdaigh luach na sl\u00e1nuimhreacha iontr\u00e1ilte le do thoil"
+    ],
+    "filemenu": [
+        "Comhad",
+        "Tosaigh ar\u00eds",
+        "An sl\u00ed amach"
+    ],
+    "title": [
+        "Sraith achomaireachta"
+    ],
+    "langloader": [
+        "Aistrigh",
+        "T\u00e1 an cl\u00e1r socraithe cheana f\u00e9in",
+        "n\u00edl s\u00e9 ar f\u00e1il, n\u00f3 t\u00e1 a chuid sonra\u00ed JSON form\u00e1idithe go m\u00edcheart"
+    ]
+}

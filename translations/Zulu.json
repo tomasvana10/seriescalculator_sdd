@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Isikhathi sokuqala",
+        "Umehluko ojwayelekile",
+        "Isilinganiso esijwayelekile",
+        "Inani lemigomo"
+    ],
+    "buttons": [
+        "-Cwebile",
+        "Bala"
+    ],
+    "radiobuttons": [
+        "Uchungechunge lwe-Arithmetic",
+        "Uchungechunge lwejometri"
+    ],
+    "fontsize": [
+        "Ubungako",
+        "-Ncinyane",
+        "Okuphakathi",
+        "-Ningi"
+    ],
+    "appearance": [
+        "Ukubonakala",
+        "Izingqizi",
+        "-Mhlophe",
+        "-Hwelele",
+        "Indlela yokwenza",
+        "-Luhlaza okwesibhakabhaka",
+        "-Yimpatho",
+        "Umbala ohlaza ozothile"
+    ],
+    "languages": [
+        "Izilimingqi"
+    ],
+    "errors": [
+        "Kuvele okuhlukile: I-ValueErlor - Ukuqinisekisa ukuthi yonke imikhakha igcwele futhi inezinombolo ezifakiwe",
+        "Okuhlukile: Inombolo engavumelekile yemigomo - ubude bochungechunge ngeke babe nenombolo engemihle noma 0, sicela ukhethe ubude obufanele",
+        "Kuvele ngaphandle: Overflowerror - sicela unciphise inani lezinombolo ezifakiwe"
+    ],
+    "filemenu": [
+        "Ifayili",
+        "Qalanisa",
+        "Phuma"
+    ],
+    "title": [
+        "Ukufingqa uchungechunge"
+    ],
+    "langloader": [
+        "Humusha",
+        "Uhlelo seluvele luhleliwe",
+        "akutholakali, noma idatha yayo ye-json ihlelwe ngokungalungile"
+    ]
+}

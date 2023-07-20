@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Eerste termyn",
+        "Algemene verskil",
+        "Algemene verhouding",
+        "Aantal terme"
+    ],
+    "buttons": [
+        "Helder",
+        "Bereken"
+    ],
+    "radiobuttons": [
+        "Rekenkundige reekse",
+        "Geometriese reeks"
+    ],
+    "fontsize": [
+        "Grootte",
+        "Klein",
+        "Medium",
+        "Groot"
+    ],
+    "appearance": [
+        "Verskyning",
+        "Temas",
+        "Lig",
+        "Donker",
+        "Sisteem",
+        "Blou",
+        "Groen",
+        "Donkerblou"
+    ],
+    "languages": [
+        "Tale"
+    ],
+    "errors": [
+        "'N Uitsondering het voorgekom: ValueError - Sorg dat alle velde gevul is en het numeriese inskrywings",
+        "'N Uitsondering het voorgekom: Ongeldige aantal terme - die lengte van die reeks kan nie 'n negatiewe getal of 0 wees nie, kies 'n toepaslike lengte",
+        "'N Uitsondering het voorgekom: oorlewingsror - verminder die waarde van die ingevoerde heelgetalle"
+    ],
+    "filemenu": [
+        "l\u00eaer",
+        "Begin oor",
+        "Uitgaan"
+    ],
+    "title": [
+        "Opsommingsreeks"
+    ],
+    "langloader": [
+        "Vertaal",
+        "Program is reeds ingestel op",
+        "is \u00f3f nie beskikbaar nie, \u00f3f die JSON -data is verkeerd geformateer"
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Fyrsta kj\u00f6rt\u00edmabil",
+        "Algengur munur",
+        "Sameiginlegt hlutfall",
+        "Fj\u00f6ldi skilm\u00e1la"
+    ],
+    "buttons": [
+        "T\u00e6r",
+        "Reikna"
+    ],
+    "radiobuttons": [
+        "T\u00f6lur\u00f6\u00f0",
+        "Geometric Series"
+    ],
+    "fontsize": [
+        "St\u00e6r\u00f0",
+        "L\u00edti\u00f0",
+        "Mi\u00f0lungs",
+        "St\u00f3r"
+    ],
+    "appearance": [
+        "Frama",
+        "\u00deemu",
+        "Lj\u00f3s",
+        "Myrkur",
+        "Kerfi",
+        "Bl\u00e1r",
+        "Gr\u00e6nt",
+        "D\u00f6kkbl\u00e1tt"
+    ],
+    "languages": [
+        "Tungum\u00e1l"
+    ],
+    "errors": [
+        "Undantekning \u00e1tti s\u00e9r sta\u00f0: ValueError - Gakktu \u00far skugga um a\u00f0 allir reitir s\u00e9u fylltir og hafi t\u00f6lulegar f\u00e6rslur",
+        "Undantekning \u00e1tti s\u00e9r sta\u00f0: \u00d3gildur fj\u00f6ldi skilm\u00e1la - Lengd ser\u00edunnar getur ekki veri\u00f0 neikv\u00e6\u00f0 tala e\u00f0a 0, vinsamlegast veldu vi\u00f0eigandi lengd",
+        "Undantekning \u00e1tti s\u00e9r sta\u00f0: Overflowerror - Vinsamlegast minnka\u00f0u gildi innleiddra heiltala"
+    ],
+    "filemenu": [
+        "Skr\u00e1",
+        "Endurr\u00e6sa",
+        "\u00datg\u00f6ngulei\u00f0"
+    ],
+    "title": [
+        "Samanbur\u00f0arr\u00f6\u00f0"
+    ],
+    "langloader": [
+        "\u00de\u00fd\u00f0a",
+        "Forrit er \u00feegar stillt \u00e1",
+        "er anna\u00f0 hvort ekki tilt\u00e6kt, e\u00f0a JSON g\u00f6gnin eru sni\u00f0in rangt"
+    ]
+}

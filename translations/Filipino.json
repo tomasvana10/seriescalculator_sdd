@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Unang termino",
+        "Karaniwang pagkakaiba",
+        "Karaniwang ratio",
+        "Bilang ng mga termino"
+    ],
+    "buttons": [
+        "Malinaw",
+        "Kalkulahin"
+    ],
+    "radiobuttons": [
+        "Serye ng aritmetika",
+        "Serye ng geometric"
+    ],
+    "fontsize": [
+        "Laki",
+        "Maliit",
+        "Katamtaman",
+        "Malaki"
+    ],
+    "appearance": [
+        "Hitsura",
+        "Mga tema",
+        "Ilaw",
+        "Madilim",
+        "Sistema",
+        "Asul",
+        "Berde",
+        "Madilim na asul"
+    ],
+    "languages": [
+        "Mga Wika"
+    ],
+    "errors": [
+        "Isang eksepsiyon na naganap: ValueError - Tiyakin na ang lahat ng mga patlang ay napuno at may mga numerong entry",
+        "Isang pagbubukod ang naganap: hindi wastong bilang ng mga termino - ang haba ng serye ay hindi maaaring maging isang negatibong numero o 0, mangyaring pumili ng isang naaangkop na haba",
+        "Isang pagbubukod na naganap: overflowerror - mangyaring bawasan ang halaga ng mga naipasok na integer"
+    ],
+    "filemenu": [
+        "File",
+        "I -restart",
+        "Lumabas"
+    ],
+    "title": [
+        "Pagbubuod ng serye"
+    ],
+    "langloader": [
+        "Isalin",
+        "Nakatakda na ang programa",
+        "ay hindi magagamit, o ang data ng json nito ay na -format nang hindi tama"
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Voalohany",
+        "Fahasamihafana mahazatra",
+        "Ratio mahazatra",
+        "Isan'ny teny"
+    ],
+    "buttons": [
+        "Mazava",
+        "kajy"
+    ],
+    "radiobuttons": [
+        "Arithmetika Series",
+        "Series Geometric"
+    ],
+    "fontsize": [
+        "Size",
+        "KELY",
+        "SALASALANY",
+        "ankamaroan'ireo"
+    ],
+    "appearance": [
+        "Bika Aman 'endrika",
+        "lohahevitra",
+        "fahazavana",
+        "Maizina",
+        "RAFITRA",
+        "Manga",
+        "Maitso",
+        "Manga antitra"
+    ],
+    "languages": [
+        "fiteny"
+    ],
+    "errors": [
+        "Fahadisoana iray nitranga: Validera - azo antoka fa feno ny sehatra rehetra ary manana fidirana isa",
+        "Nisy ny tsy fitoviana: ny isan'ny teny tsy mety - ny halavan'ny andian-dahatsoratra dia tsy mety ho isa ratsy na 0, azafady misafidy ny halavany mety",
+        "Fahadisoana iray nitranga: Mihoatra ny overfloweRor - Azafady mba ahenao ny sandan'ny integer niditra"
+    ],
+    "filemenu": [
+        "rakitra",
+        "Haverina velomina",
+        "Fivoahana"
+    ],
+    "title": [
+        "Summing Series"
+    ],
+    "langloader": [
+        "translate",
+        "Ny programa dia efa napetraka",
+        "na tsy misy na tsy misy, na ny angon-drakitra json dia tsy marina"
+    ]
+}

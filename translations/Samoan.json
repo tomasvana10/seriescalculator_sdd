@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Vaitaimi muamua",
+        "Fua faatatau masani",
+        "Masani masani",
+        "Aofai o Tuutuuga"
+    ],
+    "buttons": [
+        "Kilia",
+        "Fuafua"
+    ],
+    "radiobuttons": [
+        "Notithmetic faasologa",
+        "Geometric faasologa"
+    ],
+    "fontsize": [
+        "Lapoa",
+        "Laiti",
+        "Feololo",
+        "Lapoa"
+    ],
+    "appearance": [
+        "Foliga mai",
+        "Autu",
+        "Malamalama",
+        "Pogisa",
+        "Faiga",
+        "Lanu moaga",
+        "Lanu meamata",
+        "Lanumoana lanumoana"
+    ],
+    "languages": [
+        "Gagana"
+    ],
+    "errors": [
+        "O se tuusaunoaga ua tupu: o le tau o le tau - ia mautinoa o fanua uma e tumu ma maua numera numera",
+        "O se tuusaunoaga na tupu: E le aoga le numera o aiaiga - o le umi o le fa\u02bbasologa e le mafai ona avea ma numera le lelei pe 0, fa\u02bbamolemole filifili se umi umi",
+        "O se tuusaunoaga o lo\u02bbo tupu: overflowerror_ Fa\u02bbamolemole fa\u02bbaitiitia le tau o le ulufale atu i lalo"
+    ],
+    "filemenu": [
+        "Faila",
+        "Toe amata",
+        "Ulufafo"
+    ],
+    "title": [
+        "Sulu faasologa"
+    ],
+    "langloader": [
+        "Faaliliu",
+        "Polokalama ua uma ona setiina i",
+        "e le avanoa, po\u02bbo le JSON fa\u02bbamatalaga o lo\u02bbo fa\u02bbaalia sese"
+    ]
+}

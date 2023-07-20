@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Chekutanga term",
+        "Musiyano wakajairika",
+        "Zvakajairika Ratio",
+        "Nhamba yeMitemo"
+    ],
+    "buttons": [
+        "Bvisa",
+        "Kuverenga"
+    ],
+    "radiobuttons": [
+        "Arithmetic Series",
+        "Geometric Series"
+    ],
+    "fontsize": [
+        "Saizi",
+        "Zvidiki",
+        "Pakati",
+        "Hombe"
+    ],
+    "appearance": [
+        "Chitarisiko",
+        "Themes",
+        "Chiedza",
+        "Rima",
+        "System",
+        "Bhuruu",
+        "Girinhi",
+        "Bhuruu rima"
+    ],
+    "languages": [
+        "Mitauro"
+    ],
+    "errors": [
+        "Kusarudzika kwaitika: ChangenyError - Ita shuwa minda yese yakazara uye ine manhamba ekunyora",
+        "Sarudzo yakaitika: Nhamba Isiriyo yeMitemo - kureba kwenyaya hakugone kuve nhamba isina kunaka kana 0, ndapota sarudza kureba kwakakodzera",
+        "Kusarudzika kwaitika: kuwedzeredza - ndapota kuderedza kukosha kweiyo yakapinda manhamba"
+    ],
+    "filemenu": [
+        "Faira",
+        "Restart",
+        "Kubuda"
+    ],
+    "title": [
+        "Summing Series"
+    ],
+    "langloader": [
+        "Dudziro",
+        "Chirongwa chakatoiswa kare",
+        "ingave isipo, kana yayo yejson data yakarongedzwa zvisizvo"
+    ]
+}

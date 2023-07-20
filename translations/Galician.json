@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Primeiro prazo",
+        "Diferenza com\u00fan",
+        "Relaci\u00f3n com\u00fan",
+        "N\u00famero de termos"
+    ],
+    "buttons": [
+        "Claro",
+        "Calcula"
+    ],
+    "radiobuttons": [
+        "Serie aritm\u00e9tica",
+        "Serie xeom\u00e9trica"
+    ],
+    "fontsize": [
+        "Tama\u00f1o",
+        "Pequena",
+        "Medio",
+        "Grande"
+    ],
+    "appearance": [
+        "Aparici\u00f3n",
+        "Temas",
+        "Luz",
+        "Escuro",
+        "Sistema",
+        "Azul",
+        "Verde",
+        "Azul escuro"
+    ],
+    "languages": [
+        "Idiomas"
+    ],
+    "errors": [
+        "Prod\u00facese unha excepci\u00f3n: ValueError - Aseg\u00farese de que todos os campos se cubran e te\u00f1a entradas num\u00e9ricas",
+        "Produciuse unha excepci\u00f3n: n\u00famero de termos non v\u00e1lido: a lonxitude da serie non pode ser un n\u00famero negativo ou 0, elixe unha lonxitude adecuada",
+        "Produciuse unha excepci\u00f3n: Desbloqueo: reduce o valor dos n\u00fameros enteiros introducidos"
+    ],
+    "filemenu": [
+        "Ficheiro",
+        "Reiniciar",
+        "Sa\u00edr"
+    ],
+    "title": [
+        "Serie de resumo"
+    ],
+    "langloader": [
+        "Traducir",
+        "O programa xa est\u00e1 configurado para",
+        "Ou non est\u00e1 dispo\u00f1ible, ou os seus datos JSON est\u00e1n formateados incorrectamente"
+    ]
+}

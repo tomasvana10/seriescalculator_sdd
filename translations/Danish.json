@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "F\u00f8rste periode",
+        "F\u00e6lles forskel",
+        "F\u00e6lles forhold",
+        "Antal udtryk"
+    ],
+    "buttons": [
+        "Klar",
+        "Beregn"
+    ],
+    "radiobuttons": [
+        "Aritmetisk serie",
+        "Geometrisk serie"
+    ],
+    "fontsize": [
+        "St\u00f8rrelse",
+        "Lille",
+        "Medium",
+        "Stor"
+    ],
+    "appearance": [
+        "Udseende",
+        "Temaer",
+        "Lys",
+        "M\u00f8rk",
+        "System",
+        "Bl\u00e5",
+        "Gr\u00f8n",
+        "M\u00f8rkebl\u00e5"
+    ],
+    "languages": [
+        "Sprog"
+    ],
+    "errors": [
+        "En undtagelse opstod: ValueError - S\u00f8rg for, at alle felter er fyldt og har numeriske poster",
+        "En undtagelse opstod: Ugyldigt antal udtryk - seriens l\u00e6ngde kan ikke v\u00e6re et negativt tal eller 0, v\u00e6lg en passende l\u00e6ngde",
+        "En undtagelse opstod: Overflowerror - Reducer v\u00e6rdien af de indtastede heltal"
+    ],
+    "filemenu": [
+        "Fil",
+        "Genstart",
+        "Afslut"
+    ],
+    "title": [
+        "Summering -serier"
+    ],
+    "langloader": [
+        "Overs\u00e6tte",
+        "Programmet er allerede indstillet til",
+        "er enten ikke tilg\u00e6ngelig, eller dens JSON -data formateres forkert"
+    ]
+}

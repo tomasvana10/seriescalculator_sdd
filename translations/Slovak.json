@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Prv\u00fd term\u00edn",
+        "Spolo\u010dn\u00fd rozdiel",
+        "Spolo\u010dn\u00fd pomer",
+        "Po\u010det podmienok"
+    ],
+    "buttons": [
+        "jasn\u00fd",
+        "Vypo\u010d\u00edta\u0165"
+    ],
+    "radiobuttons": [
+        "Aritmetick\u00e1 s\u00e9ria",
+        "Geometrick\u00e1 s\u00e9ria"
+    ],
+    "fontsize": [
+        "Ve\u013ekos\u0165",
+        "Mal\u00fd",
+        "M\u00e9dium",
+        "Ve\u013ek\u00fd"
+    ],
+    "appearance": [
+        "Vzh\u013ead",
+        "T\u00e9my",
+        "Svetlo",
+        "Tmav\u00fd",
+        "Syst\u00e9m",
+        "Modr\u00e1",
+        "zelen\u00e1",
+        "Tmavomodr\u00e1"
+    ],
+    "languages": [
+        "Jazyky"
+    ],
+    "errors": [
+        "Vyskytla sa v\u00fdnimka: ValueError - Uistite sa, \u017ee v\u0161etky polia s\u00fa vyplnen\u00e9 a maj\u00fa \u010d\u00edseln\u00e9 z\u00e1znamy",
+        "Vyskytla sa v\u00fdnimka: Neplatn\u00fd po\u010det v\u00fdrazov - d\u013a\u017eka s\u00e9rie nem\u00f4\u017ee by\u0165 z\u00e1porn\u00e9 \u010d\u00edslo alebo 0, vyberte primeran\u00fa d\u013a\u017eku",
+        "Vyskytla sa v\u00fdnimka: prece\u0148ovanie - zn\u00ed\u017ete hodnotu zadan\u00fdch cel\u00fdch \u010d\u00edsel"
+    ],
+    "filemenu": [
+        "Podpis",
+        "Re\u0161tart",
+        "V\u00ddCHOD"
+    ],
+    "title": [
+        "S\u00fa\u010det"
+    ],
+    "langloader": [
+        "Prelo\u017ei\u0165",
+        "Program je u\u017e nastaven\u00fd na",
+        "bu\u010f nie je k dispoz\u00edcii, alebo jeho \u00fadaje JSON s\u00fa nespr\u00e1vne form\u00e1tovan\u00e9"
+    ]
+}

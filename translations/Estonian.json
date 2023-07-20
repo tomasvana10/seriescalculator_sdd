@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Esimene t\u00e4htaeg",
+        "\u00dchine erinevus",
+        "\u00dchine suhe",
+        "Tingimuste arv"
+    ],
+    "buttons": [
+        "Selge",
+        "Arvutama"
+    ],
+    "radiobuttons": [
+        "Aritmeetiline sari",
+        "Geomeetriline sari"
+    ],
+    "fontsize": [
+        "Suurus",
+        "V\u00e4ike",
+        "Vahend",
+        "Suur"
+    ],
+    "appearance": [
+        "V\u00e4limus",
+        "Teemad",
+        "Valgus",
+        "Tume",
+        "S\u00fcsteem",
+        "Sinine",
+        "Roheline",
+        "Tumesinine"
+    ],
+    "languages": [
+        "Keeled"
+    ],
+    "errors": [
+        "Esines erand: v\u00e4\u00e4rturrror - veenduge, et k\u00f5ik v\u00e4ljad oleksid t\u00e4idetud ja neil oleks numbrilised sissekanded",
+        "Esines erand: tingimuste kehtetu arv - seeria pikkus ei saa olla negatiivne arv ega 0, valige palun sobiv pikkus",
+        "Esines erand: \u00fcleliide - palun v\u00e4hendage sisestatud t\u00e4isarvude v\u00e4\u00e4rtust"
+    ],
+    "filemenu": [
+        "Toimik",
+        "Taask\u00e4ivita",
+        "V\u00e4ljumine"
+    ],
+    "title": [
+        "Summeerimissari"
+    ],
+    "langloader": [
+        "T\u00f5lkima",
+        "Programm on juba seatud",
+        "Kas pole saadaval v\u00f5i selle JSON -andmed vormindatakse valesti"
+    ]
+}

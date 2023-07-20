@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Els\u0151 id\u0151szak",
+        "\u00c1ltal\u00e1nos k\u00fcl\u00f6nbs\u00e9g",
+        "\u00c1ltal\u00e1nos ar\u00e1ny",
+        "Felt\u00e9telek sz\u00e1ma"
+    ],
+    "buttons": [
+        "Egy\u00e9rtelm\u0171",
+        "Kisz\u00e1m\u00edtja"
+    ],
+    "radiobuttons": [
+        "Sz\u00e1mtani sorozat",
+        "Geometriai sorozat"
+    ],
+    "fontsize": [
+        "M\u00e9ret",
+        "Kicsi",
+        "K\u00f6zepes",
+        "Nagy"
+    ],
+    "appearance": [
+        "Kin\u00e9zet",
+        "T\u00e9m\u00e1k",
+        "F\u00e9ny",
+        "S\u00f6t\u00e9t",
+        "Rendszer",
+        "K\u00e9k",
+        "Z\u00f6ld",
+        "S\u00f6t\u00e9tk\u00e9k"
+    ],
+    "languages": [
+        "Nyelvek"
+    ],
+    "errors": [
+        "Kiv\u00e9tel t\u00f6rt\u00e9nt: ValueError - Gy\u0151z\u0151dj\u00f6n meg arr\u00f3l, hogy minden mez\u0151 kit\u00f6lt\u00f6tt \u00e9s numerikus bejegyz\u00e9sekkel rendelkezik",
+        "Kiv\u00e9tel t\u00f6rt\u00e9nt: \u00c9rv\u00e9nytelen sz\u00e1m\u00fa kifejez\u00e9s - A sorozat hossza nem lehet negat\u00edv sz\u00e1m vagy 0, k\u00e9rj\u00fck, v\u00e1lasszon megfelel\u0151 hossz\u00fas\u00e1got",
+        "Kiv\u00e9tel t\u00f6rt\u00e9nt: Overflowror - K\u00e9rj\u00fck, cs\u00f6kkentse a be\u00edrt eg\u00e9sz sz\u00e1mok \u00e9rt\u00e9k\u00e9t"
+    ],
+    "filemenu": [
+        "Irat",
+        "\u00dajrakezd",
+        "Kij\u00e1rat"
+    ],
+    "title": [
+        "\u00d6sszegy\u0171jt\u00e9si sorozat"
+    ],
+    "langloader": [
+        "ford\u00edt",
+        "A program m\u00e1r be van \u00e1ll\u00edtva",
+        "vagy nem \u00e9rhet\u0151 el, vagy a JSON -adatait helytelen\u00fcl form\u00e1zza"
+    ]
+}

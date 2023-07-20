@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Primer termini",
+        "Difer\u00e8ncia comuna",
+        "Proporci\u00f3 comuna",
+        "Nombre de termes"
+    ],
+    "buttons": [
+        "Clar",
+        "Calcular"
+    ],
+    "radiobuttons": [
+        "S\u00e8rie aritm\u00e8tica",
+        "S\u00e8rie Geom\u00e8trica"
+    ],
+    "fontsize": [
+        "Tamany",
+        "Petit",
+        "Mitj\u00e0",
+        "Gran"
+    ],
+    "appearance": [
+        "Aparici\u00f3",
+        "Temes",
+        "Llum",
+        "Fosc",
+        "Sistema",
+        "Blava",
+        "Verd",
+        "Blau fosc"
+    ],
+    "languages": [
+        "Idiomes"
+    ],
+    "errors": [
+        "Es va produir una excepci\u00f3: ValueError: assegureu -vos que tots els camps s\u2019omplen i que tingueu entrades num\u00e8riques",
+        "Es va produir una excepci\u00f3: nombre no v\u00e0lid de termes: la longitud de la s\u00e8rie no pot ser un nombre negatiu o 0, trieu una longitud adequada",
+        "Es va produir una excepci\u00f3: Overflowerror: redu\u00efu el valor dels nombres enters"
+    ],
+    "filemenu": [
+        "Dossier",
+        "Reinicia",
+        "Abandonar"
+    ],
+    "title": [
+        "Sèrie sumant"
+    ],
+    "langloader": [
+        "Traduir",
+        "El programa ja est\u00e0 configurat a",
+        "o b\u00e9 no est\u00e0 disponible, o les seves dades de JSON es formaten de manera incorrecta"
+    ]
+}

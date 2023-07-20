@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Prvi izraz",
+        "Uobi\u010dajena razlika",
+        "Zajedni\u010dki omjer",
+        "Broj izraza"
+    ],
+    "buttons": [
+        "Jasan",
+        "Izra\u010dunati"
+    ],
+    "radiobuttons": [
+        "Aritmeti\u010dka serija",
+        "Geometrijska serija"
+    ],
+    "fontsize": [
+        "Veli\u010dina",
+        "Mali",
+        "Srednji",
+        "Veliko"
+    ],
+    "appearance": [
+        "Izgled",
+        "Tema",
+        "Svjetlost",
+        "Mrak",
+        "Sistem",
+        "Plavi",
+        "Zelenilo",
+        "Tamno plava"
+    ],
+    "languages": [
+        "Jezici"
+    ],
+    "errors": [
+        "Do\u0161lo je do izuzetka: ValueError - osigurajte da su sva polja ispunjena i imaju numeri\u010dke unose",
+        "Do\u0161lo je do izuzetka: Neva\u017ee\u0107i broj pojmova - du\u017eina serije ne mo\u017ee biti negativan broj ili 0, odaberite odgovaraju\u0107u du\u017einu",
+        "Do\u0161lo je iznimka: prelivenowerror - smanjite vrijednost unesenih cijelih brojeva"
+    ],
+    "filemenu": [
+        "File",
+        "Ponovo pokrenuti",
+        "Izlaz"
+    ],
+    "title": [
+        "Summing serija"
+    ],
+    "langloader": [
+        "Prevesti",
+        "Program je ve\u0107 postavljen na",
+        "ili nije dostupno ili se njeni JSON podaci formatiraju pogre\u0161no"
+    ]
+}

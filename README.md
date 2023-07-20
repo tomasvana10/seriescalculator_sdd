@@ -4,7 +4,7 @@
  - Download zip: [click here](https://github.com/tomasvana10/seriescalculator_sdd/archive/refs/heads/main.zip)
 
  ## Dependencies
- - `customtkinter==0.3` (installed with pip)<br>
+ - `customtkinter==5.2.0` (installed with pip)<br>
  Pip is likely already installed on your computer. If it isn't, [click here](https://pip.pypa.io/en/stable/installation)
  
  ## Steps to running the program
@@ -21,7 +21,7 @@
  - Large
 
 **Language selection**
-- 31 Languages
+- All Google Translate languages (107)
 
 **Appearance and themes**
 - Choose from Light mode, Dark mode and System appearances

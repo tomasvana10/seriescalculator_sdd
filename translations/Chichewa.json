@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Mawu oyamba",
+        "Kusiyana Kofala",
+        "Chiwerengero chofala",
+        "Chiwerengero cha mawu"
+    ],
+    "buttons": [
+        "Koyera",
+        "Welengera"
+    ],
+    "radiobuttons": [
+        "Mndandanda wa masamu",
+        "Mndandanda wa geometric"
+    ],
+    "fontsize": [
+        "Kukula",
+        "Ochepa",
+        "Wapakati",
+        "Chachikulu"
+    ],
+    "appearance": [
+        "Kaonekedwe",
+        "Mitu",
+        "Chosalemera",
+        "Wakuda",
+        "Makhalidwe",
+        "Buluwu",
+        "Wobiliwira",
+        "Buluu wakuda"
+    ],
+    "languages": [
+        "Zilankhulo"
+    ],
+    "errors": [
+        "Kupatula kuchitika: Chericerror - onetsetsani kuti minda yonse imadzaza ndi kukhala ndi zolemba za manambala",
+        "Kupatula kuchitika: Chiwerengero chosavomerezeka cha mawu - kutalika kwa mndandandawu sikungakhale nambala yolakwika kapena 0, chonde sankhani kutalika koyenera",
+        "Kupatula kuchitika: Kuchulukitsa - Chonde muchepetse mtengo wa manambala omwe adalowetsa"
+    ],
+    "filemenu": [
+        "Fayelo",
+        "Yambitsaninso",
+        "Potulukira"
+    ],
+    "title": [
+        "Zolemba mwatsatanetsatane"
+    ],
+    "langloader": [
+        "Masulira",
+        "Pulogalamu yakhazikitsidwa kale",
+        "sizipezeka, kapena za json zopangidwa molakwika"
+    ]
+}

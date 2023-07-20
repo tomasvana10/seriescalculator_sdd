@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Earste termyn",
+        "Algemien ferskil",
+        "Common Ratio",
+        "Oantal betingsten"
+    ],
+    "buttons": [
+        "Opklearje",
+        "Rekkenje"
+    ],
+    "radiobuttons": [
+        "Aritmetyske searje",
+        "Geometric Series"
+    ],
+    "fontsize": [
+        "Grutte",
+        "Lyts",
+        "Medium",
+        "Grut"
+    ],
+    "appearance": [
+        "Ferskining",
+        "Tema's",
+        "Ljocht",
+        "Tsjuster",
+        "Systeem",
+        "Blau",
+        "Grien",
+        "Donker blau"
+    ],
+    "languages": [
+        "Talen"
+    ],
+    "errors": [
+        "In \u00fats\u00fbndering barde: ValueError - soargje derfoar dat alle fjilden ynfold binne en hawwe numerike ynstjoeringen",
+        "In \u00fats\u00fbndering barde: Unjildich oantal betingsten - de lingte fan 'e searje kin gjin negatyf getal w\u00eaze as 0, kies asjebleaft in passende lingte",
+        "In \u00fats\u00fbndering barde: oerstreame - ferminderje asjebleaft de wearde fan 'e ynfierde heule getallen"
+    ],
+    "filemenu": [
+        "Map",
+        "Restart",
+        "\u00datgong"
+    ],
+    "title": [
+        "Sumpen Series"
+    ],
+    "langloader": [
+        "Oersette",
+        "Programma is al ynsteld op",
+        "is of net beskikber, of de JSON-gegevens wurde ferkeard opmakke"
+    ]
+}

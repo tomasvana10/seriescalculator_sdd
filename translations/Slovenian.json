@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Prvi izraz",
+        "Pogosta razlika",
+        "Skupno razmerje",
+        "\u0160tevilo izrazov"
+    ],
+    "buttons": [
+        "Jasno",
+        "Izra\u010dunati"
+    ],
+    "radiobuttons": [
+        "Aritmeti\u010dna serija",
+        "Geometrijske serije"
+    ],
+    "fontsize": [
+        "Velikost",
+        "Majhno",
+        "Srednje",
+        "Velik"
+    ],
+    "appearance": [
+        "Videz",
+        "Teme",
+        "Svetloba",
+        "Temno",
+        "Sistem",
+        "Modro",
+        "Zelena",
+        "Temno modra"
+    ],
+    "languages": [
+        "Jeziki"
+    ],
+    "errors": [
+        "Izjemala se je izjema: VALUEERROR - zagotovite, da so vsa polja zapolnjena in imajo \u0161tevil\u010dne vnose",
+        "Pri\u0161lo je do izjeme: neveljavno \u0161tevilo izrazov - dol\u017eina serije ne more biti negativna \u0161tevilka ali 0, izberite ustrezno dol\u017eino",
+        "Doseljala se je izjema: Overflowerror - Prosimo, zmanj\u0161ajte vrednost vnesenih celih \u0161tevil"
+    ],
+    "filemenu": [
+        "mapa",
+        "Ponovni zagon",
+        "Izhod"
+    ],
+    "title": [
+        "Se\u0161tevanje serije"
+    ],
+    "langloader": [
+        "Prevesti",
+        "Program je \u017ee nastavljen na",
+        "bodisi ni na voljo ali pa so njegovi jSON podatki napa\u010dno oblikovani"
+    ]
+}

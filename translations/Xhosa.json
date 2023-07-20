@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Ikota yokuqala",
+        "Umahluko oqhelekileyo",
+        "Umyinge oqhelekileyo",
+        "Inani lemibini"
+    ],
+    "buttons": [
+        "Cacisa",
+        "Bala"
+    ],
+    "radiobuttons": [
+        "Uthotho lwe-arithmetic",
+        "Gemetric uthotho"
+    ],
+    "fontsize": [
+        "Ubungakanani",
+        "Encinci",
+        "Phakathi",
+        "Enkulu"
+    ],
+    "appearance": [
+        "Imbonakalo",
+        "Imixholo",
+        "Ukukhanya",
+        "Mnyama",
+        "Inkqubo",
+        "Luhlaza",
+        "Luhlaza",
+        "Ubhlu omnyama"
+    ],
+    "languages": [
+        "Iilwimi"
+    ],
+    "errors": [
+        "Ukhetho lwenzekile",
+        "Ukhetho lwenzekile: Inani lezinto ezingasebenziyo-ubude bolu ngcelele abanakuba linani elingelilo okanye 0, nceda ukhethe ubude bakho",
+        "Ukhetho lwenzekile"
+    ],
+    "filemenu": [
+        "Ifayile",
+        "Phinda Uqalele",
+        "Phuma"
+    ],
+    "title": [
+        "Sharim uthotho"
+    ],
+    "langloader": [
+        "Guqula",
+        "Inkqubo sele isetelwe",
+        "ayifumaneki, okanye idatha yayo ye-JSON ifomathiwe ngokungachanekanga"
+    ]
+}

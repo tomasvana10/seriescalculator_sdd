@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Una nga termino",
+        "Sagad nga kalainan",
+        "Kasagaran nga ratio",
+        "Kadamuon sa mga termino"
+    ],
+    "buttons": [
+        "Tataw",
+        "Banabanaon"
+    ],
+    "radiobuttons": [
+        "Mga serye sa Arithmetic",
+        "Serye sa geometric"
+    ],
+    "fontsize": [
+        "Gidak-on",
+        "Gamay",
+        "Tungatunga",
+        "Dako"
+    ],
+    "appearance": [
+        "Hitsura",
+        "Mga Tema",
+        "Gaan",
+        "Ngitngit",
+        "Sistema",
+        "Asul",
+        "Berde",
+        "Itom nga asul"
+    ],
+    "languages": [
+        "Mga pinulongan"
+    ],
+    "errors": [
+        "Usa ka eksepsiyon nga nahitabo: ValewerError - Siguruha nga ang tanan nga mga uma napuno ug adunay mga numero sa numero",
+        "Usa ka eksepsyon nga nahitabo: Dili husto nga gidaghanon sa mga termino - ang gitas-on sa serye dili mahimong negatibo nga numero o 0, palihug pagpili usa ka angay nga gitas-on",
+        "Usa ka eksepsiyon nga nahitabo: OverflowerError - Palihug pagpakunhod sa kantidad sa mga gisulud nga integer"
+    ],
+    "filemenu": [
+        "Limbas",
+        "Tuk-on",
+        "Mogawas"
+    ],
+    "title": [
+        "Series sa Sumulat"
+    ],
+    "langloader": [
+        "Hubaron",
+        "Ang programa gitakda na",
+        "dili magamit, o ang datos sa JSON nga gi-format nga dili husto"
+    ]
+}

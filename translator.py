@@ -3,7 +3,7 @@ This program assigns translations to a dictionary and writes it into a JSON file
 ! This program requires the googletrans module to be installed.
 
 Limitations: 
-- When updating a JSON language file, new translations can only be APPENDED to a key
+- When updating a JSON language file, new translations can only be APPENDED to a key's value
 - Due to a bug in the googletrans module, some languages will not be translatable
 - Translation to some languages result in a timeout of the Google Translate API
 '''
@@ -77,9 +77,9 @@ def jsonUpdater(lang):
         f.write(newJsonDict) 
 
 def updateAll():
-    languages = sorted(os.listdir(path))
-    languages = [lang.replace(".json", "") for lang in languages]
-    for lang in languages:
+    langList = sorted(os.listdir(path))
+    langList = [lang.replace(".json", "") for lang in langList]
+    for lang in langList:
         jsonUpdater(lang)
 
 def jsonWriter(lang):
@@ -98,12 +98,12 @@ def jsonWriter(lang):
 
                 try:
                     transtext = translator.translate(translationsDb[key][i], dest = languages[lang], src = "en")
-                except TypeError:
+                except TypeError or TimeoutError:
                     print(f"Due to a bug with the googletrans module, translation to some languages such as {lang} result in incomplete translation. Sorry.")
                     with open(jsonFile, "w") as f:
                         f.truncate(0)
                     return
-                
+
                 transDict[key][i] = transtext.text
             else:
                 transDict[key][i] = text
@@ -116,13 +116,24 @@ def jsonWriter(lang):
     print(f"{lang} translations are complete")
 
 def onStart():
-    updateAllChoice = True if input(f"Do you wish to update all language JSONs in {path}? (Y/n) ").upper() in ["Y", "Yes"] else False
-    if updateAllChoice == True:
+    updateAllChoice = True if input(f"Do you wish to update all language JSONs in {path}? (Y/n): ").upper() in ["Y", "Yes"] else False
+    if updateAllChoice:
         updateAll()
         return
     
+    poo = True if input("poo: ") == "y" else False
+    if poo == True:
+        langlist = os.listdir(path)
+        langlist = [lang.replace(".json", "") for lang in langlist]
+        for lang in languages:
+            if lang in langlist:
+                continue
+            else:
+                jsonWriter(lang)
+                exit("done")
+
     print("\nRefer to the values of langCodes.json for the following input")
-    lang = str(input("Enter the destination language: ")).title()
+    lang = str(input("Enter the destination language (e.g. French): ")).title()
     if lang not in languages.keys():
         print("\nInvalid language\n")
         return

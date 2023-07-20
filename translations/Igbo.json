@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Oge izizi",
+        "Ihe omimi",
+        "Oke",
+        "Onu ogugu"
+    ],
+    "buttons": [
+        "Agwa idiocha",
+        "Igbako"
+    ],
+    "radiobuttons": [
+        "Usoro usoro",
+        "Usoro geometric"
+    ],
+    "fontsize": [
+        "Saiz",
+        "Nke ntakiri",
+        "Keusoro",
+        "Keibu"
+    ],
+    "appearance": [
+        "Mputa",
+        "Isi",
+        "Kemfe",
+        "Itiri",
+        "Sistem",
+        "Bluu",
+        "Griin",
+        "\u1eccch\u1ecbch\u1ecbr\u1ecb na-acha an\u1ee5n\u1ee5 an\u1ee5n\u1ee5"
+    ],
+    "languages": [
+        "Asusu"
+    ],
+    "errors": [
+        "Egosiputara: Ihe Okike: Gburugburu - na - eme ka ala niile jup\u1ee5ta ma nwee \u1ecdn\u1ee5\u1ecdg\u1ee5",
+        "Ewere weere: N\u1ecdmba ezighi ezi - ogologo nke usoro ah\u1ee5 enwegh\u1ecb ike \u1ecbb\u1ee5 \u1ecdn\u1ee5 \u1ecdg\u1ee5g\u1ee5 na-ad\u1ecbgh\u1ecb mma ma \u1ecd b\u1ee5 0, biko h\u1ecdr\u1ecd ogologo kwes\u1ecbr\u1ecb ekwes\u1ecb",
+        "Egosiputara ya: OverFlowerR - Biko Belata uru nke ndi batara"
+    ],
+    "filemenu": [
+        "Failu",
+        "Ibidokwa",
+        "\u1ee4z\u1ecd \u1ecdp\u1ee5p\u1ee5"
+    ],
+    "title": [
+        "Usoro iche"
+    ],
+    "langloader": [
+        "Itughari",
+        "Emebewor\u1ecb ihe omume",
+        "\u1ecd b\u1ee5gh\u1ecb, \u1ecd nwegh\u1ecb, ma \u1ecd b\u1ee5 data JSON ya na-ezighi ezi"
+    ]
+}

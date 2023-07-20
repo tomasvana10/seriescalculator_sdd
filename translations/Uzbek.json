@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Birinchi atama",
+        "Umumiy farq",
+        "Umumiy nisbat",
+        "Shartlar soni"
+    ],
+    "buttons": [
+        "Aniq",
+        "Hisoblamoq"
+    ],
+    "radiobuttons": [
+        "Arifmetik seriyalar",
+        "Geometrik seriyalar"
+    ],
+    "fontsize": [
+        "O'lcham",
+        "Kichik",
+        "O'rta",
+        "Katta"
+    ],
+    "appearance": [
+        "Tashqi ko'rinish",
+        "Mavzular",
+        "Yorug'lik",
+        "Qorong'i",
+        "Tizim",
+        "Ko'k",
+        "Yashil rang",
+        "Quyuq ko'k"
+    ],
+    "languages": [
+        "Tillar"
+    ],
+    "errors": [
+        "Istisno: Worverror - barcha maydonlar to'ldirilganligiga va raqamli yozuvlarga ega bo'lish",
+        "Istisno yuz berdi: shartlarning noto'g'ri soni - seriyaning uzunligi salbiy son yoki 0 bo'lishi mumkin emas, iltimos, tegishli uzunlikni tanlang",
+        "Istisno qilingan: haddan tashqari ko'p ishlatiladigan - iltimos, kiritilgan butun sonlarning qiymatini kamaytiring"
+    ],
+    "filemenu": [
+        "Fayli",
+        "Qayta ishga tushirish",
+        "Chiqish"
+    ],
+    "title": [
+        "Summent Serial"
+    ],
+    "langloader": [
+        "Tarjima qilmoq",
+        "Dastur allaqachon o'rnatilgan",
+        "mavjud emas yoki uning JSON ma'lumotlari noto'g'ri formatlangan"
+    ]
+}

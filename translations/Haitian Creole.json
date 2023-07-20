@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Premye t\u00e8m",
+        "Komen diferans",
+        "Rap\u00f2 komen",
+        "Kantite t\u00e8m"
+    ],
+    "buttons": [
+        "Kl\u00e8",
+        "Katyoule"
+    ],
+    "radiobuttons": [
+        "Seri aritmetik",
+        "Seri jewometrik"
+    ],
+    "fontsize": [
+        "Tay",
+        "Piti",
+        "Mwayen",
+        "Laj"
+    ],
+    "appearance": [
+        "Aparisyon",
+        "T\u00e8m",
+        "Leje",
+        "Sonm",
+        "Sist\u00e8m",
+        "Ble",
+        "V\u00e8t",
+        "Ble fonse"
+    ],
+    "languages": [
+        "Lang"
+    ],
+    "errors": [
+        "Yon eksepsyon ki rive: ValueError - Asire tout jaden yo ranpli epi yo gen antre nimerik",
+        "Yon eksepsyon ki te f\u00e8t: nimewo valab nan t\u00e8m - long\u00e8 a nan seri a pa kapab yon nimewo negatif oswa 0, tanpri chwazi yon long\u00e8 ki apwopriye yo",
+        "Yon eksepsyon ki rive: overflowerror - tanpri diminye val\u00e8 a nan antre yo antre nan"
+    ],
+    "filemenu": [
+        "Dosye",
+        "Rek\u00f2manse",
+        "S\u00f2ti"
+    ],
+    "title": [
+        "Seri adisyon"
+    ],
+    "langloader": [
+        "Tradui",
+        "Pwogram deja mete nan",
+        "se swa pa disponib, oswa done JSON li yo se f\u00f2ma mal"
+    ]
+}

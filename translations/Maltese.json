@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "L-ewwel terminu",
+        "Differenza komuni",
+        "Proporzjon komuni",
+        "Numru ta 'termini"
+    ],
+    "buttons": [
+        "\u010aar",
+        "Ikkalkula"
+    ],
+    "radiobuttons": [
+        "Serje aritmetika",
+        "Serje \u0121eometrika"
+    ],
+    "fontsize": [
+        "Daqs",
+        "\u017bg\u0127ir",
+        "Medju",
+        "Kbir"
+    ],
+    "appearance": [
+        "Dehra",
+        "Temi",
+        "Dawl",
+        "Dlam",
+        "Sistema",
+        "Blu",
+        "A\u0127dar",
+        "Blu skur"
+    ],
+    "languages": [
+        "Lingwi"
+    ],
+    "errors": [
+        "Se\u0127\u0127et e\u010b\u010bezzjoni: ValueError - Ti\u017cgura li l-oqsma kollha jimtlew u g\u0127andhom entrati numeri\u010bi",
+        "E\u010b\u010bezzjoni se\u0127\u0127et: Numru ta 'Termini Invalidi - It-tul tas-serje ma jistax ikun numru negattiv jew 0, jekk jog\u0127\u0121bok ag\u0127\u017cel tul xieraq",
+        "Se\u0127\u0127et e\u010b\u010bezzjoni: overflowerror - jekk jog\u0127\u0121bok tnaqqas il-valur tan-numru s\u0127i\u0127 imda\u0127\u0127al"
+    ],
+    "filemenu": [
+        "Fajl",
+        "Er\u0121a ibda",
+        "\u0126ru\u0121"
+    ],
+    "title": [
+        "Serje ta 'Summing"
+    ],
+    "langloader": [
+        "Tittradu\u010bi",
+        "Programm huwa di\u0121\u00e0 stabbilit g\u0127al",
+        "jew mhix disponibbli, jew id-dejta JSON tag\u0127ha hija fformattjata \u0127a\u017cin"
+    ]
+}

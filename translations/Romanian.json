@@ -1,0 +1,53 @@
+{
+    "entries": [
+        "Primul termen",
+        "Diferen\u021b\u0103 comun\u0103",
+        "Raport comun",
+        "Num\u0103rul de termeni"
+    ],
+    "buttons": [
+        "clar",
+        "calculati"
+    ],
+    "radiobuttons": [
+        "Seria aritmetic\u0103",
+        "Seria geometric\u0103"
+    ],
+    "fontsize": [
+        "m\u0103rimea",
+        "Mic",
+        "Mediu",
+        "Mare"
+    ],
+    "appearance": [
+        "Aspect",
+        "Teme",
+        "U\u0219oar\u0103",
+        "\u00centuneric",
+        "Sistem",
+        "Albastru",
+        "Verde",
+        "Albastru inchis"
+    ],
+    "languages": [
+        "Limbi"
+    ],
+    "errors": [
+        "O excep\u021bie a avut loc: ValureError - Asigura\u021bi -v\u0103 c\u0103 toate c\u00e2mpurile sunt completate \u0219i au intr\u0103ri numerice",
+        "A ap\u0103rut o excep\u021bie: Num\u0103rul nevalid de termeni - lungimea seriei nu poate fi un num\u0103r negativ sau 0, v\u0103 rug\u0103m s\u0103 alege\u021bi o lungime adecvat\u0103",
+        "O excep\u021bie a avut loc: Overflowerror - V\u0103 rug\u0103m s\u0103 reduce\u021bi valoarea numerelor \u00eentregi introduse"
+    ],
+    "filemenu": [
+        "Fi\u015fier",
+        "Repornire",
+        "Ie\u0219ire"
+    ],
+    "title": [
+        "Seria de rezumare"
+    ],
+    "langloader": [
+        "Traduce\u021bi",
+        "Programul este deja setat pe",
+        "fie nu este disponibil, fie datele sale JSON sunt formatate incorect"
+    ]
+}
