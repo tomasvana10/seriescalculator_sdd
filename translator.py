@@ -120,17 +120,6 @@ def onStart():
     if updateAllChoice:
         updateAll()
         return
-    
-    poo = True if input("poo: ") == "y" else False
-    if poo == True:
-        langlist = os.listdir(path)
-        langlist = [lang.replace(".json", "") for lang in langlist]
-        for lang in languages:
-            if lang in langlist:
-                continue
-            else:
-                jsonWriter(lang)
-                exit("done")
 
     print("\nRefer to the values of langCodes.json for the following input")
     lang = str(input("Enter the destination language (e.g. French): ")).title()
