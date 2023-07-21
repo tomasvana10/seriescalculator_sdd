@@ -21,7 +21,7 @@
  - Large
 
 **Language selection**
-- All Google Translate languages (107)
+- Google Translate languages (103)
 
 **Appearance and themes**
 - Choose from Light mode, Dark mode and System appearances
