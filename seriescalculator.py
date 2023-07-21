@@ -465,9 +465,10 @@ class Languages(ctk.CTkFrame):
 
         else:
             # Switch database to already loaded language
-            self.loadedLangTuple = [langTuple for langTuple in self.loadedLanguages if langTuple[0] == lang]
+            self.loadedLangTuple = tuple(langTuple for langTuple in self.loadedLanguages if langTuple[0] == lang)
             self.currentLangDb = self.loadedLangTuple[0][1]
-            self.master.configUpdater(language = self.loadedLangTuple[0])
+            self.master.configUpdater(language = self.loadedLangTuple[0][0])
+            
 
     def langDbConfigurer(self, lang, rawLangDb):
         rawLangDb["entries"][1:3] = [rawLangDb["entries"][1:3]] # Group index 1 and 2 into single list
