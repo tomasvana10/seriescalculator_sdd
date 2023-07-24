@@ -76,7 +76,7 @@ class Program(ctk.CTk):
             self.cfg["Main"]["theme"] = theme
         if language:
             self.cfg["Main"]["language"] = str(language)
-        
+
         with open(f"{self.currentDir}/config.ini", "w") as f:
             self.cfg.write(f)
 
@@ -94,7 +94,6 @@ class Entries(ctk.CTkFrame):
 
         self.placeholderText = ["Common difference", "Common ratio"] # Modified by translator which then 
                                                                      # calls placeholderSwitcher()
-
         self.entryGen() 
 
     def entryGen(self): 
@@ -310,7 +309,7 @@ class Appearance(ctk.CTkFrame):
         self.master.configUpdater(appearance = self.appearanceChoice)
 
     def changeTheme(self, choice):
-        self.themeChoice = "blue" if self.themes.index(choice)== 0 else \
+        self.themeChoice = "blue" if self.themes.index(choice) == 0 else \
         "green" if self.themes.index(choice) == 1 else "dark-blue"
         self.master.configUpdater(theme = self.themeChoice)
         self.master.restartProgram()
@@ -372,7 +371,7 @@ class Languages(ctk.CTkFrame):
         # Available languages look like this: ["English", "Spanish", "French"]
         self.langOptions = ctk.CTkOptionMenu(self, values = self.availableLanguages, 
                                               command = self.switchLang)
-        self.langOptionsLabel = ctk.CTkLabel(self, text = "Languages")
+        self.langOptionsLabel = ctk.CTkLabel(self)
         self.langOptions.grid(row = 2, column = 1)
         self.langOptionsLabel.grid(row = 1, column = 1)
 
