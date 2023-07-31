@@ -49,5 +49,10 @@
         "translate",
         "Ny programa dia efa napetraka",
         "na tsy misy na tsy misy, na ny angon-drakitra json dia tsy marina"
+    ],
+    "destroy": [
+        "Ianao ve te {}?Ho very ny angon-drakitra fidirana rehetra",
+        "miala",
+        "haverina velomina"
     ]
 }

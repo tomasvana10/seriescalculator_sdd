@@ -49,5 +49,10 @@
         "I\u0161versti",
         "Programa jau nustatyta",
         "yra arba n\u0117ra, arba jo JSON duomenys yra suformatuoti neteisingai"
+    ],
+    "destroy": [
+        "Ar nor\u0117tum {}?Visi \u012fra\u0161o duomenys bus prarastos",
+        "mesti",
+        "perkrauti"
     ]
 }

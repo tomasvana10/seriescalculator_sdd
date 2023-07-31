@@ -49,5 +49,10 @@
         "Vertaal",
         "Program is reeds ingestel op",
         "is \u00f3f nie beskikbaar nie, \u00f3f die JSON -data is verkeerd geformateer"
+    ],
+    "destroy": [
+        "Wil jy {}?Alle inskrywingsdata sal verlore gaan",
+        "laat vaar",
+        "begin oor"
     ]
 }

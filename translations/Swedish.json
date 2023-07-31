@@ -49,5 +49,10 @@
         "\u00d6vers\u00e4tt",
         "Programmet \u00e4r redan inst\u00e4llt p\u00e5",
         "\u00e4r antingen inte tillg\u00e4nglig, eller dess JSON -data formateras felaktigt"
+    ],
+    "destroy": [
+        "Vill du {}?All inmatningsdata kommer att g\u00e5 f\u00f6rlorad",
+        "sluta",
+        "omstart"
     ]
 }

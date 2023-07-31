@@ -49,5 +49,10 @@
         "Humusha",
         "Uhlelo seluvele luhleliwe",
         "akutholakali, noma idatha yayo ye-json ihlelwe ngokungalungile"
+    ],
+    "destroy": [
+        "Ingabe uyafuna {}?Yonke imininingwane yokungena izolahleka",
+        "yeka",
+        "qalanisa"
     ]
 }

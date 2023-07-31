@@ -49,5 +49,10 @@
         "Masulira",
         "Pulogalamu yakhazikitsidwa kale",
         "sizipezeka, kapena za json zopangidwa molakwika"
+    ],
+    "destroy": [
+        "Mukufuna ku {}?Zambiri zolowera zidzatayika",
+        "siya",
+        "yambitsaninso"
     ]
 }

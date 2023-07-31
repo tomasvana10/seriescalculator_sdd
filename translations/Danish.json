@@ -49,5 +49,10 @@
         "Overs\u00e6tte",
         "Programmet er allerede indstillet til",
         "er enten ikke tilg\u00e6ngelig, eller dens JSON -data formateres forkert"
+    ],
+    "destroy": [
+        "Vil du {}?Alle indgangsdata vil g\u00e5 tabt",
+        "Afslut",
+        "genstart"
     ]
 }

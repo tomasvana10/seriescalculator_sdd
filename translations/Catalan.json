@@ -49,5 +49,10 @@
         "Traduir",
         "El programa ja est\u00e0 configurat a",
         "o b\u00e9 no est\u00e0 disponible, o les seves dades de JSON es formaten de manera incorrecta"
+    ],
+    "destroy": [
+        "Vols {}?Es perdran totes les dades d\u2019entrada",
+        "abandonar",
+        "reinicia"
     ]
 }

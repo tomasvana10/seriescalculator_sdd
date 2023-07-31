@@ -49,5 +49,10 @@
         "Traducir",
         "O programa xa est\u00e1 configurado para",
         "Ou non est\u00e1 dispo\u00f1ible, ou os seus datos JSON est\u00e1n formateados incorrectamente"
+    ],
+    "destroy": [
+        "Queres {}?Perderanse todos os datos de entrada",
+        "deixar de fumar",
+        "reiniciar"
     ]
 }

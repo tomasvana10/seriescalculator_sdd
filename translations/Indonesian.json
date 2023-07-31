@@ -49,5 +49,10 @@
         "Menerjemahkan",
         "Program sudah diatur ke",
         "tidak tersedia, atau data JSON diformat secara tidak benar"
+    ],
+    "destroy": [
+        "Apakah kamu mau {}?Semua data masuk akan hilang",
+        "berhenti",
+        "mengulang kembali"
     ]
 }

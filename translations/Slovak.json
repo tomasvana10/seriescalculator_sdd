@@ -49,5 +49,10 @@
         "Prelo\u017ei\u0165",
         "Program je u\u017e nastaven\u00fd na",
         "bu\u010f nie je k dispoz\u00edcii, alebo jeho \u00fadaje JSON s\u00fa nespr\u00e1vne form\u00e1tovan\u00e9"
+    ],
+    "destroy": [
+        "Chce\u0161 {}?V\u0161etky vstupn\u00e9 \u00fadaje sa stratia",
+        "presta\u0165",
+        "re\u0161tart"
     ]
 }

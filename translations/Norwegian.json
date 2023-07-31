@@ -49,5 +49,10 @@
         "Oversette",
         "Programmet er allerede satt til",
         "er enten ikke tilgjengelig, eller JSON -dataene er formatert feil"
+    ],
+    "destroy": [
+        "Vil du {}?Alle inngangsdata vil g\u00e5 tapt",
+        "slutte",
+        "omstart"
     ]
 }

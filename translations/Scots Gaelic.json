@@ -49,5 +49,10 @@
         "Eadar-theangachadh",
         "Pr\u00f2gram air a shuidheachadh mu thr\u00e0th",
         "an d\u00e0rna cuid chan eil e ri fhaighinn, no tha an d\u00e0ta JSON aige air a chruth gu ce\u00e0rr"
+    ],
+    "destroy": [
+        "A bheil thu ag iarraidh {}?Th\u00e8id an d\u00e0ta inntrigidh a chall",
+        "Cuidhtich",
+        "ath-th\u00f2isich"
     ]
 }

@@ -49,5 +49,10 @@
         "P\u00ebrkthej",
         "Programi \u00ebsht\u00eb vendosur tashm\u00eb n\u00eb",
         "ose nuk \u00ebsht\u00eb n\u00eb dispozicion, ose t\u00eb dh\u00ebnat e saj JSON jan\u00eb formatuar gabimisht"
+    ],
+    "destroy": [
+        "A doni t\u00eb {}?T\u00eb gjitha t\u00eb dh\u00ebnat e hyrjes do t\u00eb humbasin",
+        "pushoj",
+        "Rifillo, fillo p\u00ebrs\u00ebri"
     ]
 }

@@ -49,5 +49,10 @@
         "T\u0259rc\u00fcm\u0259 etm\u0259k",
         "Proqram art\u0131q qurulmu\u015fdur",
         "ya m\u00f6vcud deyil, ya da JSON m\u0259lumatlar\u0131 s\u0259hv formatlan\u0131r"
+    ],
+    "destroy": [
+        "{} \u0130st\u0259y\u0259rs\u0259n?B\u00fct\u00fcn giri\u015f m\u0259lumatlar\u0131 itiril\u0259c\u0259k",
+        "\u00e7\u0131xmaq",
+        "yenid\u0259n ba\u015flamaq"
     ]
 }

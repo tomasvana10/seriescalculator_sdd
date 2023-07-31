@@ -49,5 +49,10 @@
         "Isalin",
         "Nakatakda na ang programa",
         "ay hindi magagamit, o ang data ng json nito ay na -format nang hindi tama"
+    ],
+    "destroy": [
+        "Gusto mo ba {}?Ang lahat ng data ng pagpasok ay mawawala",
+        "huminto ka",
+        "i -restart"
     ]
 }

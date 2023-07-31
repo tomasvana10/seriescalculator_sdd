@@ -49,5 +49,10 @@
         "Gyfieithith",
         "Mae'r rhaglen eisoes wedi'i gosod i",
         "naill ai ddim ar gael, neu mae ei ddata JSON wedi'i fformatio'n anghywir"
+    ],
+    "destroy": [
+        "Ydych chi eisiau {}?Collir yr holl ddata mynediad",
+        "gadawen",
+        "Ail-ddechrau"
     ]
 }

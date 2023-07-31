@@ -49,5 +49,10 @@
         "T\u00f5lkima",
         "Programm on juba seatud",
         "Kas pole saadaval v\u00f5i selle JSON -andmed vormindatakse valesti"
+    ],
+    "destroy": [
+        "Kas sa tahad {}?K\u00f5ik sisenemise andmed kaovad",
+        "loobuma",
+        "Taask\u00e4ivita"
     ]
 }

@@ -12,6 +12,7 @@ import json
 import os
 import googletrans
 from googletrans import Translator
+import httpx
 
 translator = Translator() 
 
@@ -27,7 +28,8 @@ translationsDb = { # Text within the program
                       "An exception occured: OverflowError - Please reduce the value of the entered integers"],
     "filemenu" :     ["File", "Restart", "Exit"], 
     "title" :        ["Summing Series"],
-    "langloader":    ["Translator", "Program is already set to", "is either not available, or its JSON data is formatted incorrectly"]
+    "langloader":    ["Translator", "Program is already set to", "is either not available, or its JSON data is formatted incorrectly"],
+    "destroy":       ["Do you want to {}? All entry data will be lost", "quit", "restart"]
 }
 
 transDict = translationsDb.copy() 
@@ -98,7 +100,7 @@ def jsonWriter(lang):
 
                 try:
                     transtext = translator.translate(translationsDb[key][i], dest = languages[lang], src = "en")
-                except TypeError or TimeoutError:
+                except TypeError or TimeoutError or httpx.ReadError:
                     print(f"Due to a bug with the googletrans module, translation to some languages such as {lang} result in incomplete translation. Sorry.")
                     with open(jsonFile, "w") as f:
                         f.truncate(0)

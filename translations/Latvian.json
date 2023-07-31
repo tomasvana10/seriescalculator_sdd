@@ -49,5 +49,10 @@
         "Tulkot",
         "Programma jau ir iestat\u012bta uz",
         "vai nu nav pieejams, vai ar\u012b t\u0101 JSON dati tiek format\u0113ti nepareizi"
+    ],
+    "destroy": [
+        "Vai Tu gribi {}?Visi ieraksta dati tiks zaud\u0113ti",
+        "atmest",
+        "restart\u0113t"
     ]
 }

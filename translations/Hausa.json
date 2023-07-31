@@ -49,5 +49,10 @@
         "Fassara",
         "An riga an saita shirin zuwa",
         "Shin babu ko dai, ko bayanan json na JON ne ba daidai ba"
+    ],
+    "destroy": [
+        "Kuna so {}?Duk bayanan shiga za a rasa",
+        "sallama",
+        "sake kunnawa"
     ]
 }

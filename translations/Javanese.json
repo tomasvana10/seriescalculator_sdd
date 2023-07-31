@@ -49,5 +49,10 @@
         "Translate",
         "Program wis disetel menyang",
         "salah siji ora kasedhiya, utawa data JSON sing diformat ora bener"
+    ],
+    "destroy": [
+        "Apa sampeyan pengin {}?Kabeh data entri bakal ilang",
+        "mandhek",
+        "baleni meneh"
     ]
 }

@@ -49,5 +49,10 @@
         "Tafsiri",
         "Mpango tayari umewekwa",
         "haipatikani, au data yake ya JSON imeundwa vibaya"
+    ],
+    "destroy": [
+        "Unataka {}?Takwimu zote za kuingia zitapotea",
+        "acha",
+        "Anzisha tena"
     ]
 }

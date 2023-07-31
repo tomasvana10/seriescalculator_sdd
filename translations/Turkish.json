@@ -49,5 +49,10 @@
         "\u00c7evirmek",
         "Program zaten ayarland\u0131",
         "Ya mevcut de\u011fil veya JSON verileri yanl\u0131\u015f bi\u00e7imlendirildi"
+    ],
+    "destroy": [
+        "Sen istiyor musun {}?T\u00fcm giri\u015f verileri kaybolacak",
+        "\u00e7\u0131k\u0131\u015f yapmak",
+        "tekrar ba\u015flat"
     ]
 }

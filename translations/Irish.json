@@ -49,5 +49,10 @@
         "Aistrigh",
         "T\u00e1 an cl\u00e1r socraithe cheana f\u00e9in",
         "n\u00edl s\u00e9 ar f\u00e1il, n\u00f3 t\u00e1 a chuid sonra\u00ed JSON form\u00e1idithe go m\u00edcheart"
+    ],
+    "destroy": [
+        "Ar mhaith leat {}?Caillfear na sonra\u00ed iontr\u00e1la go l\u00e9ir",
+        "\u00e9ir\u00ed as",
+        "Tosaigh ar\u00eds"
     ]
 }

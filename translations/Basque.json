@@ -49,5 +49,10 @@
         "Itzuli",
         "Programa dagoeneko ezarrita dago",
         "ez dago erabilgarri, edo bere json datuak oker formateatu dira"
+    ],
+    "destroy": [
+        "Nahi duzu {}?Sarrera datu guztiak galduko dira",
+        "laga",
+        "berriro hasi"
     ]
 }

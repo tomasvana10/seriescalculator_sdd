@@ -49,5 +49,10 @@
         "Traduci",
         "U prugramma h\u00e8 digi\u00e0 stabilitu",
         "h\u00e8 o micca dispunibule, o i so dati JSON h\u00e8 formattatu sbagliatu"
+    ],
+    "destroy": [
+        "Vulete {}?Tutti i dati di l'ingressu seranu persu",
+        "smette",
+        "Ristartate"
     ]
 }

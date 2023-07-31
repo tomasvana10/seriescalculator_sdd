@@ -49,5 +49,10 @@
         "Txhais lus",
         "Program twb tau teev rau",
         "yog ib qho tsis muaj, lossis nws JSON cov ntaub ntawv yog tsim tsis raug"
+    ],
+    "destroy": [
+        "Koj puas xav tau {}?Txhua cov ntaub ntawv nkag yuav ploj",
+        "tsum",
+        "rov ua dua"
     ]
 }

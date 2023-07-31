@@ -49,5 +49,10 @@
         "Translate",
         "Program is already set to",
         "is either not available, or its JSON data is formatted incorrectly"
+    ],
+    "destroy": [
+        "Do you want to {}? All entry data will be lost",
+        "quit",
+        "restart"
     ]
 }

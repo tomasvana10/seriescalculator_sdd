@@ -49,5 +49,10 @@
         "Oersette",
         "Programma is al ynsteld op",
         "is of net beskikber, of de JSON-gegevens wurde ferkeard opmakke"
+    ],
+    "destroy": [
+        "Wolsto {}?Alle yngongsgegevens sille ferlern gean",
+        "oerjaan",
+        "Restart"
     ]
 }

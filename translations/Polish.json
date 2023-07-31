@@ -49,5 +49,10 @@
         "T\u0142umaczy\u0107",
         "Program jest ju\u017c ustawiony",
         "nie jest dost\u0119pny, albo jego dane JSON s\u0105 formatowane nieprawid\u0142owo"
+    ],
+    "destroy": [
+        "Czy chcesz {}?Wszystkie dane dotycz\u0105ce pozycji zostan\u0105 utracone",
+        "zrezygnowa\u0107 ",
+        "uruchom ponownie"
     ]
 }

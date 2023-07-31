@@ -49,5 +49,10 @@
         "Vertalen",
         "Programma is al ingesteld op",
         "zijn niet beschikbaar, of de JSON -gegevens zijn onjuist opgemaakt"
+    ],
+    "destroy": [
+        "Wil je {}?Alle invoergegevens gaan verloren",
+        "ontslag nemen",
+        "herstarten"
     ]
 }

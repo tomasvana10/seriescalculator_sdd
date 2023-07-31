@@ -49,5 +49,10 @@
         "\u00dcbersetzen",
         "Das Programm ist bereits auf",
         "ist entweder nicht verf\u00fcgbar oder seine JSON -Daten sind falsch formatiert"
+    ],
+    "destroy": [
+        "M\u00f6chten Sie {}?Alle Einstiegsdaten gehen verloren",
+        "aufh\u00f6ren",
+        "Neustart"
     ]
 }

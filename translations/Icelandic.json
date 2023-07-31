@@ -49,5 +49,10 @@
         "\u00de\u00fd\u00f0a",
         "Forrit er \u00feegar stillt \u00e1",
         "er anna\u00f0 hvort ekki tilt\u00e6kt, e\u00f0a JSON g\u00f6gnin eru sni\u00f0in rangt"
+    ],
+    "destroy": [
+        "Viltu {}?\u00d6ll a\u00f0gangsg\u00f6gn tapast",
+        "H\u00e6ttu",
+        "endurr\u00e6sa"
     ]
 }

@@ -49,5 +49,10 @@
         "Tradui",
         "Pwogram deja mete nan",
         "se swa pa disponib, oswa done JSON li yo se f\u00f2ma mal"
+    ],
+    "destroy": [
+        "\u00c8ske ou vle {}?Tout done antre yo pral p\u00e8di",
+        "kite",
+        "rek\u00f2manse"
     ]
 }

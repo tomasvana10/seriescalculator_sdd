@@ -49,5 +49,10 @@
         "Tarjumid",
         "Barnaamij ayaa horey loo dhigay",
         "ma aha mid la heli karo, ama xogta JSON waxaa loo qaabeeyey si qalad ah"
+    ],
+    "destroy": [
+        "Ma waxaa rabtaa {}?Dhammaan macluumaadka gelitaanka ayaa lumin doona",
+        "joojin",
+        "dib u bilow"
     ]
 }

@@ -49,5 +49,10 @@
         "K\u00e4\u00e4nt\u00e4\u00e4",
         "Ohjelma on jo asetettu",
         "ei ole joko k\u00e4ytett\u00e4viss\u00e4, tai sen JSON -tiedot on muotoiltu v\u00e4\u00e4rin"
+    ],
+    "destroy": [
+        "Haluatko {}?Kaikki merkint\u00e4tiedot menetet\u00e4\u00e4n",
+        "lopettaa",
+        "uudelleenk\u00e4ynnist\u00e4\u00e4"
     ]
 }

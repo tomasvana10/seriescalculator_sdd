@@ -49,5 +49,10 @@
         "Hubaron",
         "Ang programa gitakda na",
         "dili magamit, o ang datos sa JSON nga gi-format nga dili husto"
+    ],
+    "destroy": [
+        "Gusto ba nimo {}?Ang tanan nga datos sa pagsulod mawala",
+        "moundang",
+        "tuk-on"
     ]
 }

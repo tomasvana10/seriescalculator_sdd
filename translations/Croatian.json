@@ -49,5 +49,10 @@
         "Prevedi",
         "Program je ve\u0107 postavljen na",
         "je ili nije dostupan, ili su njegovi JSON podaci pogre\u0161no formatirani"
+    ],
+    "destroy": [
+        "\u017deli\u0161 li {}?Svi podaci o unosu bit \u0107e izgubljeni",
+        "prestati",
+        "ponovno pokrenuti"
     ]
 }

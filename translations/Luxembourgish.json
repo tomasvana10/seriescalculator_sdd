@@ -49,5 +49,10 @@
         "Iwwersetzen",
         "Programm ass scho gesat",
         "ass entweder net verf\u00fcgbar, oder seng JSON Date format\u00e9iert ass falsch"
+    ],
+    "destroy": [
+        "W\u00ebllt Dir {}?All Entr\u00e9e Daten ginn verluer",
+        "ness",
+        "Neistart"
     ]
 }

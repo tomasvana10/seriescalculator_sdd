@@ -49,5 +49,10 @@
         "Translate",
         "Lenaneo le se le ntse le hlophisitsoe ho",
         "ha e fumanehe, kapa data ea eona ea JS JS e hlophisitsoe ka nepo"
+    ],
+    "destroy": [
+        "A na u batla ho {}?Lintlha tsohle tsa ho kena li tla lahleha",
+        "Tlohela",
+        "qala hape"
     ]
 }

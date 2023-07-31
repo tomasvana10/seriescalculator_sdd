@@ -49,5 +49,10 @@
         "Tarjima qilmoq",
         "Dastur allaqachon o'rnatilgan",
         "mavjud emas yoki uning JSON ma'lumotlari noto'g'ri formatlangan"
+    ],
+    "destroy": [
+        "Istaysizmi {}?Barcha kirish ma'lumotlari yo'qoladi",
+        "ketmoq",
+        "qayta ishga tushirish"
     ]
 }

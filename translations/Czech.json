@@ -49,5 +49,10 @@
         "p\u0159elo\u017eit",
         "Program je ji\u017e nastaven na",
         "nen\u00ed bu\u010f k dispozici, nebo jeho data JSON jsou form\u00e1tov\u00e1na nespr\u00e1vn\u011b"
+    ],
+    "destroy": [
+        "Chce\u0161 {}?V\u0161echna vstupn\u00ed data budou ztracena",
+        "p\u0159estat",
+        "restart"
     ]
 }

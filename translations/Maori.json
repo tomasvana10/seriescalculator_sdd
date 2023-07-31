@@ -49,5 +49,10 @@
         "Whakam\u0101ori",
         "Kua whakaritea te kaupapa",
         "kaore ano kia waatea, ko nga raraunga JSON ranei e haangai ana"
+    ],
+    "destroy": [
+        "Kei te hiahia koe?Ko nga raraunga whakauru katoa ka ngaro",
+        "whakamutu",
+        "whakaara"
     ]
 }

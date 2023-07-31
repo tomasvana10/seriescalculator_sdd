@@ -49,5 +49,10 @@
         "Prevesti",
         "Program je \u017ee nastavljen na",
         "bodisi ni na voljo ali pa so njegovi jSON podatki napa\u010dno oblikovani"
+    ],
+    "destroy": [
+        "Ali \u017eelite {}?Vsi podatki o vnosu bodo izgubljeni",
+        "prenehati",
+        "ponovni zagon"
     ]
 }

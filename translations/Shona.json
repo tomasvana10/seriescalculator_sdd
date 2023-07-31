@@ -49,5 +49,10 @@
         "Dudziro",
         "Chirongwa chakatoiswa kare",
         "ingave isipo, kana yayo yejson data yakarongedzwa zvisizvo"
+    ],
+    "destroy": [
+        "Iwe unoda here kuti {}?Yese yekupinda data icharasika",
+        "kurega",
+        "restart"
     ]
 }

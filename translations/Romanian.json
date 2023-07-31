@@ -49,5 +49,10 @@
         "Traduce\u021bi",
         "Programul este deja setat pe",
         "fie nu este disponibil, fie datele sale JSON sunt formatate incorect"
+    ],
+    "destroy": [
+        "Vrei s\u0103 {}?Toate datele de intrare vor fi pierdute",
+        "p\u0103r\u0103si",
+        "repornire"
     ]
 }

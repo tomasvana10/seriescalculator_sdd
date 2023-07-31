@@ -49,5 +49,10 @@
         "Transfero",
         "Program iam set est",
         "est vel non available, aut suum JSON data est formatted male"
+    ],
+    "destroy": [
+        "Visne {}?Omnes ingressum data non pereunt",
+        "excido",
+        "sileo"
     ]
 }

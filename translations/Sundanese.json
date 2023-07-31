@@ -49,5 +49,10 @@
         "Narjamahkeun",
         "Program parantos diatur",
         "boh henteu sayogi, atanapi data JSON na dilarapkeun leres"
+    ],
+    "destroy": [
+        "Naha anjeun bad\u00e9 {}?Sadaya data \u00e9ntri bakal leungit",
+        "kaluar",
+        "uihan deui"
     ]
 }

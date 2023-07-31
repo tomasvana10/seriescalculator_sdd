@@ -49,5 +49,10 @@
         "Traduki",
         "Programo jam estas agordita al",
         "a\u016d ne haveblas, a\u016d \u011diaj JSON -datumoj estas formatitaj mal\u011duste"
+    ],
+    "destroy": [
+        "\u0108u vi volas {}?\u0108iuj eniraj datumoj perdi\u011dos",
+        "\u0109esu",
+        "rekomenci"
     ]
 }

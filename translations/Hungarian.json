@@ -49,5 +49,10 @@
         "ford\u00edt",
         "A program m\u00e1r be van \u00e1ll\u00edtva",
         "vagy nem \u00e9rhet\u0151 el, vagy a JSON -adatait helytelen\u00fcl form\u00e1zza"
+    ],
+    "destroy": [
+        "Akarsz {}?Az \u00f6sszes bel\u00e9p\u00e9si adat elveszik",
+        "Kil\u00e9p\u00e9s",
+        "\u00fajrakezd"
     ]
 }

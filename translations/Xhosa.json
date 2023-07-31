@@ -49,5 +49,10 @@
         "Guqula",
         "Inkqubo sele isetelwe",
         "ayifumaneki, okanye idatha yayo ye-JSON ifomathiwe ngokungachanekanga"
+    ],
+    "destroy": [
+        "Ingaba uyakufuna u {}?Yonke idatha yokungenela iya kulahleka",
+        "yeka",
+        "phinda Uqalele"
     ]
 }
