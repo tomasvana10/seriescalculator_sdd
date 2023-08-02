@@ -1,6 +1,7 @@
 '''
 This program assigns translations to a dictionary and writes it into a JSON file.
-! This program requires the googletrans module to be installed.
+This program is only documented for the purpose of explaining the translation process
+! Requires the googletrans module to be installed. (pip install googletrans)
 
 Limitations: 
 - When updating a JSON language file, new translations can only be APPENDED to a key's value
@@ -35,19 +36,21 @@ translationsDb = { # Text within the program
 transDict = translationsDb.copy() 
 
 languages = googletrans.LANGUAGES
-languages = {v.title(): k for k, v in languages.items()}
+languages = {v.title(): k for k, v in languages.items()} # Reverse and capitalise values
 
-currentDir = os.path.dirname(os.path.abspath(__file__))
+currentDir = os.path.dirname(os.path.abspath(__file__)) 
 path = os.path.join(currentDir, "translations")
 
 
 def jsonUpdater(lang):
+    '''Updates existing files'''
     jsonFile = os.path.join(path, f"{lang}.json")
     if not os.path.exists(jsonFile):
         print("File does not exist. Try writing a new file instead.")
         return 
     
     try:
+        # Attempt to load jsonFile
         with open(jsonFile, "r") as f:
             jsonDict = json.load(f)
 
@@ -55,18 +58,19 @@ def jsonUpdater(lang):
         print(f"{lang}'s JSON data is either formatted incorrectly, or it is empty.")
         return
 
-    changes = {"keys": 0, "arrays": 0}
+    changes = {"keys": 0, "arrays": 0} # Keep track of changes
     for key in translationsDb:
         if key not in jsonDict:
             jsonDict[key] = [] # Add missing keys
-            changes["keys"] += 1
+            changes["keys"] += 1 
 
         transDbLen = len(translationsDb[key])
         dataLen = len(jsonDict[key])
 
-        if transDbLen > dataLen:
+        if transDbLen > dataLen: # This means there are missing array elements
             missingItems = translationsDb[key][dataLen:] # Find all missing items in each key's array
             for i, item in enumerate(missingItems):
+                # Translation process
                 transtext = translator.translate(item, dest = languages[lang], src = "en")
                 missingItems[i] = transtext.text
             jsonDict[key].extend(missingItems)
@@ -75,18 +79,21 @@ def jsonUpdater(lang):
     print(f"{lang} was updated with {changes['keys']} keys added and {changes['arrays']} array items added.")
 
     with open(jsonFile, "w") as f:
-        newJsonDict = json.dumps(jsonDict, indent = 4)
-        f.write(newJsonDict) 
+        newJsonDict = json.dumps(jsonDict, indent = 4) # Serialise data and make it JSON ready
+        f.write(newJsonDict) # Write updated translations to the jsonFile (f)
 
 def updateAll():
-    langList = sorted(os.listdir(path))
+    '''Executes jsonUpdater on ALL languages in the current directory'''
+    langList = sorted(os.listdir(path)) 
     langList = [lang.replace(".json", "") for lang in langList]
     for lang in langList:
         jsonUpdater(lang)
 
 def jsonWriter(lang):
+    '''Writes new translations to files'''
     jsonFile = os.path.join(path, f"{lang}.json")
     
+    # Create new file if it doesnt exist
     if not os.path.exists(jsonFile):
         open(f"{path}/{lang}.json", "x")
 
@@ -100,15 +107,16 @@ def jsonWriter(lang):
 
                 try:
                     transtext = translator.translate(translationsDb[key][i], dest = languages[lang], src = "en")
+
                 except TypeError or TimeoutError or httpx.ReadError:
                     print(f"Due to a bug with the googletrans module, translation to some languages such as {lang} result in incomplete translation. Sorry.")
                     with open(jsonFile, "w") as f:
-                        f.truncate(0)
+                        f.truncate(0) # Delete failed translation data
                     return
 
                 transDict[key][i] = transtext.text
             else:
-                transDict[key][i] = text
+                transDict[key][i] = text # Takes text straight from this scripts base text dictionary
 
         newJsonDict = json.dumps(transDict, indent = 4)
 

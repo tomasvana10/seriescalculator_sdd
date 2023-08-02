@@ -4,7 +4,10 @@ import customtkinter as ctk
 import json
 import os
 from configparser import ConfigParser
-
+'''
+Refer to translator.py if you are unsure what exactly is contained in the keys, values and
+array elements of currentLangDb (translations)
+'''
 
 class Program(ctk.CTk):
     '''Main Program Window'''
@@ -12,9 +15,8 @@ class Program(ctk.CTk):
         super().__init__()
         # Providing program directory for assistance to child classes
         self.currentDir = os.path.dirname(os.path.abspath(__file__)) 
-        # Detect window deletion
-        self.protocol("WM_DELETE_WINDOW", lambda: self.restartProgram(
-                                                themeRestart = False))
+        # Detect window deletion -> display messagebox
+        self.protocol("WM_DELETE_WINDOW", lambda: self.restartProgram(themeRestart = False))
 
         self.cfg = ConfigParser() # Assign config parser instance to variable
         self.cfg.read(f"{self.currentDir}/config.ini") # Allows program to edit config
@@ -32,20 +34,22 @@ class Program(ctk.CTk):
 
     def frameGen(self):
         '''Frames'''
+        # mainFrame holds all other frames
         self.mainFrame = ctk.CTkFrame(self)
-        self.mainFrame.pack(fill = tk.BOTH, expand = True)
+        self.mainFrame.pack(fill = tk.BOTH, expand = True) # Expand to fill window
         self.mainFrame.grid_columnconfigure(1, weight = 1)
         self.mainFrame.grid_columnconfigure(2, weight = 0)
         self.mainFrame.grid_rowconfigure(1, weight = 1)
 
+        # calcFrame holds all calculator-related widgets
         self.calcFrame = ctk.CTkFrame(self.mainFrame, fg_color = ("#dbdbdb", "gray17"))
         self.calcFrame.grid(row = 1, column = 1, sticky = "nsew")
         self.calcFrame.grid_rowconfigure(1, weight = 0)
         self.calcFrame.grid_rowconfigure((2, 3), weight = 2)
         self.calcFrame.grid_columnconfigure((1, 2), weight = 1)
 
-        self.sidebarFrame = ctk.CTkFrame(self.mainFrame, fg_color = ("#cccccc", "gray20"), 
-                                         corner_radius = 0)
+        # sidebarFrame holds all accessibility widgets and title label
+        self.sidebarFrame = ctk.CTkFrame(self.mainFrame, fg_color = ("#cccccc", "gray20"), corner_radius = 0)
         self.sidebarFrame.grid(row = 1, column = 2, sticky = "nsew")
         self.sidebarFrame.grid_rowconfigure(1, weight = 3)
         self.sidebarFrame.grid_rowconfigure((2, 3, 4), weight = 2)
@@ -66,11 +70,12 @@ class Program(ctk.CTk):
         '''Accessibility Classes'''
         self.fontsize = FontSize(self, self.sidebarFrame)
         self.appearance = Appearance(self, self.sidebarFrame)
-        self.languages = Languages(self, self.sidebarFrame, self.entries, self.buttons, 
-                                   self.radiobuttons, self.fontsize, self.appearance, self.filemenu)
+        self.languages = Languages(self, self.sidebarFrame, self.entries, self.buttons, self.radiobuttons, 
+                                   self.fontsize, self.appearance, self.filemenu)
         self.languages.switchLang(self.cfg.get("Main", "language"))
     
     def configUpdater(self, scale = False, appearance = False, theme = False, language = False):
+        # Read data from self.cfg
         self.cfg.read(f"{self.currentDir}/config.ini")
         if scale:
             self.cfg["Main"]["scale"] = str(scale)
@@ -82,14 +87,15 @@ class Program(ctk.CTk):
             self.cfg["Main"]["language"] = str(language)
 
         with open(f"{self.currentDir}/config.ini", "w") as f:
-            self.cfg.write(f)
+            self.cfg.write(f) # Write changes
 
     def onWindowDestroy(self, themeRestart):
         if themeRestart:
+            # Create message box (Y/n)
             if tk.messagebox.askokcancel(self.languages.currentLangDb["destroy"][2], 
                                          self.languages.currentLangDb["destroy"][0]\
                                         .format(self.languages.currentLangDb["destroy"][2])):
-                return True
+                return True # Return True if user agrees
         else:
             if tk.messagebox.askokcancel(self.languages.currentLangDb["destroy"][1], 
                                          self.languages.currentLangDb["destroy"][0]\
@@ -103,7 +109,7 @@ class Program(ctk.CTk):
                 self.program = Program("Summing Series", (700, 580)) 
                 self.program.mainloop()
             else:
-                self.destroy()
+                self.destroy() # Destroy without reinstantiation of program
 
 
 class Entries(ctk.CTkFrame):
@@ -124,13 +130,14 @@ class Entries(ctk.CTkFrame):
         self.commonDifference.grid(row = 2, column = 1, pady = 10)
         self.numberOfTerms.grid(row = 3, column = 1)
 
-    def placeholderSwitcher(self, entry): 
+    def placeholderSwitcher(self, entry):
+        # Placeholder text must be dynamic for second entry (2 possible texts) 
         if entry == 1:
             self.commonDifference.configure(placeholder_text = self.placeholderText[0])
         else:
             self.commonDifference.configure(placeholder_text = self.placeholderText[1])
         self.master.focus() # Remove focus from widget to prevent placeholder text becoming editable
-                            # (focusing on main CTk instance)
+                            # (focusing on main CTk instance which acts as a dummy)
 
     def clearEntries(self): 
         if self.firstTerm.get() != "": # Entries are only cleared if there is a string of length > 0
@@ -143,18 +150,18 @@ class Entries(ctk.CTkFrame):
         self.refreshPlaceholderText()
 
     def refreshPlaceholderText(self):
+        # Focusing on widget regenerates temporary text
         self.firstTerm.focus()
         self.commonDifference.focus()
         self.numberOfTerms.focus()
-        self.master.focus()
+        self.master.focus() # Refer to placeholderSwitcher for explanation
 
 
 class Output(ctk.CTkFrame):
     '''Text box creation and gridding and text insertion function'''
     def __init__(self, master, calcframe):
         super().__init__(calcframe)
-        self.grid(row = 3, column = 1, columnspan = 2, sticky = "n", padx = 10, 
-                  pady = (10, 30))
+        self.grid(row = 3, column = 1, columnspan = 2, sticky = "n", padx = 10, pady = (10, 30))
         self.grid_columnconfigure(1, weight=1)  
         self.grid_rowconfigure(1, weight=1) 
 
@@ -185,6 +192,7 @@ class Radiobuttons(ctk.CTkFrame):
 
     def radioButtonGen(self):
         self.selection = tk.IntVar(value = 1) # Default value (Arithmetic Series)
+        # Each button calls placeholderSwitcher to switch placeholder text dynamically
         self.arithButton = ctk.CTkRadioButton(self, variable = self.selection, value = 1, 
                                               command = lambda: self.entries.placeholderSwitcher(1))
         self.geomButton = ctk.CTkRadioButton(self, variable = self.selection, value = 2, 
@@ -220,13 +228,13 @@ class Buttons(ctk.CTkFrame):
     
     def clear(self):
         self.entries.clearEntries()
-        self.radiobuttons.selection.set(1)
+        self.radiobuttons.selection.set(1) # Set radiobutton selection back to Arithmetic Series
         self.output.insertText("")
 
     def calculate(self):
-        self.seqType = self.radiobuttons.selection.get()
+        self.seqType = self.radiobuttons.selection.get() # Get either 1 or 2 from the IntVar
 
-        try:
+        try: # Handle errors
             self.firstTerm = float(self.entries.firstTerm.get())
             self.commonDiffOrRatio = float(self.entries.commonDifference.get())
             self.numberOfTerms = int(self.entries.numberOfTerms.get())
@@ -271,15 +279,15 @@ class FontSize(ctk.CTkFrame):
         self.fontOptionsMaker()
 
     def fontOptionsMaker(self):
-        self.fontOptions = ctk.CTkOptionMenu(self, values = self.sizes, 
-                                             command = self.changeScale)
+        # values = List[str] generates options
+        self.fontOptions = ctk.CTkOptionMenu(self, values = self.sizes, command = self.changeScale)
         self.fontOptionsLabel = ctk.CTkLabel(self)
 
         # Default values from config.ini
         self.scaleFloat = float(self.master.cfg.get("Main", "scale"))
         self.scaleStr = "Small" if self.scaleFloat == 0.7 else \
         "Medium" if self.scaleFloat == 1.0 else "Large"
-        self.fontOptions.set(self.scaleStr)
+        self.fontOptions.set(self.scaleStr) # Set current optionbox selection
 
         self.fontOptions.grid(row = 2, column = 1)
         self.fontOptionsLabel.grid(row = 1, column = 1)
@@ -313,8 +321,7 @@ class Appearance(ctk.CTkFrame):
     def appearanceOptionsMaker(self):
         self.appearanceOptions = ctk.CTkOptionMenu(self, values = self.appearances, 
                                                    command = self.changeAppearance)
-        self.themeOptions = ctk.CTkOptionMenu(self, values = self.themes, 
-                                              command = self.changeTheme)
+        self.themeOptions = ctk.CTkOptionMenu(self, values = self.themes, command = self.changeTheme)
         self.appearanceOptionsLabel = ctk.CTkLabel(self)
         self.themeOptionsLabel = ctk.CTkLabel(self)
         
@@ -345,7 +352,7 @@ class Appearance(ctk.CTkFrame):
             tk.messagebox.showinfo(message = f"{self.sameSelection} {choice}")
             return
         self.master.configUpdater(theme = self.themeChoice)
-        self.master.restartProgram()
+        self.master.restartProgram() # Program must be restarted to reapply theme
 
 
 class FileMenu(tk.Menu):
@@ -392,14 +399,15 @@ class Languages(ctk.CTkFrame):
 
         self.translationsPath = os.path.join(self.master.currentDir, "translations") 
         self.currentLangDb = {} # Stores text of current language and it's relation to widget variables
-        self.loadedLangTuple = ("",) # Must be created outside of switchLang(). Aids to detect if
-                                     # user is switching to same language
+        self.loadedLangTuple = ("",) # Aids to detect if user is switching to same language
+                                     # Must be created outside of switchLang(). 
         self.loadedLanguages = [] # Stores loaded language dictionaries in tuple form; ("langname", langDb)
 
         self.langOptionsMaker() 
 
     def langOptionsMaker(self):
         self.availableLanguages = os.listdir(self.translationsPath) # List translations directory
+        # Remove ".json" from each list element
         self.availableLanguages = [jsonFile.replace(".json", "") for jsonFile in self.availableLanguages]
         self.availableLanguages = sorted(self.availableLanguages) 
         # Available languages look like this: ["English", "Spanish", "French"]
@@ -435,6 +443,7 @@ class Languages(ctk.CTkFrame):
             self.fontsize.sizes[i] = self.currentLangDb["fontsize"][1][i]
         self.fontsize.fontOptions.configure(values = self.fontsize.sizes)
         self.fontsize.fontOptions.set(self.fontsize.sizes[self.sizeIndex])
+        # Reuse same selection text from the array in the "langloader" key 
         self.fontsize.sameSelection = self.currentLangDb["langloader"][1]
 
         '''Appearance optionbox and label'''
@@ -460,7 +469,7 @@ class Languages(ctk.CTkFrame):
         '''Error text'''
         for i, _ in enumerate(self.buttons.errors):
             self.buttons.errors[i] = self.currentLangDb["errors"][i]
-        self.buttons.calculate() 
+        self.buttons.calculate() # Regenerate error (if there is one), now with the updated language 
 
         '''Filemenu'''
         self.filemenu.menu.entryconfigure(self.filemenu.menuLabels[0], label = self.currentLangDb["filemenu"][0])
@@ -474,6 +483,7 @@ class Languages(ctk.CTkFrame):
         self.master.titleLabel.configure(text = self.currentLangDb["title"][0])
         
     def langLoader(self, lang):
+        '''Handles loading and storing of language data and responds to errors and repetitive inputs'''
         # If language is already set to the language being switched to
         if self.loadedLangTuple[0] == lang:
             tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], 
@@ -492,6 +502,7 @@ class Languages(ctk.CTkFrame):
                                                                  # tuple to currentLangDb
                     self.master.configUpdater(language = self.loadedLangTuple[0])
             
+            # The json file is likely empty or formatted incorrectly
             except json.decoder.JSONDecodeError:
                 tk.messagebox.showinfo(title = self.currentLangDb["langloader"][0], 
                                        message = f"{lang} {self.currentLangDb['langloader'][2]}")
@@ -506,8 +517,9 @@ class Languages(ctk.CTkFrame):
             
 
     def langDbConfigurer(self, lang, rawLangDb):
+        '''Make the order of arrays more logical based on hierarchy (using array slicing)'''
         rawLangDb["entries"][1:3] = [rawLangDb["entries"][1:3]] # Group index 1 and 2 into single list
-        
+
         rawLangDb["fontsize"][1:4] = [rawLangDb["fontsize"][1:4]]
 
         values = rawLangDb["appearance"]
@@ -517,7 +529,7 @@ class Languages(ctk.CTkFrame):
         return (lang, rawLangDb) # Assigned to the variable loadedLangTuple 
 
 
-if __name__ == "__main__": # Allows program to only run when the file is 
-                           # executed as a script, allowing for modularity and reusability
+if __name__ == "__main__": # Allows program to only run when the file is executed as a script, 
+                           # allowing for modularity and reusability
     program = Program("Summing Series", (700, 580)) 
     program.mainloop() 
