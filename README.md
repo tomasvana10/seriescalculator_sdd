@@ -1,4 +1,4 @@
-# seriescalculator_sdd [![GitHub license](https://img.shields.io/badge/license-MIT-purple.svg)](https://github.com/tomasvana10/seriescalculator_sdd/main/LICENSE.md) ![version](https://img.shields.io/badge/tag-3.1.3-teal) [![PyPi version](https://img.shields.io/pypi/v/customtkinter.svg)](https://pypi.org/project/customtkinter/0.3/)
+# seriescalculator_sdd [![GitHub license](https://img.shields.io/badge/license-MIT-teal.svg)](https://github.com/tomasvana10/seriescalculator_sdd/main/LICENSE.md) ![version](https://img.shields.io/github/v/release/tomasvana10/seriescalculator_sdd) [![PyPi version](https://img.shields.io/pypi/v/customtkinter.svg)](https://pypi.org/project/customtkinter/0.3/)
  Calculator GUI that provides solutions for arithmetic and geometric series using the **CustomTkinter** module<br>
  Made as a learning project for the Preliminary Software Design and Development course
  - Download zip: [click here](https://github.com/tomasvana10/seriescalculator_sdd/archive/refs/heads/main.zip)
