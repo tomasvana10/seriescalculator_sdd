@@ -228,7 +228,7 @@ class Buttons(ctk.CTkFrame):
     
     def clear(self):
         self.entries.clearEntries()
-        self.radiobuttons.selection.set(1) # Set radiobutton selection back to Arithmetic Series
+        self.radiobuttons.arithButton.invoke() # Emulate user clicking Arithmetic radiobutton
         self.output.insertText("")
 
     def calculate(self):
